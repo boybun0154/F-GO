@@ -1,0 +1,5 @@
+###
+get http://192.168.102.61:8080/SaveLocation?acc=bin&lat=15.9789962&lng=108.2620412
+################################
+
+get http://localhost:8080/loadvehiclelocation

@@ -66,6 +66,9 @@
                                 <a href="managecategory" class="sub-menu-link">
                                     <p>Quản lý loại xe</p>
                                 </a>
+                                <a href="vehiclelocation.jsp" class="sub-menu-link">
+                                    <p>Xem vị trí phương tiện</p>
+                                </a>
                             </c:if>
                             <c:if test="${sessionScope.acc.role == 0}">
                                 <a href="viewprofile?accountID=${sessionScope.acc.accountID}" class="sub-menu-link">
