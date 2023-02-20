@@ -16,12 +16,12 @@ public class LocationDAO {
 
     public void saveLocation(String acc, Double lat, Double lng) throws Exception {
         if (checkExistedAcc(acc)) {
-            String sql = "UPDATE Location SET lat = ?, lng = ? WHERE acc = ?";
+            String sql = "UPDATE Location SET lat = ?, lng = ? WHERE account = ?";
             try {
                 conn = new DBContext().getConnection();
                 ps = conn.prepareStatement(sql);
-                ps.setDouble(1, lat);
-                ps.setDouble(2, lng);
+                ps.setDouble(1, lng);
+                ps.setDouble(2, lat);
                 ps.setString(3, acc);
                 ps.executeUpdate();
             } catch (Exception e) {
