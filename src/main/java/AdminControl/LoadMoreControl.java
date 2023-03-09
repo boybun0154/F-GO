@@ -78,7 +78,7 @@ public class LoadMoreControl extends HttpServlet {
                     + "                                        </ul>\n"
                     + "                                    </div>\n"
                     + "                                    <div class=\"price\">\n"
-                    + "                                        <div class=\"price-text\">" + p.getPrice() + "</div>\n"
+                    + "                                        <div class=\"price-text\">" + p.getPrice() + " đ</div>"
                     + "                                    </div>\n"
 //                    + "                                    <ul class=\"list-inline post-meta\">\n"
 //                    + "                                        <li class=\"time-stamp\">\n"

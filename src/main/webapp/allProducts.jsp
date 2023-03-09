@@ -339,14 +339,14 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
     <script>
-                    $(function () {
-                        $('.product-card').hover(function () {
-                            $(this).find('.description').animate({
-                                height: "toggle",
-                                opacity: "toggle"
-                            }, 300);
-                        });
-                    });
+//                    $(function () {
+//                        $('.product-card').hover(function () {
+//                            $(this).find('.description').animate({
+//                                height: "toggle",
+//                                opacity: "toggle"
+//                            }, 300);
+//                        });
+//                    });
                     $(document).ready(function () {
                         // Handler for .ready() called.
                         $('html, body').animate({
