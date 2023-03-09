@@ -10,7 +10,6 @@ public class Product {
     private String productName;
     private String productTitle;
     private String productImg;
-    private int price;
     private int productStatus;
     private int categoryID;
     private String seat;
@@ -19,6 +18,8 @@ public class Product {
     private String licensePlate;
     private String fuel;
     private String yearRelease;
+    private int price;
+    private int exCharge;
 
     private float rating;
     private int cmt;
@@ -26,12 +27,13 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productID, String productName, String productTitle, String productImg, int price, int productStatus, int categoryID, String seat, String gear, String color, String licensePlate, String fuel, String yearRelease) {
+    public Product(int productID, String productName, String productTitle, String productImg, int productStatus,
+            int categoryID, String seat, String gear, String color, String licensePlate, String fuel,
+            String yearRelease, int price) {
         this.productID = productID;
         this.productName = productName;
         this.productTitle = productTitle;
         this.productImg = productImg;
-        this.price = price;
         this.productStatus = productStatus;
         this.categoryID = categoryID;
         this.seat = seat;
@@ -40,8 +42,10 @@ public class Product {
         this.licensePlate = licensePlate;
         this.fuel = fuel;
         this.yearRelease = yearRelease;
+        this.price = price;
+
     }
-    
+
     public int getCmt() {
         return cmt;
     }
@@ -58,7 +62,9 @@ public class Product {
         this.rating = rating;
     }
 
-    public Product(int productID, String productName, String productTitle, String productImg, int price, int productStatus, int categoryID, String seat, String gear, String color, String licensePlate, String fuel, String yearRelease, float rating, int cmt) {
+    public Product(int productID, String productName, String productTitle, String productImg, int price,
+            int productStatus, int categoryID, String seat, String gear, String color, String licensePlate, String fuel,
+            String yearRelease, float rating, int cmt) {
         this.productID = productID;
         this.productName = productName;
         this.productTitle = productTitle;
@@ -76,8 +82,8 @@ public class Product {
         this.cmt = cmt;
 
     }
-    
-        private int productTime;
+
+    private int productTime;
 
     public Product(int productID, String productName, String productImg, int productTime) {
         this.productID = productID;
@@ -93,7 +99,6 @@ public class Product {
     public void setProductTime(int productTime) {
         this.productTime = productTime;
     }
-
 
     public int getProductID() {
         return productID;
@@ -201,7 +206,10 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "productID=" + productID + ", productName=" + productName + ", productTitle=" + productTitle + ", productImg=" + productImg + ", price=" + price + ", productStatus=" + productStatus + ", seat=" + seat + ", gear=" + gear + ", color=" + color + ", licensePlate=" + licensePlate + ", fuel=" + fuel + ", yearRelease=" + yearRelease + '}';
+        return "Product{" + "productID=" + productID + ", productName=" + productName + ", productTitle=" + productTitle
+                + ", productImg=" + productImg + ", price=" + price + ", productStatus=" + productStatus + ", seat="
+                + seat + ", gear=" + gear + ", color=" + color + ", licensePlate=" + licensePlate + ", fuel=" + fuel
+                + ", yearRelease=" + yearRelease + '}';
     }
 
 }

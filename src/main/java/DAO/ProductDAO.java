@@ -21,7 +21,7 @@ public class ProductDAO {
 
     public List<Product> getAllProduct() {
         List<Product> list = new ArrayList<>();
-        String query = "Select * from PRODUCT";
+        String query = "Select * from Vehicle";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -29,8 +29,8 @@ public class ProductDAO {
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
+                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -55,7 +55,7 @@ public class ProductDAO {
 
     public List<Product> getAllProductByCID(String cid) {
         List<Product> list = new ArrayList<>();
-        String sql = "Select * from PRODUCT\n"
+        String sql = "Select * from Vehicle\n"
                 + "where categoryID = ?";
         try {
             conn = new DBContext().getConnection();
@@ -65,8 +65,8 @@ public class ProductDAO {
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
+                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -75,7 +75,7 @@ public class ProductDAO {
 
     public List<Product> getAllProductByCIDInt(int cid) {
         List<Product> list = new ArrayList<>();
-        String sql = "Select * from PRODUCT\n"
+        String sql = "Select * from Vehicle\n"
                 + "where categoryID = ?";
         try {
             conn = new DBContext().getConnection();
@@ -85,8 +85,8 @@ public class ProductDAO {
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
+                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -95,7 +95,7 @@ public class ProductDAO {
 
     public List<Product> searchProductByName(String txtSearch) {
         List<Product> list = new ArrayList<>();
-        String sql = "SELECT * from PRODUCT\n"
+        String sql = "SELECT * from Vehicle\n"
                 + "where productName like ?";
         try {
             conn = new DBContext().getConnection();
@@ -105,8 +105,8 @@ public class ProductDAO {
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
+                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -115,7 +115,7 @@ public class ProductDAO {
 
     public List<Product> getTop6() {
         List<Product> list = new ArrayList<>();
-        String sql = "Select top 6 * from PRODUCT";
+        String sql = "Select top 6 * from Vehicle";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
@@ -123,8 +123,8 @@ public class ProductDAO {
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
+                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -133,7 +133,7 @@ public class ProductDAO {
 
     public List<Product> getNext6Products(int ammount) {
         List<Product> list = new ArrayList<>();
-        String sql = "select * from PRODUCT\n"
+        String sql = "select * from Vehicle\n"
                 + "ORDER by productID\n"
                 + "OFFSET ? ROWS\n"
                 + "FETCH NEXT 6 ROWS ONLY";
@@ -145,8 +145,8 @@ public class ProductDAO {
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
+                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -154,8 +154,9 @@ public class ProductDAO {
     }
 
     public void addProduct(String name, String des, String image, String price, String status,
-            String cateId, String seat, String gear, String color, String licensePlate, String fuel, String yearRelease) {
-        String query = "insert into PRODUCT\n"
+            String cateId, String seat, String gear, String color, String licensePlate, String fuel,
+            String yearRelease) {
+        String query = "insert into Vehicle\n"
                 + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = new DBContext().getConnection();
@@ -180,7 +181,7 @@ public class ProductDAO {
     }
 
     public Product getProductById(String id) {
-        String sql = "select * from PRODUCT where productID = ?";
+        String sql = "select * from Vehicle where productID = ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
@@ -189,8 +190,8 @@ public class ProductDAO {
             while (rs.next()) {
                 return new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13));
+                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13));
             }
         } catch (Exception e) {
 
@@ -199,7 +200,7 @@ public class ProductDAO {
     }
 
     public void deleteProduct(String pid) {
-        String query = "delete from PRODUCT\n"
+        String query = "delete from Vehicle\n"
                 + "where productID = ?";
         try {
             conn = new DBContext().getConnection();
@@ -211,8 +212,9 @@ public class ProductDAO {
     }
 
     public void editProduct(String name, String des, String image, String price, String status,
-            String cateId, String seat, String gear, String color, String licensePlate, String fuel, String yearRelease, String pid) {
-        String query = "update PRODUCT\n"
+            String cateId, String seat, String gear, String color, String licensePlate, String fuel, String yearRelease,
+            String pid) {
+        String query = "update Vehicle\n"
                 + "set productName = ?,\n"
                 + "	productTitle =?,\n"
                 + "	productImg =?,\n"
@@ -250,10 +252,12 @@ public class ProductDAO {
 
     public List<Product> getTop6most() {
         List<Product> list = new ArrayList<>();
-        String query = "select top 6 PRODUCT.productID,productName,productTitle,productImg,PRODUCT.productPrice,PRODUCT.productStatus,PRODUCT.categoryID,PRODUCT.seat,PRODUCT.gear,PRODUCT.color,PRODUCT.licensePlate,PRODUCT.fuel,PRODUCT.yearRelease,avg(rate.rate) as rating,count(rate.rate) as Soluongrate from RATE LEFT JOIN PRODUCT\n"
-                + "on PRODUCT.productID=rate.productID \n"
-                + "group by PRODUCT.productID,productName,productTitle,productImg,PRODUCT.productPrice,PRODUCT.productStatus,PRODUCT.categoryID,PRODUCT.seat,PRODUCT.gear,PRODUCT.color,PRODUCT.licensePlate,PRODUCT.fuel,PRODUCT.yearRelease\n"
-                + "order by avg(rate.rate) desc";
+        String query = "select top 6 Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.productStatus,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease,avg(rate.rate) as rating,count(rate.rate) as Soluongrate from RATE LEFT JOIN Vehicle\n"
+                +
+                "                 on Vehicle.productID=rate.productID \n" +
+                "                 group by Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.productStatus,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease\n"
+                +
+                "                 order by avg(rate.rate) desc";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -264,7 +268,8 @@ public class ProductDAO {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
                         rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rating = rs.getFloat("rating"), cmt = rs.getInt("Soluongrate")));
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13),
+                        rating = rs.getFloat("rating"), cmt = rs.getInt("Soluongrate")));
             }
         } catch (Exception e) {
         }
@@ -272,7 +277,7 @@ public class ProductDAO {
     }
 
     public Product getProductByIdInt(int id) {
-        String sql = "select * from PRODUCT where productID = ?";
+        String sql = "select * from Vehicle where productID = ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
@@ -281,8 +286,8 @@ public class ProductDAO {
             while (rs.next()) {
                 return new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13));
+                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13));
             }
         } catch (Exception e) {
 
@@ -291,7 +296,7 @@ public class ProductDAO {
     }
 
     public void changeProductStatus(int id, String status) {
-        String query = "update PRODUCT\n"
+        String query = "update Vehicle\n"
                 + "set productStatus = ?\n"
                 + "where productID = ?";
         try {
@@ -306,10 +311,10 @@ public class ProductDAO {
 
     public List<Product> getproductTime() {
         List<Product> list = new ArrayList<>();
-        String query = "SELECT top 5 [ORDER].productID, [PRODUCT].productName, [PRODUCT].productImg, count([ORDER].productID) as solanthue\n"
+        String query = "SELECT top 5 [ORDER].productID, [Vehicle].productName, [Vehicle].productImg, count([ORDER].productID) as solanthue\n"
                 + "FROM [ORDER]\n"
-                + "INNER JOIN [PRODUCT] ON [ORDER].productID=[PRODUCT].productID\n"
-                + "Group by [ORDER].productID, [PRODUCT].productName, [PRODUCT].productImg\n"
+                + "INNER JOIN [Vehicle] ON [ORDER].productID=[Vehicle].productID\n"
+                + "Group by [ORDER].productID, [Vehicle].productName, [Vehicle].productImg\n"
                 + "ORDER by solanthue desc";
 
         try {

@@ -168,9 +168,17 @@
                             </span>
                         </div>
                         <div class="buttons">
-                            <a href="load_to_order?pid=${detail.productID}" class="btn btn-long buy mr-2">Đặt xe</a>
+                            <a href="load_to_order?pid=${detail.productID}">
+                                <button id="order"  class="btn btn-long buy mr-2">
+                                    Đặt xe
+                                </button>
+                            </a>
                             <a class="btn wishlist" id="wishlist" href="add_to_wishlist?pid=${detail.getProductID()}"> <i class="fa fa-heart" ></i></a>
                             <a href="allproduct" class="btn btn-back" data-abc="true" style="float: right; margin-top: 8px;"> <i class="fa fa-chevron-left"></i>Trở về</a>
+                        </div>
+                        <div> 
+                            <input type="checkbox" id="checkout" name="checkout" />
+                            <label class="h6" for="checkout">Đồng ý với điều khoản</label>
                         </div>
                         <p class="text-danger font-italic mt-2">${mess}</p>
                         <p class="text-danger font-italic mt-2">${messWishlist}</p>
@@ -284,6 +292,13 @@
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
         <script>
+            $(document).ready(function () {
+                $("#checkout")
+                        .change(function () {
+                            $("#order").prop("disabled", !this.checked);
+                        }).change();
+            })
+
             $(function () {
                 $('.product-card').hover(function () {
                     $(this).find('.description').animate({

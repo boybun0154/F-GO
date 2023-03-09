@@ -54,6 +54,9 @@
                                 <a href="manageaccount" class="sub-menu-link">
                                     <p>Quản lý tài khoản</p>
                                 </a>
+                                <a href="AddDriverAccount" class="sub-menu-link">
+                                    <p>Quản lý tài khoản tài xế</p>
+                                </a>
                                 <a href="managecustomer" class="sub-menu-link">
                                     <p>Quản lý khách hàng</p>
                                 </a>

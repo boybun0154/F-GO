@@ -19,28 +19,10 @@
 
             <div class="content">
                 <div class="header">
-                    <h2>Quản lý tài khoản</h2>
+                    <h2>Quản lý tài khoản tài xế</h2>
                 </div>
                 <div class="group-function">
-
-                    <!-- <div class="searchBar">
-                        <input type="text" id="searchBar" placeholder="Nhập tên xe bạn muốn tìm kiếm">
-                    </div> -->
-
                     <button class="add-btn btn btn-primary text-uppercase">Thêm tài khoản</button>
-
-
-
-                    <!-- <div class="sortby">
-                        <div class="dropdown">
-                            <button class="dropdown-btn">Sắp xếp theo</button>
-                            <div class="dropdown-content">
-                                <a href="#">Chỗ ngồi</a>
-                                <a href="#">Giá tiền</a>
-                                <a href="#">Năm sản xuất</a>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="container mb-3 mt-3">
                     <table class="table table-striped table-bordered mydatatable" style="width: 100%">
@@ -49,39 +31,23 @@
                                 <th>ID</th>
                                 <th>Tên tài khoản</th>
                                 <th>Mật khẩu</th>
-                                <th>Quyền hạn</th>
-                                <th>Chức năng</th>
+                                <th>Tên tài xế</th>
+                                <th>Số điện thoại</th>
+                                <th>Địa chỉ</th>
+                                <th>Mã bằng lái</th>
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${listA}" var="o">
+                        <c:forEach items="${listDA}" var="o">
                             <tr>
-                                <td>${o.accountID}</td>
-                                <td>${o.account}</td>
-                                <td>${o.password}</td>
-
-                                <c:if test="${o.role == 0}">
-                                    <td>User</td>
-                                </c:if>
-                                <c:if test="${o.role == 1}">
-                                    <td>Admin</td>
-                                </c:if>
-                                <c:if test="${o.role == 2}">
-                                    <td>Web-owner</td>
-                                </c:if>
-                                <c:if test="${o.role == 3}">
-                                    <td>Driver</td>
-                                </c:if>
-                                <c:if test="${o.role == 4}">
-                                    <td>Bad customer</td>
-                                </c:if>
-
-                                <td style="text-align:center;">
-                                    <a href="delete_account?aid=${o.accountID}" class="btn">
-                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                        <span><strong>Xoá</strong></span>
-                                    </a>
-                                </td>
+                                <td style="text-align:center;">${o.driverId}</td>
+                                <td style="text-align:center;">${o.account}</td>
+                                <td style="text-align:center;">${o.password}</td>
+                                <td style="text-align:center;">${o.name}</td>
+                                <td style="text-align:center;">${o.phone}</td>
+                                <td style="text-align:center;">${o.address}</td>
+                                <td style="text-align:center;">${o.license}</td>
+ 
                             </tr>
                         </c:forEach>
                     </tbody>
