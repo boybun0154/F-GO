@@ -14,12 +14,12 @@ public class DBContext {
         return DriverManager.getConnection(url, userID, password);
     }
 
-    private final String serverName = "LAPTOP-EB1S6LNB";
+    private final String serverName = "LENOVO-ARH0528\\MSSQLSERVER01";
     private final String dbName = "FGO";
     private final String portNumber = "1433";
     private final String instance = "";
     private final String userID = "sa";
-    private final String password = "12345";
+    private final String password = "admin";
 
     public static void main(String[] args) {
         try {
