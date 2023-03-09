@@ -221,7 +221,7 @@
                                 <a href="view_car_detail?pid=${o.productID}">
                                     <div class="product-card">
                                         <div class="card-thumbnail">
-                                            <img class="img-responsive" src="/images/${o.productImg}">
+                                            <img class="img-responsive" src="./images/${o.productImg}">
                                         </div>
                                         <div class="card-content">
                                             <div class="order-btn">

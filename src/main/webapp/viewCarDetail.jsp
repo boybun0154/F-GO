@@ -19,7 +19,7 @@
                     <div class="col-md-5 pr-2">
                         <div class="card">
                             <div class="demo">
-                                <img src="/images/${detail.productImg}"
+                                <img src="./images/${detail.productImg}"
                                  alt="Ảnh xe">
                         </div>
                     </div>
@@ -233,7 +233,7 @@
                             <a href="view_car_detail?pid=${o.productID}">
                                 <div class="product-card">
                                     <div class="card-thumbnail">
-                                        <img class="img-responsive" src="/images/${o.productImg}">
+                                        <img class="img-responsive" src="./images/${o.productImg}">
                                     </div>
                                     <div class="card-content">
 
