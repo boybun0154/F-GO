@@ -43,14 +43,14 @@ public class DriverDAO {
             String license) {
         String query = "insert into Account values(?,?,3); insert into DRIVER values(?,?,?,'available',?,@@identity)";
         try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
             ps.setString(1, account);
             ps.setString(2, password);
             ps.setString(3, name);
             ps.setString(4, phone);
             ps.setString(5, address);
             ps.setString(6, license);
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(query);
             ps.executeUpdate();
         } catch (Exception e) {
         }

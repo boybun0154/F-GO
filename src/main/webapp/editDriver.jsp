@@ -47,7 +47,7 @@
                                 <td style="text-align:center;">${o.phone}</td>
                                 <td style="text-align:center;">${o.address}</td>
                                 <td style="text-align:center;">${o.license}</td>
- 
+
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -65,29 +65,46 @@
                                     <h2 class="tm-block-title">Thêm tài khoản mới</h2>
                                 </div>
                             </div>
-                            <form action="addaccount" method="post" class="tm-edit-product-form">
+                            <form action="AddDriverAccount" method="post" class="tm-edit-product-form">
                                 <div class="row tm-edit-product-row" style="justify-content: center">
-                                    <div class="col-xl-6 col-lg-6 col-md-12">
+                                    <div class="col-xl-9 col-lg-9 col-md-12">
                                         <div class="form-group mb-3">
-                                            <label for="username">Tên tài khoản
-                                            </label>
-                                            <input id="username" name="username" type="text" class="form-control validate" required />
+                                            <div class="row">
+                                                <div class="col-12"> 
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="username">Tên tài khoản
+                                                            </label>
+                                                            <input id="username" name="username" type="text" class="form-control validate" required />
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label for="password">Mật khẩu
+                                                            </label>
+                                                            <input id="password" name="password" type="text" class="form-control validate" required />
+                                                        </div>
+                                                    </div>
+                                                </div>  
+                                            </div>
                                         </div>
-
                                         <div class="form-group mb-3">
-                                            <label for="pass">Mật khẩu
+                                            <label for="name">Tên tài xế
                                             </label>
-                                            <input id="pass" name="pass" type="text" class="form-control validate" required />
+                                            <input id="name" name="name" type="text" class="form-control validate" required />
                                         </div>
-
                                         <div class="form-group mb-3">
-                                            <label for="role">Quyền hạn</label>
-                                            <select name = "role" class="custom-select tm-select-accounts" id="role">
-                                                <option selected>Chọn quyền hạn</option>
-                                                <c:forEach items="${listRR}" var="o">
-                                                    <option value="${o.roleId}">${o.roleName}</option>
-                                                </c:forEach>
-                                            </select>
+                                            <label for="phone">Số điện thoại
+                                            </label>
+                                            <input id="phone" name="phone" type="text" class="form-control validate" required />
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="address">Địa chỉ
+                                            </label>
+                                            <input id="address" name="address" type="text" class="form-control validate" required />
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="license">Bằng lái
+                                            </label>
+                                            <input id="license" name="license" type="text" class="form-control validate" required />
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +113,7 @@
                                         <button type="submit" class="btn btn-primary text-uppercase">Thêm tài khoản</button>
                                     </div>  
                                     <div class="col-3 mt-3 text-center">
-                                        <a href="manageaccount" type="button" class="btn btn-back">Trở lại</a>
+                                        <a href="AddDriverAccount" type="button" class="btn btn-back">Trở lại</a>
                                     </div> 
                                 </div>
                             </form>
@@ -105,7 +122,7 @@
                 </div>
             </div>
         </div>
-        
+
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

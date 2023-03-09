@@ -87,8 +87,12 @@ public class AddDriverAccount extends HttpServlet {
         String address = request.getParameter("address");
         String license = request.getParameter("license");
         DriverDAO dao = new DriverDAO();
-        dao.addDriver(username, password, name, phone, address, license);
-        response.sendRedirect("editDriver.jsp");
+        try {
+            dao.addDriver(username, password, name, phone, address, license);
+        } catch (Exception e) {
+            throw new ServletException(e);
+        }
+        doGet(request, response);
     }
 
     /**
