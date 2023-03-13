@@ -1,0 +1,123 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>F-Go</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="CSS/homeStyle.css"/>
+    </head>
+    <body>
+        <jsp:include page="navbar.jsp"></jsp:include>
+
+            
+        <input type="hidden" id="testacc" value="${sessionScope.acc.account}" />
+        <input type="hidden" id="testaccrole" value="${sessionScope.acc.role}" />
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    <div class="container">
+    <table class="table table-striped table-bordered mydatatable">
+            <thead>
+                <tr class="">
+                                    <th class="col-auto">ID</th>
+                                    <th class="col-auto">Tên khách hàng</th>
+                                    <th class="col-auto">Số điện thoại</th>
+                                    <th class="col-auto">Tên xe thuê</th>
+                                    <th class="col-auto">Địa chỉ nhận xe</th>
+                                    <th class="col-auto">Tổng số tiền</th>
+                                    <th class="col-auto">Trạng thái</th>
+                                    <th class="col-auto">Ngày nhận</th>
+                                    <th class="col-auto">Ngày hẹn trả</th>
+                                    <th class="col-auto">Vùng hoạt động</th>
+                                    <th class="col-auto">Nơi bắt đầu</th>
+                                    <th class="col-auto">Nơi kết thúc</th>
+                                        <th class="col-auto">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <tr  class="">
+                                <td>${Order.orderId}</td>
+                                <c:forEach items="${listC}" var="a">
+                                    <c:if test="${Order.customerID == a.customerId}">
+                                        <td>${a.customerName}</td>
+                                    </c:if>
+                                </c:forEach>
+                                <c:forEach items="${listC}" var="a">
+                                    <c:if test="${Order.customerID == a.customerId}">
+                                        <td>${a.phone}</td>
+                                    </c:if>
+                                </c:forEach>
+                                <c:forEach items="${listP}" var="p">
+                                    <c:if test="${Order.productId == p.productID}">
+                                        <td>${p.productName}</td>
+                                    </c:if>
+                                </c:forEach>
+                                <td>${Order.address}</td>
+                                <td>${Order.totalMoney}</td>       
+                                <c:if test="${Order.status == 0}">
+                                    <td>Đã trả xe</td>
+                                </c:if>
+                                <c:if test="${Order.status == 1}">
+                                    <td>Đang thuê</td>
+                                </c:if>
+                                <td>${Order.timeBegin}</td>       
+                                <td>${Order.timeEnd}</td>
+                                <td>${Order.area}</td>
+                                <td>${Order.startLocation}</td>
+                                <td>${Order.endLocation}</td>
+                                <td style="text-align:center;">
+                                    <a href="" class="btn">
+                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                        <span><strong>open report</strong></span>
+                                    </a>
+                                </td>
+                            </tr>
+                </tr>
+            </tbody>
+    </table>
+    </div>
+
+        <jsp:include page="footer.jsp"></jsp:include>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <script>
+            $(function () {
+                $('.product-card').hover(function () {
+                    $(this).find('.description').animate({
+                        height: "toggle",
+                        opacity: "toggle"
+                    }, 300);
+                });
+            });
+            let subMenu = document.getElementById("subMenu");
+            const $menu = $('.sub-menu-wrap');
+            function toggleMenu() {
+                subMenu.classList.toggle("open-menu");
+            }
+            $(document).mouseup(function (e) {
+                var container = $(".user-pic");
+                if (!container.is(e.target) && subMenu.classList.toggle("open-menu")) {
+                    subMenu.classList.toggle("open-menu");
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -81,6 +81,14 @@
                                     <p>Thông tin thuê xe</p>
                                 </a> 
                             </c:if>
+                            <c:if test="${sessionScope.acc.role ==3}">
+                                <a href="viewprofile?accountID=${sessionScope.acc.accountID}" class="sub-menu-link">
+                                    <p>Thông tin cá nhân</p>
+                                </a>
+                                <a href="ReportControl?accountID=${sessionScope.acc.accountID}" class="sub-menu-link">
+                                    <p>Order</p>
+                                </a>
+                            </c:if>
                             <a href="changePassword.jsp" class="sub-menu-link">
                                 <p>Đổi mật khẩu</p>
                             </a>

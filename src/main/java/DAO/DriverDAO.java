@@ -92,4 +92,36 @@ public class DriverDAO {
         } catch (Exception e) {
         }
     }
+
+    public int getDriverId(int accountId) {
+        String query = "select driverID from DRIVER where accountID=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, accountId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("driverID");
+            }
+        } catch (Exception e) {
+
+        }
+        return -1;
+    }
+
+    public int getDriverOrderID(int driverId) {
+        String query = "select orderID from [ORDER] where driver_id=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, driverId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("orderID");
+            }
+        } catch (Exception e) {
+
+        }
+        return -1;
+    }
 }

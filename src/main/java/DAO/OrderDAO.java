@@ -70,14 +70,14 @@ public class OrderDAO {
         }
     }
 
-    public Order getOrderById(String id) {
+    public Order getOrderById(int id) {
         // to do
 
         String sql = "select * from [ORDER] where orderID = ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, id);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
                 return new Order(rs.getInt(1),
