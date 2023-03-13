@@ -44,9 +44,19 @@ public class RatingDAO {
             ps.setInt(1, customerID);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Order(rs.getInt(1),
-                        rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getInt(7), rs.getInt(8)));
+                int orderId = rs.getInt("orderID");
+                int productId = rs.getInt("productID");
+                String address = rs.getString("address");
+                int totalMoney = rs.getInt("totalMoney");
+                int status = rs.getInt("status");
+                String timeBegin = rs.getString("timeBegin");
+                String timeEnd = rs.getString("timeEnd");
+                String area = rs.getString("area");
+                String startLocation = rs.getString("startLocation");
+                String endLocation = rs.getString("endLocation");
+                int driverId = rs.getInt("driver_id");
+                list.add(new Order(orderId, customerID, productId, address, totalMoney, status, timeBegin, timeEnd,
+                        area, startLocation, endLocation, driverId));
             }
         } catch (Exception e) {
         }

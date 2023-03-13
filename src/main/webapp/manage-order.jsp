@@ -22,44 +22,31 @@
                 <h2>Quản lý đơn thuê</h2>
             </div>
             <div class="group-function">
-
-                <!-- <div class="searchBar">
-                    <input type="text" id="searchBar" placeholder="Nhập tên xe bạn muốn tìm kiếm">
-                </div> -->
-
                 <button class="add-btn btn btn-primary text-uppercase">Thêm đơn thuê mới</button>
-
-
-
-                <!-- <div class="sortby">
-                    <div class="dropdown">
-                        <button class="dropdown-btn">Sắp xếp theo</button>
-                        <div class="dropdown-content">
-                            <a href="#">Chỗ ngồi</a>
-                            <a href="#">Giá tiền</a>
-                            <a href="#">Năm sản xuất</a>
-                        </div>
-                    </div>
-                </div> -->
             </div>
             <div class="container mb-3 mt-3">
-                <table class="table table-striped table-bordered mydatatable" style="width: 100%">
+                <table class="table table-striped table-bordered mydatatable">
                     <thead style="text-align:center;">
-                        <tr>
-                            <th>ID</th>
-                            <th>Tên khách hàng</th>
-                            <th>Số điện thoại</th>
-                            <th>Tên xe thuê</th>
-                            <th>Ngày nhận</th>
-                            <th>Ngày hẹn trả</th>
-                            <th>Tổng số tiền</th>
-                            <th>Trạng thái</th>
-                            <th>Chức năng</th>
+                        <tr class="">
+                            <th class="col-auto">ID</th>
+                            <th class="col-auto">Tên khách hàng</th>
+                            <th class="col-auto">Số điện thoại</th>
+                            <th class="col-auto">Tên xe thuê</th>
+                            <th class="col-auto">Địa chỉ nhận xe</th>
+                            <th class="col-auto">Tổng số tiền</th>
+                            <th class="col-auto">Trạng thái</th>
+                            <th class="col-auto">Ngày nhận</th>
+                            <th class="col-auto">Ngày hẹn trả</th>
+                            <th class="col-auto">Vùng hoạt động</th>
+                            <th class="col-auto">Nơi bắt đầu</th>
+                            <th class="col-auto">Nơi kết thúc</th>
+                            <th class="col-auto">ID người phụ trách</th>
+                            <th class="col-auto">Chức năng</th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach items="${listO}" var="o">
-                            <tr>
+                            <tr  class="">
                                 <td>${o.orderId}</td>
                                 <c:forEach items="${listC}" var="a">
                                     <c:if test="${o.customerID == a.customerId}">
@@ -76,8 +63,7 @@
                                         <td>${p.productName}</td>
                                     </c:if>
                                 </c:forEach>
-                                <td>${o.timeBegin}</td>       
-                                <td>${o.timeEnd}</td>         
+                                <td>${o.address}</td>
                                 <td>${o.totalMoney}</td>       
                                 <c:if test="${o.status == 0}">
                                     <td>Đã trả xe</td>
@@ -85,6 +71,12 @@
                                 <c:if test="${o.status == 1}">
                                     <td>Đang thuê</td>
                                 </c:if>
+                                <td>${o.timeBegin}</td>       
+                                <td>${o.timeEnd}</td>
+                                <td>${o.area}</td>
+                                <td>${o.startLocation}</td>
+                                <td>${o.endLocation}</td>
+                                <td>${o.driverId}</td>
                                 <td style="text-align:center;">
                                     <a href="load_to_edit_order?oid=${o.orderId}" class="btn">
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>

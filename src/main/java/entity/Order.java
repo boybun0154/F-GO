@@ -4,32 +4,37 @@
  */
 package entity;
 
-/**
- *
- * @author ADMIN
- */
 public class Order {
     private int orderId;
     private int customerID;
     private int productId;
-    private String timeBegin;
-    private String timeEnd;
     private String address;
     private int totalMoney;
     private int status;
+    private String timeBegin;
+    private String timeEnd;
+    private String area;
+    private String startLocation;
+    private String endLocation;
+    private int driverId;
 
     public Order() {
     }
 
-    public Order(int orderId, int customerID, int productId, String timeBegin, String timeEnd, String address, int totalMoney, int status) {
+    public Order(int orderId, int customerID, int productId, String address, int totalMoney, int status,
+            String timeBegin, String timeEnd, String area, String startLocation, String endLocation, int driverId) {
         this.orderId = orderId;
         this.customerID = customerID;
         this.productId = productId;
-        this.timeBegin = timeBegin;
-        this.timeEnd = timeEnd;
         this.address = address;
         this.totalMoney = totalMoney;
         this.status = status;
+        this.timeBegin = timeBegin;
+        this.timeEnd = timeEnd;
+        this.area = area;
+        this.startLocation = startLocation;
+        this.endLocation = endLocation;
+        this.driverId = driverId;
     }
 
     public int getOrderId() {
@@ -56,22 +61,6 @@ public class Order {
         this.productId = productId;
     }
 
-    public String getTimeBegin() {
-        return timeBegin;
-    }
-
-    public void setTimeBegin(String timeBegin) {
-        this.timeBegin = timeBegin;
-    }
-
-    public String getTimeEnd() {
-        return timeEnd;
-    }
-
-    public void setTimeEnd(String timeEnd) {
-        this.timeEnd = timeEnd;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -96,15 +85,51 @@ public class Order {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" + "orderId=" + orderId + ", customerID=" + customerID + ", productId=" + productId + ", timeBegin=" + timeBegin + ", timeEnd=" + timeEnd + ", address=" + address + ", totalMoney=" + totalMoney + ", status=" + status + '}';
+    public String getTimeBegin() {
+        return timeBegin;
     }
 
-    
+    public void setTimeBegin(String timeBegin) {
+        this.timeBegin = timeBegin;
+    }
 
-   
-    
-    
-    
+    public String getTimeEnd() {
+        return timeEnd;
+    }
+
+    public void setTimeEnd(String timeEnd) {
+        this.timeEnd = timeEnd;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getStartLocation() {
+        return startLocation;
+    }
+
+    public void setStartLocation(String startLocation) {
+        this.startLocation = startLocation;
+    }
+
+    public String getEndLocation() {
+        return endLocation;
+    }
+
+    public void setEndLocation(String endLocation) {
+        this.endLocation = endLocation;
+    }
+
+    public int getDriverId() {
+        return driverId;
+    }
+
+    public void setDriverId(int driverId) {
+        this.driverId = driverId;
+    }
 }

@@ -30,16 +30,29 @@ public class OrderDAO {
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Order(rs.getInt(1),
-                        rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getInt(7), rs.getInt(8)));
+                int orderId = rs.getInt("orderID");
+                int customerID = rs.getInt("customerID");
+                int productId = rs.getInt("productID");
+                String address = rs.getString("address");
+                int totalMoney = rs.getInt("totalMoney");
+                int status = rs.getInt("status");
+                String timeBegin = rs.getString("timeBegin");
+                String timeEnd = rs.getString("timeEnd");
+                String area = rs.getString("area");
+                String startLocation = rs.getString("startLocation");
+                String endLocation = rs.getString("endLocation");
+                int driverId = rs.getInt("driver_id");
+                list.add(new Order(orderId, customerID, productId, address, totalMoney, status, timeBegin, timeEnd,
+                        area, startLocation, endLocation, driverId));
             }
         } catch (Exception e) {
         }
         return list;
     }
 
-    public void addOrder(int customerId, String productID, String dateBegin, String dateEnd, String address, int totalMoney, String status) {
+    public void addOrder(int customerId, String productID, String dateBegin, String dateEnd, String address,
+            int totalMoney, String status) {
+        // to do
         String query = "insert into [ORDER]\n"
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
@@ -56,8 +69,10 @@ public class OrderDAO {
         } catch (Exception e) {
         }
     }
-    
+
     public Order getOrderById(String id) {
+        // to do
+
         String sql = "select * from [ORDER] where orderID = ?";
         try {
             conn = new DBContext().getConnection();
@@ -66,17 +81,20 @@ public class OrderDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 return new Order(rs.getInt(1),
-                        rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getInt(7), rs.getInt(8));
+                        rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
+                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getInt(12));
             }
         } catch (Exception e) {
 
         }
         return null;
     }
-    
-    public void editOrder( String customerID, String productId, String timeBegin, String timeEnd,
+
+    public void editOrder(String customerID, String productId, String timeBegin, String timeEnd,
             String address, int totalMoney, String status, String oid) {
+        // to do
+
         String query = "update [ORDER]\n"
                 + "set customerID = ?,\n"
                 + "	productID =?,\n"
@@ -102,8 +120,10 @@ public class OrderDAO {
         } catch (Exception e) {
         }
     }
-    
-    public void deleteOrder (String oid) {
+
+    public void deleteOrder(String oid) {
+        // to do
+
         String query = "delete from [ORDER]\n"
                 + "where orderID = ?";
         try {
@@ -114,6 +134,4 @@ public class OrderDAO {
         } catch (Exception e) {
         }
     }
-    
-    
 }
