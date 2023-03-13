@@ -88,6 +88,9 @@
                                 <a href="ReportControl?accountID=${sessionScope.acc.accountID}" class="sub-menu-link">
                                     <p>Order</p>
                                 </a>
+                                <a href="ViewReport?accountID=${sessionScope.acc.accountID}" class="sub-menu-link">
+                                    <p>view Report</p>
+                                </a>
                             </c:if>
                             <a href="changePassword.jsp" class="sub-menu-link">
                                 <p>Đổi mật khẩu</p>

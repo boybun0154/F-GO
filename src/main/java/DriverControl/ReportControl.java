@@ -81,7 +81,7 @@ public class ReportControl extends HttpServlet {
                 throw new IllegalStateException("Order is not available");
             } else {
                 OrderDAO odao = new OrderDAO();
-                Order o = odao.getOrderById(orderID);
+                Order o = odao.getOrderById(String.valueOf(orderID));
                 request.setAttribute("Order", o);
                 CustomerDAO custormerdao = new CustomerDAO();
                 ProductDAO pdao = new ProductDAO();
