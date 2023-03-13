@@ -285,7 +285,7 @@
                     </c:forEach>
 
                 </div>
-                <button onclick="loadMore()" class="click-button">Xem thêm</button>
+                <button onclick="loadMore()" id="load-more" class="click-button">Xem thêm</button>
             </div>
         </div>
     </div>
@@ -347,6 +347,8 @@
 //                            }, 300);
 //                        });
 //                    });
+                    if (/category/.test(window.location.href)) {
+                        document.getElementById('load-more').style.display = 'none';}
                     $(document).ready(function () {
                         // Handler for .ready() called.
                         $('html, body').animate({
