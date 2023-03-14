@@ -44,7 +44,7 @@ public class SearchByAjax extends HttpServlet {
                     + "                            <a href=\"view_car_detail?pid="+p.getProductID()+"\">\n"
                     + "                                <div class=\"product-card\">\n"
                     + "                                    <div class=\"card-thumbnail\">\n"
-                    + "                                        <img class=\"img-responsive\" src=\"/images/"+p.getProductImg()+"\">\n"
+                    + "                                        <img class=\"img-responsive\" src=\""+p.getProductImg()+"\">\n"
                     + "                                    </div>\n"
                     + "                                    <div class=\"card-content\">\n"
                     + "                                        <div class=\"order-btn\">\n"

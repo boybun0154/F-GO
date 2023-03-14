@@ -13,6 +13,13 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
         <link rel="stylesheet" href="CSS/homeStyle.css"/>
+        <style>
+            #banner {
+            margin-top: 50px;
+            position: relative;
+            padding-top: 40%;
+            background: url('./IMG/banner.jpg') top center / cover no-repeat;
+        }</style>
     </head>
     <body>
         <jsp:include page="navbar.jsp"></jsp:include>
@@ -221,7 +228,7 @@
                                 <a href="view_car_detail?pid=${o.productID}">
                                     <div class="product-card">
                                         <div class="card-thumbnail">
-                                            <img class="img-responsive" src="./images/${o.productImg}">
+                                            <img class="img-responsive" src="${o.productImg}">
                                         </div>
                                         <div class="card-content">
                                             <div class="order-btn">

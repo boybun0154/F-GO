@@ -57,7 +57,7 @@
                             <tr>
                                 <td>${o.categoryId}</td>
                                 <td>${o.categoryName}</td>
-                                <td style=" text-align: center"><img src="images/${o.categoryImg}" width= "100"/></td>
+                                <td style=" text-align: center"><img src="${o.categoryImg}" width= "100" height="70"/></td>
                                 
                                 <td style="text-align:center;">
                                     <a href="load_to_edit_category?cid=${o.categoryId}" class="btn">

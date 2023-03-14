@@ -9,7 +9,7 @@
         <title>Manage Product Detail</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/CSS/manageProductDetail.css">
+        <link rel="stylesheet" href="./CSS/manageProductDetail.css">
     </head>
     <body>
         <jsp:include page="navbar.jsp"></jsp:include>
@@ -21,7 +21,7 @@
             <div class="container mb-3 mt-5">
                 <div class="row">
                     <div class="car-img col-12 col-md-6 mt-2">
-                        <img src="images/${detail.productImg}"
+                        <img src="${detail.productImg}"
                              alt="Hình ảnh của xe">
                     </div>
                     <div class="col-12 col-md-6 mt-3">

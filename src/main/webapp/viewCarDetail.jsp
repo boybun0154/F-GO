@@ -19,7 +19,7 @@
                     <div class="col-md-5 pr-2">
                         <div class="card">
                             <div class="demo">
-                                <img src="./images/${detail.productImg}"
+                                <img src="${detail.productImg}"
                                  alt="Ảnh xe">
                         </div>
                     </div>

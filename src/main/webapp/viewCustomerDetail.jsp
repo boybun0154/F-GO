@@ -9,7 +9,7 @@
         <title>Manage Customer Detail</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/CSS/manageCustomerDetail.css">
+        <link rel="stylesheet" href="./CSS/manageCustomerDetail.css">
     </head>
     <body>
         <jsp:include page="navbar.jsp"></jsp:include>
@@ -29,12 +29,12 @@
                 </div>
                 <div class="row user-info mb-3">
                     <div class="padding-left-25 text-bold col-6">Căn cước công dân:</div>
-                    <div class="col-6"><img src="images/${detail.nationalId}"
+                    <div class="col-6"><img src="${detail.nationalId}"
                                             alt="Hình ảnh căn cước công dân" width="200"></div>
                 </div>
                 <div class="row user-info mb-3">
                     <div class="padding-left-25 text-bold col-6">Giấy phép lái xe:</div>
-                    <div class="col-6"><img src="images/${detail.drivingLicense}"
+                    <div class="col-6"><img src="${detail.drivingLicense}"
                                             alt="Hình ảnh giấy phép lái xe" width="200"></div>
                 </div>
                 <div class="row user-info mb-3">

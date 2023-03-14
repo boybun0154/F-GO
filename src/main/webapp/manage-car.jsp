@@ -59,7 +59,7 @@
                             <tr>
                                 <td>${o.productID}</td>
                                 <td>${o.productName}</td>
-                                <td style=" text-align: center"><img src="images/${o.productImg}" width= "100"/></td>
+                                <td style=" text-align: center"><img src="${o.productImg}" width= "100"/></td>
                                 <c:forEach items="${listCC}" var="a">
                                     <c:if test="${o.categoryID == a.categoryId}">
                                         <td>${a.categoryName}</td>
@@ -169,8 +169,8 @@
                                             <input id="yearRelease" name="yearRelease" type="text" class="form-control validate" required />
                                         </div>
                                         <div class="form-group mt-3 mb-3">
-                                            <label for="description">Mô tả</label>
-                                            <textarea name="des" class="form-control validate" rows="3" required></textarea>
+                                            <label for="des">Mô tả</label>
+                                            <textarea id="des" name="des" class="form-control validate" rows="3" required></textarea>
                                         </div>
                                     </div>
                                 </div>

@@ -236,7 +236,7 @@
                             <a href="view_car_detail?pid=${o.productID}">
                                 <div class="product-card">
                                     <div class="card-thumbnail">
-                                        <img class="img-responsive" src="./images/${o.productImg}">
+                                        <img class="img-responsive" src="${o.productImg}">
                                     </div>
                                     <div class="card-content">
                                         <div class="order-btn">
@@ -291,6 +291,13 @@
     </div>
 
     <jsp:include page="footer.jsp"></jsp:include>
+    <style>
+        #banner {
+            margin-top: 50px;
+            position: relative;
+            padding-top: 40%;
+            background: url('./IMG/banner.jpg') top center / cover no-repeat;
+        }</style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
                     function loadMore() {
