@@ -59,14 +59,20 @@ public class CheckoutControl extends HttpServlet {
         CustomerDAO cdao = new CustomerDAO();
         Customer customer = cdao.getCustomerByAccID(accid);
         int cid = customer.getCustomerId();
-        String pid = request.getParameter("pid");
+        int pid = Integer.parseInt(request.getParameter("pid")); 
         String dateBegin = request.getParameter("dateBegin");
         String dateEnd = request.getParameter("dateEnd");
-        String address = request.getParameter("address");
+        String oaddress = request.getParameter("address");
+        String oarea = request.getParameter("area");
+        String ostartLocation = request.getParameter("startLocation");
+        String oendLocation = request.getParameter("endLocation");
+        
+//        System.out.println(area + " " + startLocation + " " + endLocation);
+
         String payment_method = request.getParameter("payment_method");
 
         ProductDAO pdao = new ProductDAO();
-        Product p = pdao.getProductById(pid);
+        Product p = pdao.getProductById(String.valueOf(pid));
 
         int price = p.getPrice();
 
@@ -86,13 +92,13 @@ public class CheckoutControl extends HttpServlet {
         }
 
         totalMoney = (int) (price * diffrence);
+//        System.out.println(cid + " " + pid + " " + dateBegin + " " + dateEnd + " " + address + " " + totalMoney + " va" + area);
 
         CheckoutDAO checkoutdao = new CheckoutDAO();
-        checkoutdao.addOrder(cid, pid, dateBegin, dateEnd, address, totalMoney);
+        checkoutdao.addOrder(cid, pid, oaddress, totalMoney, dateBegin, dateEnd, oarea, ostartLocation, oendLocation);
 
         pdao.changeProductStatus(p.getProductID(), "0");
 
-        System.out.println(cid + " " + pid + " " + dateBegin + " " + dateEnd + " " + address + " " + totalMoney);
 
         if (payment_method.equals("momo")) {
             Order order = checkoutdao.getOrder();
@@ -181,7 +187,7 @@ public class CheckoutControl extends HttpServlet {
         }
 
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

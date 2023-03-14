@@ -15,19 +15,23 @@ public class CheckoutDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    public void addOrder(int customerId, String productID, String dateBegin, String dateEnd, String address,
-            int totalMoney) {
-        String query = "insert into [ORDER]\n"
-                + "VALUES (?, ?, ?, ?, ?, ?, 1)";
+    public void addOrder(int customerId, int productID, String address, int totalMoney, String timeBegin,
+            String timeEnd, String area, String startLocation, String endLocation) {
+        String query = "  insert into [ORDER](customerID, productID, [address], totalMoney, [status], timeBegin, timeEnd, area, startLocation, endLocation)\n"
+                +
+                "  values (?, ?, ?, ?, 1, ?, ?, ?, ?, ?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, customerId);
-            ps.setString(2, productID);
-            ps.setString(3, dateBegin);
-            ps.setString(4, dateEnd);
-            ps.setString(5, address);
-            ps.setFloat(6, totalMoney);
+            ps.setInt(2, productID);
+            ps.setString(3, address);
+            ps.setInt(4, totalMoney);
+            ps.setString(5, timeBegin);
+            ps.setString(6, timeEnd);
+            ps.setString(7, area);
+            ps.setString(8, startLocation);
+            ps.setString(9, endLocation);
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -60,4 +64,5 @@ public class CheckoutDAO {
         }
         return null;
     }
+
 }

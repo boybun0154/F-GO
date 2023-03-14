@@ -28,7 +28,7 @@
                     <div id="my" class="img-details">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="./IMG/${product.productImg}"
+                                <img src="${product.productImg}"
                                      class="d-block w-100">
                             </div>
                         </div>
@@ -75,7 +75,19 @@
                             <label class="dis fw-bold mb-2" style="font-size:1rem">Vi tri ket thuc</label>
                             <input class="form-control validate" name="endLocation" required>
                         </div>
-                        <div>
+                        <div class="mb-3">
+                            <p class="dis fw-bold mb-2" style="font-size:1rem">Khu vực di chuyển</p>
+                            <textarea class="form-control validate" name="area" rows="1" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <p class="dis fw-bold mb-2" style="font-size:1rem">Nơi bắt đầu</p>
+                            <textarea class="form-control validate" name="startLocation" rows="1" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <p class="dis fw-bold mb-2" style="font-size:1rem">Nơi kết thúc</p>
+                            <textarea class="form-control validate" name="endLocation" rows="1" required></textarea>
+                        </div>
+                        
                             <p class="dis fw-bold mb-2" style="font-size:1rem">Ngày thuê xe</p>
                             <div class="d-flex w-50 mb-3">
                                 <div class="d-flex w-100">
@@ -88,8 +100,8 @@
                                     <input id="dateEndPickerId" type="date" name="dateEnd" class="form-control validate px-0" required>
                                 </div>
                             </div>
-
-                            <div class="address">
+                            <div> 
+                            <div class="addresss">
                                 <p class="dis fw-bold mb-3">Hình thức thanh toán: Chỉ nhận thanh toán online</p>
                                 <!--                                <div class="d-flex align-items-center justify-content-between mb-2">
                                                                     <p class="fw-bold">Tổng cộng</p>
