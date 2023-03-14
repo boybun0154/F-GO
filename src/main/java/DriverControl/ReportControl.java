@@ -15,10 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.CustomerDAO;
-import DAO.DriverDAO;
-import DAO.OrderDAO;
-import DAO.ProductDAO;
+import DAO.*;
 import entity.Customer;
 import entity.Order;
 import entity.Product;
@@ -105,12 +102,19 @@ public class ReportControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String orderId = request.getParameter("orderId");
+        String orderId = request.getParameter("orderid");
         String dmgPercent = request.getParameter("damagePercent");
         String title = request.getParameter("title");
         String content = request.getParameter("content");
-        // TODO afterPic
-        // TODO prePic
+        String afterPic = request.getParameter("afterLink");
+        String prePic = request.getParameter("preLink");
+
+        ReportDAO rdao = new ReportDAO();
+        int reportId = Integer.parseInt(orderId);
+        int reportPercent = Integer.parseInt(dmgPercent);
+        rdao.addReport(reportId, reportPercent, title, content, afterPic, prePic);
+        System.out.println(orderId + " " + dmgPercent + " " + title + " " + content + " " + afterPic + " " + prePic);
+        //TODO: redirect to driverOrderList.jsp
     }
 
     /**

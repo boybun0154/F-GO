@@ -113,11 +113,13 @@
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="prePic">Ảnh trước khi giao</label>
-                                        <input id="prePic" name="prePic" type="file" class="form-control validate" required />
+                                        <input id="prePic" name="prePic" type="file" accept="image/*" class="form-control" required />
+                                        <input name="preLink" id="preLink" type="text" class="form-control" value="image-input" hidden>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="afterPic">Ảnh sau khi trả xe</label>
-                                        <input id="afterPic" name="afterPic" type="file" class="form-control validate" required />
+                                        <input id="afterPic" name="afterPic" type="file" accept="image/*" class="form-control" required />
+                                        <input name="afterLink" id="afterLink" type="text" class="form-control" value="image-input" hidden>
                                     </div>
                                 </div>
                             </div>
@@ -133,7 +135,7 @@
                     </div> 
                 </div> 
             </div> 
-        </div> 
+        </div>
 
 
 
@@ -148,6 +150,68 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+        <script>
+            $('document').ready(function () {
+                $('input[name="prePic"]').on('change', function () {
+                    let $files = $(this).get(0).files;
+                    if ($files.length) {
+                        if ($files[0].size > $(this).data('max-size') * 1024) {
+                            console.log('Vui lòng chọn file có dung lượng nhỏ hơn!');
+                            return false;
+                        }
+                        console.log('Đang upload hình ảnh lên imgbb...');
+                        let apiUrl = 'https://api.imgbb.com/1/upload?key=c2ac895f56085e398fd942062a073bde';
+                        let settings = {
+                            url: apiUrl,
+                            method: "POST",
+                            timeout: 0,
+                            processData: false,
+                            mimeType: "multipart/form-data",
+                            contentType: false
+                        };
+                        let formData = new FormData();
+                        formData.append('image', $files[0]);
+                        settings.data = formData;
+                        $.ajax(settings).done(function (response) {
+                            console.log(response);
+                            let obj = JSON.parse(response);
+                            $("#preLink").val(obj.data.url);
+                        });
+                    }
+                });
+            });
+        </script>
+        <script>
+            $('document').ready(function () {
+                $('input[name="afterPic"]').on('change', function () {
+                    let $files = $(this).get(0).files;
+                    if ($files.length) {
+                        if ($files[0].size > $(this).data('max-size') * 1024) {
+                            console.log('Vui lòng chọn file có dung lượng nhỏ hơn!');
+                            return false;
+                        }
+                        console.log('Đang upload hình ảnh lên imgbb...');
+                        let apiUrl = 'https://api.imgbb.com/1/upload?key=c2ac895f56085e398fd942062a073bde';
+                        let settings = {
+                            url: apiUrl,
+                            method: "POST",
+                            timeout: 0,
+                            processData: false,
+                            mimeType: "multipart/form-data",
+                            contentType: false
+                        };
+                        let formData = new FormData();
+                        formData.append('image', $files[0]);
+                        settings.data = formData;
+                        $.ajax(settings).done(function (response) {
+                            console.log(response);
+                            let obj = JSON.parse(response);
+                            $("#afterLink").val(obj.data.url);
+                        });
+                    }
+                });
+            });
+        </script>
         <script>
             let modal = document.querySelector(".add-modal");
             var btnOpen = document.querySelector(".add-btn");

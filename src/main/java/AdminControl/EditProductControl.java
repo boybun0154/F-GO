@@ -61,14 +61,14 @@ public class EditProductControl extends HttpServlet {
         String pcolor = request.getParameter("color");
         String pyearRelease = request.getParameter("yearRelease");
         String pdes = request.getParameter("des");
-        
-        Part partImg = request.getPart("image");
-        String pimage = getFileName(partImg);
-        try {
-            Part partUpload = request.getPart("image");
-            partUpload.write(getFileName(partUpload));
-        } catch (Exception e) {
-        }
+        String pimage = request.getParameter("link");
+//        Part partImg = request.getPart("image");
+//        String pimage = getFileName(partImg);
+//        try {
+//            Part partUpload = request.getPart("image");
+//            partUpload.write(getFileName(partUpload));
+//        } catch (Exception e) {
+//        }
         
         ProductDAO pdao = new ProductDAO();
         pdao.editProduct(pname, pdes, pimage, pprice, pstatus, pcategory, pseat, pgear, pcolor, plicensePlate, pfuel, pyearRelease, pid);
@@ -97,16 +97,16 @@ public class EditProductControl extends HttpServlet {
     }
 
 
-    private String getFileName(Part part) {
-        final String partHeader = part.getHeader("content-disposition");
-        System.out.println("*****partHeader :" + partHeader);
-        for (String content : part.getHeader("content-disposition").split(";")) {
-            if (content.trim().startsWith("filename")) {
-                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
-            }
-        }
-        return null;
-    }
+//    private String getFileName(Part part) {
+//        final String partHeader = part.getHeader("content-disposition");
+//        System.out.println("*****partHeader :" + partHeader);
+//        for (String content : part.getHeader("content-disposition").split(";")) {
+//            if (content.trim().startsWith("filename")) {
+//                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
+//            }
+//        }
+//        return null;
+//    }
 
     @Override
     public String getServletInfo() {
