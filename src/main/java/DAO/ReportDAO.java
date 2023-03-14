@@ -12,12 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReportDAO {
-    public List<Report> getReports() {
+    public List<Report> getReportsbyDriverId(int driver_id) {
         List<Report> reports = new ArrayList<>();
         try {
-            String query = "select * from REPORT";
+            String query = "select * from REPORT where order_id in (select orderID from [ORDER] where driver_id = ?)";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, driver_id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");

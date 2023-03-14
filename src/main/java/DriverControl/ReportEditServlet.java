@@ -8,28 +8,22 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.CustomerDAO;
 import DAO.DriverDAO;
-import DAO.OrderDAO;
-import DAO.ProductDAO;
 import DAO.ReportDAO;
-import entity.Customer;
-import entity.Order;
-import entity.Product;
+import entity.Report;
 
 /**
  *
  * @author LENOVO
  */
-@WebServlet(name = "ReportControl", urlPatterns = { "/ReportControl" })
-public class ReportControl extends HttpServlet {
+@WebServlet(name = "ReportEditServlet", urlPatterns = { "/ReportEditServlet" })
+public class ReportEditServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,10 +42,10 @@ public class ReportControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ReportControl</title>");
+            out.println("<title>Servlet ReportEditServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ReportControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ReportEditServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -70,31 +64,13 @@ public class ReportControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String accid = request.getParameter("accountID");
-        Integer id = Integer.parseInt(accid);
+        int accid = Integer.parseInt(request.getParameter("accountID"));
         DriverDAO dao = new DriverDAO();
-        int driverID = 0;
-        driverID = dao.getDriverId(id);
-        if (driverID < 0) {
-            throw new IllegalStateException("Driver is not available");
-        } else {
-            int orderID = dao.getDriverOrderID(driverID);
-            if (orderID < 0) {
-                request.setAttribute("message", "You don't have any order");
-                request.getRequestDispatcher("driverOrderList.jsp").forward(request, response);
-            } else {
-                OrderDAO odao = new OrderDAO();
-                Order o = odao.getOrderById(String.valueOf(orderID));
-                request.setAttribute("Order", o);
-                CustomerDAO custormerdao = new CustomerDAO();
-                ProductDAO pdao = new ProductDAO();
-                List<Customer> listc = custormerdao.getAllCustomer();
-                List<Product> listp = pdao.getAllProduct();
-                request.setAttribute("listC", listc);
-                request.setAttribute("listP", listp);
-                request.getRequestDispatcher("driverOrderList.jsp").forward(request, response);
-            }
-        }
+        int driver_id = dao.getDriverId(accid);
+        ReportDAO rdao = new ReportDAO();
+        List<Report> reports = rdao.getReportsbyDriverId(driver_id);
+        request.setAttribute("reports", reports);
+        request.getRequestDispatcher("viewReport.jsp").forward(request, response);
     }
 
     /**
@@ -108,25 +84,11 @@ public class ReportControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String orderId = request.getParameter("orderid");
-        String dmgPercent = request.getParameter("damagePercent");
-        String title = request.getParameter("title");
-        String content = request.getParameter("content");
-        String afterPic = request.getParameter("afterLink");
-        String prePic = request.getParameter("preLink");
-
-        ReportDAO rdao = new ReportDAO();
-        int reportId = Integer.parseInt(orderId);
-        int reportPercent = Integer.parseInt(dmgPercent);
-        rdao.addReport(reportId, reportPercent, title, content, afterPic, prePic);
-        System.out.println(orderId + " " + dmgPercent + " " + title + " " + content + " " + afterPic + " " + prePic);
-        // TODO: redirect to driverOrderList.jsp
-        // TODO update driver status
-        // TODO update order status
+        processRequest(request, response);
     }
 
     /**
-     * RePurns a short description of the servlet.
+     * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
      */
