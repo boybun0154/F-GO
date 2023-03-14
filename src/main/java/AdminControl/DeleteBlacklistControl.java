@@ -1,10 +1,11 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package AdminControl;
 
-import DAO.ProductDAO;
+import DAO.CustomerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,10 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ADMIN
+ * @author Admin
  */
-@WebServlet(name = "DeleteProductControl", urlPatterns = {"/delete_product"})
-public class DeleteProductControl extends HttpServlet {
+@WebServlet(name = "delete_blacklist", urlPatterns = {"/delete_blacklist"})
+public class DeleteBlacklistControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,12 +33,23 @@ public class DeleteProductControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String pid = request.getParameter("pid");
-        ProductDAO productdao = new ProductDAO();
-        productdao.deleteProduct(pid);
-        response.sendRedirect("manageproduct");
+                String cid = request.getParameter("cid");
+                CustomerDAO cdao= new CustomerDAO();
+                cdao.deleteBlacklist(cid);
+            response.sendRedirect("Blacklist");
+
+
     }
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

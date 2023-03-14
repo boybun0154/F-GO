@@ -144,7 +144,7 @@ a:hover {
     margin-top: 50px;
     position: relative;
     padding-top: 40%;
-    background: url('/IMG/banner.jpg') top center / cover no-repeat;
+    background: url('../IMG/banner.jpg') top center / cover no-repeat;
 }
 
 .text-content {

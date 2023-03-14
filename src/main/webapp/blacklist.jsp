@@ -27,38 +27,33 @@
                     <table class="table table-striped table-bordered mydatatable" style="width: 100%">
                         <thead style="text-align:center;">
                             <tr>
-                                <th>ID</th>
+                                <th>accountID</th>
                                 <th>Tên tài khoản</th>
-                                <th>Mật khẩu</th>
-                                <th>Quyền hạn</th>
-                                <th>Chức năng</th>
+                                <th>CustomerID</th>
+                                <th>Tên khach hang</th>                              
+                                <th>phone</th>
+                                <th>email</th>
+                                <th>nationalID</th>                              
+                                <th>drivingLicense</th>
+                                <th>Faceimg</th>
+                                <th>Chinh sua</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${listA}" var="o">
+                        <c:forEach items="${black}" var="o">
                             <tr>
-                                <td>${o.accountID}</td>
+                                <td>${o.accountId}</td>
                                 <td>${o.account}</td>
-                                <td>${o.password}</td>
-
-                                <c:if test="${o.role == 0}">
-                                    <td>User</td>
-                                </c:if>
-                                <c:if test="${o.role == 1}">
-                                    <td>Admin</td>
-                                </c:if>
-                                <c:if test="${o.role == 2}">
-                                    <td>Web-owner</td>
-                                </c:if>
-                                <c:if test="${o.role == 3}">
-                                    <td>Driver</td>
-                                </c:if>
-                                <c:if test="${o.role == 4}">
-                                    <td>Bad customer</td>
-                                </c:if>
-
+                                <td>${o.customerId}</td>
+                                <td>${o.customerName}</td>
+                                <td>${o.phone}</td>
+                                <td>${o.email}</td>
+                                <td style=" text-align: center"><img src="${o.nationalId}" width= "100"/></td>
+                                <td style=" text-align: center"><img src="${o.drivingLicense}" width= "100"/></td>
+                                <td style=" text-align: center"><img src="${o.faceImg}" width= "100"/></td>
                                 <td style="text-align:center;">
-                                    <a href="delete_account?aid=${o.accountID}" class="btn">
+                                    <a href="delete_blacklist?cid=${o.accountId}" class="btn">
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                         <span><strong>Xoá</strong></span>
                                     </a>

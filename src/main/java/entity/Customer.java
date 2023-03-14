@@ -18,7 +18,8 @@ public class Customer {
     private int accountId;
     private int isVerify;
     private String faceImg;
-
+    private String account;
+    private String password;
     public Customer() {
     }
 
@@ -41,6 +42,35 @@ public class Customer {
         this.customerName = customerName;
         this.accountId = accountId;
         this.customerTime = customerTime;
+    }
+
+    public Customer(int accountId, String account, int customerId, String customerName, String phone, String email, String nationalId, String drivingLicense, String faceImg) {
+        this.accountId=accountId;
+        this.account=account;
+        this.customerId=customerId;
+        this.customerName=customerName;
+        this.phone=phone;
+        this.email=email;
+        this.nationalId=nationalId;
+        this.drivingLicense=drivingLicense;
+        this.faceImg=faceImg;
+        
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getCustomerTime() {

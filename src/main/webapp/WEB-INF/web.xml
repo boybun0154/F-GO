@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>filter.LoginFilter</filter-class>
@@ -83,6 +81,8 @@
         <url-pattern>/EnterOtp.jsp</url-pattern>
         <url-pattern>/forgotPassword.jsp</url-pattern>
         <url-pattern>/newPassword.jsp</url-pattern>
+        <url-pattern>/Blacklist</url-pattern>
+
     </filter-mapping>
     <filter-mapping>
         <filter-name>DeniedUser</filter-name>
@@ -133,6 +133,8 @@
         <url-pattern>/static</url-pattern>
         <url-pattern>/getStatic</url-pattern>
         <url-pattern>/verify_customer</url-pattern>
+        <url-pattern>/Blackllist</url-pattern>
+
     </filter-mapping>
     <filter-mapping>
         <filter-name>DeniedAdmin</filter-name>
@@ -162,6 +164,10 @@
         <servlet-name>SaveLocation</servlet-name>
         <servlet-class>HomeControl.SaveLocation</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Blacklist</servlet-name>
+        <servlet-class>AdminControl.Blacklist</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GoogleLoginServlet</servlet-name>
         <url-pattern>/GoogleLoginServlet</url-pattern>
@@ -169,6 +175,10 @@
     <servlet-mapping>
         <servlet-name>SaveLocation</servlet-name>
         <url-pattern>/SaveLocation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Blacklist</servlet-name>
+        <url-pattern>/Blacklist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

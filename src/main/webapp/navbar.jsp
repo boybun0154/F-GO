@@ -54,6 +54,9 @@
                                 <a href="manageaccount" class="sub-menu-link">
                                     <p>Quản lý tài khoản</p>
                                 </a>
+                                <a href="Blacklist" class="sub-menu-link">
+                                    <p>Quản lý danh sách den</p>
+                                </a>
                                 <a href="AddDriverAccount" class="sub-menu-link">
                                     <p>Quản lý tài khoản tài xế</p>
                                 </a>
