@@ -26,9 +26,10 @@
         <br/>
         <br/>
         <div class="container">
+            <h1>${message}</h1>
             <table class="table table-striped table-bordered mydatatable">
                 <thead>
-                    <tr class="">
+                    <tr class="" style="text-align:center">
                         <th class="col-auto">ID</th>
                         <th class="col-auto">Tên khách hàng</th>
                         <th class="col-auto">Số điện thoại</th>

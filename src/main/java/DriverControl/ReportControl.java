@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.nimbusds.oauth2.sdk.Message;
+
 import DAO.CustomerDAO;
 import DAO.DriverDAO;
 import DAO.OrderDAO;
@@ -72,13 +74,15 @@ public class ReportControl extends HttpServlet {
         String accid = request.getParameter("accountID");
         Integer id = Integer.parseInt(accid);
         DriverDAO dao = new DriverDAO();
-        int driverID = dao.getDriverId(id);
+        int driverID = 0;
+        driverID = dao.getDriverId(id);
         if (driverID < 0) {
             throw new IllegalStateException("Driver is not available");
         } else {
             int orderID = dao.getDriverOrderID(driverID);
             if (orderID < 0) {
-                throw new IllegalStateException("Order is not available");
+                request.setAttribute("message", "You don't have any order");
+                request.getRequestDispatcher("driverOrderList.jsp").forward(request, response);
             } else {
                 OrderDAO odao = new OrderDAO();
                 Order o = odao.getOrderById(String.valueOf(orderID));

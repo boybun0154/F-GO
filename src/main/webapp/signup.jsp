@@ -10,7 +10,7 @@
         <title>Sign up F-Go</title>
         <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/CSS/signupStyle.css">
+        <link rel="stylesheet" href="./CSS/signupStyle.css">
     </head>
 
     <body>
