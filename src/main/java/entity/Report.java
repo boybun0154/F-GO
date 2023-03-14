@@ -7,14 +7,35 @@ public class Report {
     private String title;
     private String content;
     private String date;
+    private String prePic;
+    private String afterPic;
 
-    public Report(int id, int order_id, int damagePercent, String title, String content, String date) {
+    public Report(int id, int order_id, int damagePercent, String title, String content, String date, String prePic,
+            String afterPic) {
         this.id = id;
         this.order_id = order_id;
         this.damagePercent = damagePercent;
         this.title = title;
         this.content = content;
         this.date = date;
+        this.prePic = prePic;
+        this.afterPic = afterPic;
+    }
+
+    public String getPrePic() {
+        return prePic;
+    }
+
+    public void setPrePic(String prePic) {
+        this.prePic = prePic;
+    }
+
+    public String getAfterPic() {
+        return afterPic;
+    }
+
+    public void setAfterPic(String afterPic) {
+        this.afterPic = afterPic;
     }
 
     public int getId() {

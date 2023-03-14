@@ -105,11 +105,16 @@ public class ReportControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String orderId = request.getParameter("orderId");
+        String dmgPercent = request.getParameter("damagePercent");
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        // TODO afterPic
+        // TODO prePic
     }
 
     /**
-     * Returns a short description of the servlet.
+     * RePurns a short description of the servlet.
      *
      * @return a String containing servlet description
      */
