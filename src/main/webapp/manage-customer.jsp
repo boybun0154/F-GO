@@ -111,14 +111,28 @@
                                             <input id="phone" name="phone" type="text" class="form-control validate" required onkeyup="validationphone()" />
                                             <span id="textphone"></span>
                                         </div>
-
+                                        <div class="form-group mb-3">
+                                            <label for="email">Email
+                                            </label>
+                                            <input id="email" name="email" type="text" class="form-control validate" required onkeyup="validation()" />
+                                            <span id="text"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                                        <div class="form-group mt-3 mb-3">
+                                            <label>Hình ảnh khuôn mặt</label>
+                                            <input name="faceImg" type="file" accept="image/*" class="form-control" required>
+                                            <input id="faceLink" name="faceLink" type="text" class="form-control" value="image-input" hidden>
+                                        </div>
                                         <div class="form-group mb-3">
                                             <label>Căn cước công dân</label>
-                                            <input name="nationalId" type="file" class="form-control" required>
+                                            <input name="nationalId" type="file" accept="image/*" class="form-control" required>
+                                            <input id="idLink" name="idLink" type="text" class="form-control" value="image-input" hidden>
                                         </div>
                                         <div class="form-group mb-3">
                                             <label>Bằng lái xe</label>
-                                            <input name="drivingLicense" type="file" class="form-control" required>
+                                            <input name="drivinglicense" type="file" accept="image/*" class="form-control" required>
+                                            <input id="licenseLink" name="licenseLink" type="text" class="form-control" value="image-input" hidden>
                                         </div>
                                         
                                         <div class="form-group mb-3">
@@ -126,12 +140,7 @@
                                             </label>
                                             <input id="accountID" name="accountID" type="text" class="form-control validate" required />
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label for="email">Email
-                                            </label>
-                                            <input id="email" name="email" type="text" class="form-control validate" required onkeyup="validation()" />
-                                            <span id="text"></span>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="row" style="justify-content: center">
@@ -152,7 +161,72 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script>
+            $('document').ready(function () {
+                $('input[name=nationalId]').on('change', function () {
+                    let $files = $(this).get(0).files;
+                    if ($files.length) {
+                        if ($files[0].size > $(this).data('max-size') * 1024) {
+                            console.log('Vui lòng chọn file có dung lượng nhỏ hơn!');
+                            return false;
+                        }
 
+                        console.log('Đang upload hình ảnh lên imgbb...');
+
+                        let apiUrl = 'https://api.imgbb.com/1/upload?key=c2ac895f56085e398fd942062a073bde';
+                        let settings = {
+                            url: apiUrl,
+                            method: "POST",
+                            timeout: 0,
+                            processData: false,
+                            mimeType: "multipart/form-data",
+                            contentType: false
+                        };
+                        let formData = new FormData();
+                        formData.append('image', $files[0]);
+                        settings.data = formData;
+                        $.ajax(settings).done(function (response) {
+                            console.log(response);
+                            let obj = JSON.parse(response);
+                            $("#idLink").val(obj.data.url);
+                        });
+                    }
+                });
+            });
+        </script>
+        <script>
+            $('document').ready(function () {
+                $('input[name=drivinglicense]').on('change', function () {
+                    let $files = $(this).get(0).files;
+                    if ($files.length) {
+                        if ($files[0].size > $(this).data('max-size') * 1024) {
+                            console.log('Vui lòng chọn file có dung lượng nhỏ hơn!');
+                            return false;
+                        }
+
+                        console.log('Đang upload hình ảnh lên imgbb...');
+
+                        let apiUrl = 'https://api.imgbb.com/1/upload?key=c2ac895f56085e398fd942062a073bde';
+                        let settings = {
+                            url: apiUrl,
+                            method: "POST",
+                            timeout: 0,
+                            processData: false,
+                            mimeType: "multipart/form-data",
+                            contentType: false
+                        };
+                        let formData = new FormData();
+                        formData.append('image', $files[0]);
+                        settings.data = formData;
+                        $.ajax(settings).done(function (response) {
+                            console.log(response);
+                            let obj = JSON.parse(response);
+                            $("#licenseLink").val(obj.data.url);
+                        });
+                    }
+                });
+            });
+        </script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
         <script>

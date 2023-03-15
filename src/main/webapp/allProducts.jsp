@@ -11,7 +11,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
     <link rel="stylesheet" href="./CSS/allProductsStyle.css">
-
+    <style>
+        #banner {
+            margin-top: 50px;
+            position: relative;
+            padding-top: 40%;
+            background: url('https://i.ibb.co/0XdGtSm/banner.png') top center / cover no-repeat;
+        }</style>
 </head>
 
 <body>
@@ -291,13 +297,6 @@
     </div>
 
     <jsp:include page="footer.jsp"></jsp:include>
-    <style>
-        #banner {
-            margin-top: 50px;
-            position: relative;
-            padding-top: 40%;
-            background: url('https://i.ibb.co/0XdGtSm/banner.png') top center / cover no-repeat;
-        }</style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
                     function loadMore() {

@@ -22,7 +22,7 @@ import javax.servlet.http.Part;
  * @author ADMIN
  */
 @MultipartConfig(
-        location = "E:\\study\\Semester_5\\SWP391\\Project_FGO\\F-Go\\src\\main\\webapp\\images",
+        location = "D:\\Intellij\\F-GO\\src\\main\\webapp\\images",
         fileSizeThreshold = 1024 * 1024 * 10,
         maxFileSize = 1024 * 1024 * 50,
         maxRequestSize = 1024 * 1024 * 100
@@ -50,28 +50,30 @@ public class EditCustomerControl extends HttpServlet {
         String cname = request.getParameter("name");
         String cphone = request.getParameter("phone");
         String cemail = request.getParameter("email");
-
-        Part partImg = request.getPart("nationalId");
-        String cnationalId = getFileName(partImg);
-        Part partImg2 = request.getPart("drivinglicense");
-        String cdrivinglicense = getFileName(partImg2);
-        Part partImg3 = request.getPart("faceImg");
-        String cfaceImg = getFileName(partImg3);
-        try {
-            Part partUpload = request.getPart("nationalId");
-            partUpload.write(getFileName(partUpload));
-        } catch (Exception e) {
-        }
-        try {
-            Part partUpload = request.getPart("drivinglicense");
-            partUpload.write(getFileName(partUpload));
-        } catch (Exception e) {
-        }
-        try {
-            Part partUpload = request.getPart("faceImg");
-            partUpload.write(getFileName(partUpload));
-        } catch (Exception e) {
-        }
+        String cfaceImg = request.getParameter("faceLink");
+        String cnationalId = request.getParameter("idLink");
+        String cdrivinglicense = request.getParameter("licenseLink");
+//        Part partImg = request.getPart("nationalId");
+//        String cnationalId = getFileName(partImg);
+//        Part partImg2 = request.getPart("drivinglicense");
+//        String cdrivinglicense = getFileName(partImg2);
+//        Part partImg3 = request.getPart("faceImg");
+//        String cfaceImg = getFileName(partImg3);
+//        try {
+//            Part partUpload = request.getPart("nationalId");
+//            partUpload.write(getFileName(partUpload));
+//        } catch (Exception e) {
+//        }
+//        try {
+//            Part partUpload = request.getPart("drivinglicense");
+//            partUpload.write(getFileName(partUpload));
+//        } catch (Exception e) {
+//        }
+//        try {
+//            Part partUpload = request.getPart("faceImg");
+//            partUpload.write(getFileName(partUpload));
+//        } catch (Exception e) {
+//        }
 
         CustomerDAO cdao = new CustomerDAO();
         Customer c = cdao.getCustomerByID(cid);
@@ -113,16 +115,16 @@ public class EditCustomerControl extends HttpServlet {
         processRequest(request, response);
     }
 
-    private String getFileName(Part part) {
-        final String partHeader = part.getHeader("content-disposition");
-        System.out.println("*****partHeader :" + partHeader);
-        for (String content : part.getHeader("content-disposition").split(";")) {
-            if (content.trim().startsWith("filename")) {
-                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
-            }
-        }
-        return null;
-    }
+//    private String getFileName(Part part) {
+//        final String partHeader = part.getHeader("content-disposition");
+//        System.out.println("*****partHeader :" + partHeader);
+//        for (String content : part.getHeader("content-disposition").split(";")) {
+//            if (content.trim().startsWith("filename")) {
+//                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
+//            }
+//        }
+//        return null;
+//    }
 
     @Override
     public String getServletInfo() {

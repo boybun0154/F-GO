@@ -30,7 +30,7 @@ public class ProductDAO {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
                         rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13)));
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13),rs.getInt(14)));
             }
         } catch (Exception e) {
         }
@@ -66,7 +66,7 @@ public class ProductDAO {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
                         rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13)));
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13),rs.getInt(14)));
             }
         } catch (Exception e) {
         }
@@ -86,7 +86,7 @@ public class ProductDAO {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
                         rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13)));
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13),rs.getInt(14)));
             }
         } catch (Exception e) {
         }
@@ -106,7 +106,7 @@ public class ProductDAO {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
                         rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13)));
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13),rs.getInt(14)));
             }
         } catch (Exception e) {
         }
@@ -124,7 +124,7 @@ public class ProductDAO {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
                         rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13)));
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13),rs.getInt(14)));
             }
         } catch (Exception e) {
         }
@@ -146,7 +146,7 @@ public class ProductDAO {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
                         rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13)));
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13),rs.getInt(14)));
             }
         } catch (Exception e) {
         }
@@ -155,9 +155,9 @@ public class ProductDAO {
 
     public void addProduct(String name, String des, String image, String price, String status,
             String cateId, String seat, String gear, String color, String licensePlate, String fuel,
-            String yearRelease) {
+            String yearRelease,String exCharge) {
         String query = "insert into Vehicle\n"
-                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -173,6 +173,7 @@ public class ProductDAO {
             ps.setString(10, licensePlate);
             ps.setString(11, fuel);
             ps.setString(12, yearRelease);
+            ps.setString(13, exCharge);
 
             ps.executeUpdate();
         } catch (Exception e) {
@@ -191,7 +192,7 @@ public class ProductDAO {
                 return new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
                         rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13));
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13),rs.getInt(14));
             }
         } catch (Exception e) {
 
@@ -287,7 +288,7 @@ public class ProductDAO {
                 return new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
                         rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13));
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13),rs.getInt(14));
             }
         } catch (Exception e) {
 

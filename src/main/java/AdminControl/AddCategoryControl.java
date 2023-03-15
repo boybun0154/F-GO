@@ -24,7 +24,7 @@ import javax.servlet.http.Part;
  * @author ADMIN
  */
 @MultipartConfig(
-        location = "E:\\study\\Semester_5\\SWP391\\Project_FGO\\F-Go\\src\\main\\webapp\\images",
+        location = "D:\\Intellij\\F-GO\\src\\main\\webapp\\images",
         fileSizeThreshold = 1024 * 1024 * 10,
         maxFileSize = 1024 * 1024 * 50,
         maxRequestSize = 1024 * 1024 * 100
@@ -50,17 +50,20 @@ public class AddCategoryControl extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String cname = request.getParameter("catename");
+        String cimage = request.getParameter("link");
 
-        Part partImg = request.getPart("image");
-        String pimage = getFileName(partImg);
-        try {
-            Part partUpload = request.getPart("image");
-            partUpload.write(getFileName(partUpload));
-            CategoriesDAO categoriesDAO = new CategoriesDAO();
-            categoriesDAO.addCategory(cname, pimage);
-        } catch (Exception e) {
-        }
-
+//        Part partImg = request.getPart("image");
+//        String pimage = getFileName(partImg);
+//        try {
+//            Part partUpload = request.getPart("image");
+//            partUpload.write(getFileName(partUpload));
+//            CategoriesDAO categoriesDAO = new CategoriesDAO();
+//            categoriesDAO.addCategory(cname, pimage);
+//        } catch (Exception e) {
+//        }
+        CategoriesDAO cdao = new CategoriesDAO();
+        cdao.addCategory(cname,cimage);
+        System.out.println(cname + " " + cimage);
 //        response.sendRedirect("managecategory");
         out.println("<meta http-equiv='refresh' content='3;URL=managecategory'>");//redirects after 3 seconds
         out.println("<div style=\"width: 100vw; height: 100vh;\">\n"
@@ -93,16 +96,16 @@ public class AddCategoryControl extends HttpServlet {
         processRequest(request, response);
     }
 
-    private String getFileName(Part part) {
-        final String partHeader = part.getHeader("content-disposition");
-        System.out.println("*****partHeader :" + partHeader);
-        for (String content : part.getHeader("content-disposition").split(";")) {
-            if (content.trim().startsWith("filename")) {
-                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
-            }
-        }
-        return null;
-    }
+//    private String getFileName(Part part) {
+//        final String partHeader = part.getHeader("content-disposition");
+//        System.out.println("*****partHeader :" + partHeader);
+//        for (String content : part.getHeader("content-disposition").split(";")) {
+//            if (content.trim().startsWith("filename")) {
+//                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
+//            }
+//        }
+//        return null;
+//    }
 
     @Override
     public String getServletInfo() {
