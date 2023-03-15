@@ -88,7 +88,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script>
             $('document').ready(function () {
-                $('input[type=file]').on('change', function () {
+                $('input[name=faceImg]').on('change', function () {
                     let $files = $(this).get(0).files;
                     if ($files.length) {
                         if ($files[0].size > $(this).data('max-size') * 1024) {
@@ -121,7 +121,7 @@
         </script>
         <script>
             $('document').ready(function () {
-                $('input[type=file]').on('change', function () {
+                $('input[name=nationalId]').on('change', function () {
                     let $files = $(this).get(0).files;
                     if ($files.length) {
                         if ($files[0].size > $(this).data('max-size') * 1024) {
@@ -154,7 +154,7 @@
         </script>
         <script>
             $('document').ready(function () {
-                $('input[type=file]').on('change', function () {
+                $('input[name=drivinglicense]').on('change', function () {
                     let $files = $(this).get(0).files;
                     if ($files.length) {
                         if ($files[0].size > $(this).data('max-size') * 1024) {
