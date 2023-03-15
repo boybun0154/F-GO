@@ -77,14 +77,28 @@
                         <td>${Order.area}</td>
                         <td>${Order.startLocation}</td>
                         <td>${Order.endLocation}</td>
+                        <c:if test="${Order.status == 1}">
                         <td style="text-align:center;">
                             <button class="add-btn btn btn-warning text-uppercase">Report</button>
                         </td>
+                        </c:if>
+                        <c:if test="${Order.status == 0}">
+                        <td style="text-align:center;">
+                            <button disabled class="add-btn btn btn-warning text-uppercase">Report</button>
+                        </td>
+                        </c:if>
                     </tr>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <div class="add-modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
             <div class="add-block" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;" > 
                 <div class="modal-content tm-bg-primary-dark tm-block tm-block-h-auto"> 

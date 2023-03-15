@@ -21,7 +21,7 @@
                     <h2>Quản lý report</h2>
                 </div>
                 <div class="container mb-3 mt-3">
-                    <table class="table table-striped table-bordered mydatatable" style="width: 100%">
+                    <table class="table table-striped table-bordered" style="width: 100%">
                         <thead style="text-align:center;">
                             <tr>
                                 <th>id</th>
@@ -34,21 +34,23 @@
                         </thead>
                         <tbody>
                         <c:forEach items="${reports}" var="o">
-                            <tr>
+                        <form action="ReportEditServlet" method="post">
+                        <input type="hidden" name="id" value="${o.id}">
+                            <tr style="text-align:center;">
                                 <td>${o.id}</td>
                                 <td>${o.order_id}</td>
                                 <td>${o.damagePercent}</td>
                                 <td>${o.title}</td>
                                 <td>${o.content}</td>
                                 <td>${o.date}</td>
-                                <%-- TODO delete --%>
-                                <td style="text-align:center;">
-                                    <a href="" class="btn">
-                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                        <span><strong>Xoá</strong></span>
-                                    </a>
+                                <td >
+                                    <a href="" class="btn btn-warning text-white">Additional fee</a>
+                                </td>
+                                <td >
+                                    <button type="submit" class="btn btn-danger">Delete</button>
                                 </td>
                             </tr>
+                        </form>
                         </c:forEach>
                     </tbody>
                 </table>

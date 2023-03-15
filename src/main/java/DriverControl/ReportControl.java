@@ -118,11 +118,17 @@ public class ReportControl extends HttpServlet {
         ReportDAO rdao = new ReportDAO();
         int reportId = Integer.parseInt(orderId);
         int reportPercent = Integer.parseInt(dmgPercent);
-        rdao.addReport(reportId, reportPercent, title, content, afterPic, prePic);
-        System.out.println(orderId + " " + dmgPercent + " " + title + " " + content + " " + afterPic + " " + prePic);
         // TODO: redirect to driverOrderList.jsp
-        // TODO update driver status
-        // TODO update order status
+        // update driver status
+        OrderDAO odao = new OrderDAO();
+        Order o = odao.getOrderById(orderId);
+        DriverDAO dao = new DriverDAO();
+        dao.updateDriverStatus(o.getDriverId(), "available");
+        // update order status
+        odao.updateOrderStatus(Integer.parseInt(orderId), 0);
+        // add report and finish order
+        rdao.addReport(reportId, reportPercent, title, content, afterPic, prePic);
+        request.getRequestDispatcher("driverOrderList.jsp").forward(request, response);
     }
 
     /**

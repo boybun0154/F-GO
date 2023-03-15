@@ -134,4 +134,18 @@ public class OrderDAO {
         } catch (Exception e) {
         }
     }
+
+    public void updateOrderStatus(int id, int status) {
+        String query = "update [ORDER]\n"
+                + "set status = ?\n"
+                + "where orderID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, status);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 }

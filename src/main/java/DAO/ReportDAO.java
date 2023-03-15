@@ -56,4 +56,17 @@ public class ReportDAO {
             e.printStackTrace();
         }
     }
+
+    public void deleteReportById(int id) {
+        try {
+            String query = "delete from REPORT where id = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

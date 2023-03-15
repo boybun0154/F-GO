@@ -124,4 +124,16 @@ public class DriverDAO {
         }
         return -1;
     }
+
+    public void updateDriverStatus(int driverId, String status) {
+        String query = "update DRIVER set status=? where driverID=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, status);
+            ps.setInt(2, driverId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 }
