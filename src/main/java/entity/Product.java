@@ -23,7 +23,6 @@ public class Product {
 
     private float rating;
     private int cmt;
-
     public Product() {
     }
 
@@ -44,6 +43,24 @@ public class Product {
         this.yearRelease = yearRelease;
         this.price = price;
 
+    }
+    public Product(int productID, String productName, String productTitle, String productImg, int productStatus,
+                   int categoryID, String seat, String gear, String color, String licensePlate, String fuel,
+                   String yearRelease, int price,int exCharge) {
+        this.productID = productID;
+        this.productName = productName;
+        this.productTitle = productTitle;
+        this.productImg = productImg;
+        this.productStatus = productStatus;
+        this.categoryID = categoryID;
+        this.seat = seat;
+        this.gear = gear;
+        this.color = color;
+        this.licensePlate = licensePlate;
+        this.fuel = fuel;
+        this.yearRelease = yearRelease;
+        this.price = price;
+        this.exCharge=exCharge;
     }
 
     public int getCmt() {
@@ -202,6 +219,14 @@ public class Product {
 
     public void setYearRelease(String yearRelease) {
         this.yearRelease = yearRelease;
+    }
+
+    public int getExCharge() {
+        return exCharge;
+    }
+
+    public void setExCharge(int exCharge) {
+        this.exCharge = exCharge;
     }
 
     @Override

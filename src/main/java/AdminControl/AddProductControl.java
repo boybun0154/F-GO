@@ -26,7 +26,7 @@ import javax.servlet.http.Part;
  * @author ADMIN
  */
 @MultipartConfig(
-        location = "E:\\study\\Semester_5\\SWP391\\Project_FGO\\F-Go\\src\\main\\webapp\\images",
+        location = "D:\\Intellij\\F-GO\\src\\main\\webapp\\images",
         fileSizeThreshold = 1024 * 1024 * 10,
         maxFileSize = 1024 * 1024 * 50,
         maxRequestSize = 1024 * 1024 * 100
@@ -60,21 +60,21 @@ public class AddProductControl extends HttpServlet {
         String pyearRelease = request.getParameter("yearRelease");
         String pdes = request.getParameter("des");
         String pstatus = "1";
-        
-        
-        Part partImg = request.getPart("image");
-        String pimage = getFileName(partImg);
-        try {
-            Part partUpload = request.getPart("image");
-            partUpload.write(getFileName(partUpload));
-        } catch (Exception e) {
-        }
+        String pimage = request.getParameter("link");
+        String exCharge = request.getParameter("exCharge");
+//        Part partImg = request.getPart("image");
+//        String pimage = getFileName(partImg);
+//        try {
+//            Part partUpload = request.getPart("image");
+//            partUpload.write(getFileName(partUpload));
+//        } catch (Exception e) {
+//        }
         
         System.out.println(pname + " " + pcategory + " " +pprice + " " +pseat+ " " +pgear + " " +plicensePlate+ " " +pfuel+ " " +pcolor+ " " +pimage+ " " +pyearRelease+ " " +pdes+ " " +pstatus);
         
         ProductDAO productdao = new ProductDAO();
         productdao.addProduct(pname,pdes,pimage,pprice,
-                pstatus,pcategory,pseat,pgear,pcolor,plicensePlate, pfuel, pyearRelease );
+                pstatus,pcategory,pseat,pgear,pcolor,plicensePlate, pfuel, pyearRelease,exCharge );
 //        response.sendRedirect("manageproduct");
         out.println("<meta http-equiv='refresh' content='3;URL=manageproduct'>");//redirects after 3 seconds
         out.println("<div style=\"width: 100vw; height: 100vh;\">\n"
@@ -99,16 +99,16 @@ public class AddProductControl extends HttpServlet {
     }
     
     
-    private String  getFileName(Part part){
-        final String  partHeader = part.getHeader("content-disposition");
-        System.out.println("*****partHeader :"+ partHeader);
-        for(String content : part.getHeader("content-disposition").split(";")){
-            if(content.trim().startsWith("filename")){
-                return content.substring(content.indexOf('=')+1).trim().replace("\"", "" );
-            }
-        }
-        return null;
-    }
+//    private String  getFileName(Part part){
+//        final String  partHeader = part.getHeader("content-disposition");
+//        System.out.println("*****partHeader :"+ partHeader);
+//        for(String content : part.getHeader("content-disposition").split(";")){
+//            if(content.trim().startsWith("filename")){
+//                return content.substring(content.indexOf('=')+1).trim().replace("\"", "" );
+//            }
+//        }
+//        return null;
+//    }
 
     
     @Override

@@ -99,7 +99,7 @@
                                     <div class="form-group mb-3">
                                         <label for="image">Hình Ảnh</label>
                                         <input id="image" name="image" type="file" accept="image/*" class="form-control" required>
-                                        <input name="link" id="link" type="text" class="form-control" value="image-input" hidden>
+                                        <input id="link" name="link" type="text" class="form-control" value="image-input" hidden>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="category">Tình trạng</label>
@@ -181,7 +181,6 @@
                             console.log(response);
                             let obj = JSON.parse(response);
                             $("#link").val(obj.data.url);
-                            // document.getElementById("link").value = obj.data.url;
                         });
                     }
                 });

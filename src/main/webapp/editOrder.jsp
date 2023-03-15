@@ -28,7 +28,7 @@
                                     <div class="form-group mb-3">
                                         <label for="id">ID đơn thuê
                                         </label>
-                                        <input name="id" type="text" class="form-control validate" value="${edit.orderId}" required readonly />
+                                        <input id="id" name="id" type="text" class="form-control validate" value="${edit.orderId}" required readonly />
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="cusid">ID Khách hàng
@@ -57,7 +57,7 @@
                                 <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
                                     <div class="form-group mt-3 mb-3">
                                         <label for="address">Địa chỉ</label>
-                                        <textarea name="address" class="form-control validate" rows="3" required>${edit.address}</textarea>
+                                        <textarea id="address" name="address" class="form-control validate" rows="3" required>${edit.address}</textarea>
                                     </div>
                                     <div class="form-group mt-3 mb-3">
                                         <label for="status">Tình trạng</label>
@@ -75,7 +75,7 @@
                                         </select>
                                     </div>
 <!--                                    
-<!---->                         </div> 
+-->                         </div>
                             </div>
                             <div class="row justify-content-center">        
                                 <div class="col-3 text-center mt-3">
