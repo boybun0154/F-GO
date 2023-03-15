@@ -8,6 +8,7 @@ import java.util.List;
 
 import context.DBContext;
 import entity.Driver;
+import entity.Order;
 
 public class DriverDAO {
     Connection conn = null;
@@ -109,7 +110,8 @@ public class DriverDAO {
         return -1;
     }
 
-    public int getDriverOrderID(int driverId) {
+    public List<Integer> getDriverOrderID(int driverId) {
+        List<Integer> list = new ArrayList<>();
         String query = "select orderID from [ORDER] where driver_id=?";
         try {
             conn = new DBContext().getConnection();
@@ -117,12 +119,13 @@ public class DriverDAO {
             ps.setInt(1, driverId);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return rs.getInt("orderID");
+                int orderId = rs.getInt("orderID");
+                list.add(orderId);
             }
         } catch (Exception e) {
 
         }
-        return -1;
+        return list;
     }
 
     public void updateDriverStatus(int driverId, String status) {
@@ -135,5 +138,21 @@ public class DriverDAO {
             ps.executeUpdate();
         } catch (Exception e) {
         }
+    }
+
+    public int getAccountId(int driverID) {
+        String query = "select accountID from DRIVER where driverID=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, driverID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("accountID");
+            }
+        } catch (Exception e) {
+
+        }
+        return -1;
     }
 }

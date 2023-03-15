@@ -17,7 +17,6 @@
     <body>
         <jsp:include page="navbar.jsp"></jsp:include>
 
-
             <input type="hidden" id="testacc" value="${sessionScope.acc.account}" />
         <input type="hidden" id="testaccrole" value="${sessionScope.acc.role}" />
         <br/>
@@ -48,6 +47,7 @@
                 <tbody>
                     <tr>
                     <tr  class="">
+                    <c:forEach items="${listO}" var="Order">
                         <td>${Order.orderId}</td>
                         <c:forEach items="${listC}" var="a">
                             <c:if test="${Order.customerID == a.customerId}">
@@ -79,15 +79,19 @@
                         <td>${Order.endLocation}</td>
                         <c:if test="${Order.status == 1}">
                         <td style="text-align:center;">
-                            <button class="add-btn btn btn-warning text-uppercase">Report</button>
+                        <a data-toggle="modal" data-id="${Order.orderId}" title="Report" 
+                        class="open-ReportModal" href="#ReportModal">
+                        <button class="btn btn-danger">Report</button></a>
                         </td>
                         </c:if>
                         <c:if test="${Order.status == 0}">
                         <td style="text-align:center;">
-                            <button disabled class="add-btn btn btn-warning text-uppercase">Report</button>
-                        </td>
+                            <a  data-id="${Order.orderId}" title="Report" 
+                        class="">
+                        <button disabled class="btn btn-danger">Report</button></a>
                         </c:if>
                     </tr>
+                    </c:forEach>
                     </tr>
                 </tbody>
             </table>
@@ -99,7 +103,7 @@
         <br/>
         <br/>
         <br/>
-        <div class="add-modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
+        <div class="modal hide" id="ReportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
             <div class="add-block" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;" > 
                 <div class="modal-content tm-bg-primary-dark tm-block tm-block-h-auto"> 
                     <div class="modal-header" style="display: contents;"> 
@@ -111,7 +115,7 @@
                                 <div class="col-xl-6 col-lg-6 col-md-12">
                                     <div class="form-group mb-3">
                                         <label for="orderid">Order Id</label>
-                                        <input id="orderid" name="orderid" value=${Order.orderId} type="text" class="form-control validate" readonly />
+                                        <input id="orderid" name="orderid" value="" type="text" class="form-control validate" readonly />
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="damagePercent">Phần trăm hư hỏng</label>
@@ -135,6 +139,9 @@
                                         <label for="afterPic">Ảnh sau khi trả xe</label>
                                         <input id="afterPic" name="afterPic" type="file" accept="image/*" class="form-control" required />
                                         <input name="afterLink" id="afterLink" type="text" class="form-control" value="image-input" hidden>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="hidden" id="accountID" name="accountID" class="form-control" value="${accid}" />
                                     </div>
                                 </div>
                             </div>
@@ -228,15 +235,13 @@
             });
         </script>
         <script>
-            let modal = document.querySelector(".add-modal");
-            var btnOpen = document.querySelector(".add-btn");
-            var btnCancel = document.querySelector(".btn-back");
-            function toggleModal(e) {
-                console.log(e.target);
-                modal.classList.toggle("hide")
-            }
-            btnOpen.addEventListener('click', toggleModal);
-            btnCancel.addEventListener('click', toggleModal);
+            $(document).on("click", ".open-ReportModal", function () {
+            var id = $(this).data('id');
+            $(".modal-body #orderid").val( id );
+            // As pointed out in comments, 
+            // it is unnecessary to have to manually call the modal.
+            // $('#addBookDialog').modal('show');
+});
             $(function () {
                 $('.product-card').hover(function () {
                     $(this).find('.description').animate({

@@ -6,6 +6,7 @@ package DriverControl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder.In;
@@ -71,27 +72,32 @@ public class ReportControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String accid = request.getParameter("accountID");
-        Integer id = Integer.parseInt(accid);
+        int id = Integer.parseInt(accid);
         DriverDAO dao = new DriverDAO();
         int driverID = 0;
         driverID = dao.getDriverId(id);
         if (driverID < 0) {
             throw new IllegalStateException("Driver is not available");
         } else {
-            int orderID = dao.getDriverOrderID(driverID);
-            if (orderID < 0) {
+            List orderIDList = dao.getDriverOrderID(driverID);
+            if (orderIDList.size() == 0) {
                 request.setAttribute("message", "You don't have any order");
                 request.getRequestDispatcher("driverOrderList.jsp").forward(request, response);
             } else {
                 OrderDAO odao = new OrderDAO();
-                Order o = odao.getOrderById(String.valueOf(orderID));
-                request.setAttribute("Order", o);
+                List<Order> list = new ArrayList<>();
+                for (int i = 0; i < orderIDList.size(); i++) {
+                    Order o = odao.getOrderById(orderIDList.get(i).toString());
+                    list.add(o);
+                }
+                request.setAttribute("listO", list);
                 CustomerDAO custormerdao = new CustomerDAO();
                 ProductDAO pdao = new ProductDAO();
                 List<Customer> listc = custormerdao.getAllCustomer();
                 List<Product> listp = pdao.getAllProduct();
                 request.setAttribute("listC", listc);
                 request.setAttribute("listP", listp);
+                request.setAttribute("accid", accid);
                 request.getRequestDispatcher("driverOrderList.jsp").forward(request, response);
             }
         }
@@ -114,7 +120,8 @@ public class ReportControl extends HttpServlet {
         String content = request.getParameter("content");
         String afterPic = request.getParameter("afterLink");
         String prePic = request.getParameter("preLink");
-
+        // TODO: get accountID from session
+        int accid = Integer.parseInt(request.getParameter("accountID"));
         ReportDAO rdao = new ReportDAO();
         int reportId = Integer.parseInt(orderId);
         int reportPercent = Integer.parseInt(dmgPercent);
@@ -128,7 +135,33 @@ public class ReportControl extends HttpServlet {
         odao.updateOrderStatus(Integer.parseInt(orderId), 0);
         // add report and finish order
         rdao.addReport(reportId, reportPercent, title, content, afterPic, prePic);
-        request.getRequestDispatcher("driverOrderList.jsp").forward(request, response);
+        //
+        // display
+        int driverID = 0;
+        driverID = dao.getDriverId(accid);
+        if (driverID < 0) {
+            throw new IllegalStateException("Driver is not available");
+        } else {
+            List orderIDList = dao.getDriverOrderID(driverID);
+            if (orderIDList.size() == 0) {
+                request.setAttribute("message", "You don't have any order");
+                request.getRequestDispatcher("driverOrderList.jsp").forward(request, response);
+            } else {
+                List<Order> list = new ArrayList<>();
+                for (int i = 0; i < orderIDList.size(); i++) {
+                    Order t = odao.getOrderById(orderIDList.get(i).toString());
+                    list.add(t);
+                }
+                request.setAttribute("listO", list);
+                CustomerDAO custormerdao = new CustomerDAO();
+                ProductDAO pdao = new ProductDAO();
+                List<Customer> listc = custormerdao.getAllCustomer();
+                List<Product> listp = pdao.getAllProduct();
+                request.setAttribute("listC", listc);
+                request.setAttribute("listP", listp);
+                request.getRequestDispatcher("driverOrderList.jsp").forward(request, response);
+            }
+        }
     }
 
     /**
