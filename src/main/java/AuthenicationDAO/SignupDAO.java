@@ -51,13 +51,17 @@ public class SignupDAO {
         }
     }
 
-    public void addAccIDToCustomer(int accid) {
-        String query = "INSERT INTO CUSTOMER (accountID, isVerify)\n"
-                + "VALUES (?, 0)";
+    public void addAccIDToCustomer(int accid,String customerName,String phone, String email) {
+        String query = "INSERT INTO CUSTOMER (accountID, isVerify,customerName,phone,email)\n"
+                + "VALUES (?, 0,?,?,?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, accid);
+            ps.setString(2, customerName);
+            ps.setString(3, phone);
+            ps.setString(4, email);
+
             ps.executeUpdate();
         } catch (Exception e) {
         }

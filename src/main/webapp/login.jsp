@@ -30,12 +30,12 @@
                                     <div class="form-group">
                                         <label for="text" class="sr-only">Tài khoản</label>
                                         <input type="text" name="account" id="account" class="form-control"
-                                               placeholder="Tài khoản">
+                                               placeholder="Tài khoản" required>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label for="password" class="sr-only">Mật Khẩu</label>
                                         <input type="password" name="password" id="password" class="form-control"
-                                               placeholder="Mật khẩu">
+                                               placeholder="Mật khẩu" required>
                                     </div>
                                     <a href="forgotPassword.jsp" class="forgot-password-link">Quên mật khẩu?</a>
                                     <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit"

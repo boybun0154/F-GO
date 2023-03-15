@@ -38,6 +38,13 @@ public class SignupControl extends HttpServlet {
         String user = request.getParameter("user");
         String pass = request.getParameter("pass");
         String repass = request.getParameter("repass");
+        
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+
+        
+        
         String role = "0";
         if(!pass.equals(repass)){
                 String mess = "Nhập lại mật khẩu không chính xác";
@@ -50,7 +57,7 @@ public class SignupControl extends HttpServlet {
             if(a == null){
                 signupdao.signup(user,md5_pass,role);
                 Account acc = signupdao.checkAccountExist(user);
-                signupdao.addAccIDToCustomer(acc.getAccountID());
+                signupdao.addAccIDToCustomer(acc.getAccountID(),name,phone,email);
                 HttpSession session = request.getSession();
                 session.setAttribute("acc", acc);
                 session.setMaxInactiveInterval(900);
