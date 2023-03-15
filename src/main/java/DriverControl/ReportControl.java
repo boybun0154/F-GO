@@ -130,15 +130,19 @@ public class ReportControl extends HttpServlet {
         OrderDAO odao = new OrderDAO();
         Order o = odao.getOrderById(orderId);
         DriverDAO dao = new DriverDAO();
-        dao.updateDriverStatus(o.getDriverId(), "available");
+        int driverID = 0;
+        driverID = dao.getDriverId(accid);
+        // check if driver have any order
+        if (dao.getDriverCurrentOrderID(accid).isEmpty()) {
+            dao.updateDriverStatus(o.getDriverId(), "available");
+        }
         // update order status
         odao.updateOrderStatus(Integer.parseInt(orderId), 0);
         // add report and finish order
         rdao.addReport(reportId, reportPercent, title, content, afterPic, prePic);
         //
         // display
-        int driverID = 0;
-        driverID = dao.getDriverId(accid);
+
         if (driverID < 0) {
             throw new IllegalStateException("Driver is not available");
         } else {

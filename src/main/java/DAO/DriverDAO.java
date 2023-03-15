@@ -128,6 +128,24 @@ public class DriverDAO {
         return list;
     }
 
+    public List<Integer> getDriverCurrentOrderID(int driverId) {
+        List<Integer> list = new ArrayList<>();
+        String query = "select orderID from [ORDER] where driver_id=? and status=1";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, driverId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int orderId = rs.getInt("orderID");
+                list.add(orderId);
+            }
+        } catch (Exception e) {
+
+        }
+        return list;
+    }
+
     public void updateDriverStatus(int driverId, String status) {
         String query = "update DRIVER set status=? where driverID=?";
         try {
