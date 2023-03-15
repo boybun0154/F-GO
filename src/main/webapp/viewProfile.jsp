@@ -30,17 +30,17 @@
                 </div>
                 <div class="row user-info mb-3">
                     <div class="padding-left-25 text-bold col-6">Hình ảnh khuôn mặt:</div>
-                    <div class="col-6"><img src="images/${detail.faceImg}"
+                    <div class="col-6"><img src="${detail.faceImg}"
                                             alt="Hình ảnh khuôn mặt người dùng" width="200"></div>
                 </div>
                 <div class="row user-info mb-3">
                     <div class="padding-left-25 text-bold col-6">Căn cước công dân:</div>
-                    <div class="col-6"><img src="images/${detail.nationalId}"
+                    <div class="col-6"><img src="${detail.nationalId}"
                                             alt="Hình ảnh căn cước công dân" width="200"></div>
                 </div>
                 <div class="row user-info mb-3">
                     <div class="padding-left-25 text-bold col-6">Giấy phép lái xe:</div>
-                    <div class="col-6"><img src="images/${detail.drivingLicense}"
+                    <div class="col-6"><img src="${detail.drivingLicense}"
                                             alt="Hình ảnh giấy phép lái xe" width="200"></div>
                 </div>
                 <div class="row user-info mb-3">

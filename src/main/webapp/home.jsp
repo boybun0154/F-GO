@@ -13,13 +13,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
         <link rel="stylesheet" href="CSS/homeStyle.css"/>
-        <style>
-            #banner {
-            margin-top: 50px;
-            position: relative;
-            padding-top: 40%;
-            background: url('./IMG/banner.jpg') top center / cover no-repeat;
-        }</style>
     </head>
     <body>
         <jsp:include page="navbar.jsp"></jsp:include>
@@ -289,6 +282,13 @@
 
 
         <jsp:include page="footer.jsp"></jsp:include>
+        <style>
+            #banner {
+                margin-top: 50px;
+                position: relative;
+                padding-top: 40%;
+                background: url('https://i.ibb.co/0XdGtSm/banner.png') top center / cover no-repeat;
+            }</style>
 
         <script src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>

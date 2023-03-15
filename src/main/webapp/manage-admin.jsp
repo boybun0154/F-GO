@@ -60,7 +60,7 @@
                                 <td>${o.adminId}</td>
                                 <td>${o.adminName}</td>
                                 <td>${o.phone}</td>
-                                <td style=" text-align: center"><img src="images/${o.nationalId}" width= "100"/></td>
+                                <td style=" text-align: center"><img src="${o.nationalId}" width= "100"/></td>
                                 <td>${o.accountId}</td>
 
                                 <td style="text-align:center;">

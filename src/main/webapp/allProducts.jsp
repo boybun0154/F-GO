@@ -296,7 +296,7 @@
             margin-top: 50px;
             position: relative;
             padding-top: 40%;
-            background: url('./IMG/banner.jpg') top center / cover no-repeat;
+            background: url('https://i.ibb.co/0XdGtSm/banner.png') top center / cover no-repeat;
         }</style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
