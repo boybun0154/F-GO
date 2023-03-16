@@ -103,7 +103,7 @@
         <br/>
         <br/>
         <br/>
-        <div class="modal hide" id="ReportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
+        <div style="display:none!important" class="modal hide"  id="ReportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
             <div class="add-block" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;" > 
                 <div class="modal-content tm-bg-primary-dark tm-block tm-block-h-auto"> 
                     <div class="modal-header" style="display: contents;"> 

@@ -567,7 +567,7 @@ footer li {
 }
 
 .modal {
-  display: block !important;
+  display: block;
 }
 .modal-dialog {
   overflow-y: initial !important;
