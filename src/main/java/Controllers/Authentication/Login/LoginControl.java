@@ -40,6 +40,7 @@ public class LoginControl extends HttpServlet {
                 if (account.getRole().equals("0")) {
                     String md5_pass = DigestUtils.md5Hex(pass).toUpperCase();
                     password = md5_pass;
+                    
                 } else {
                     password = pass;
                 }
@@ -52,7 +53,15 @@ public class LoginControl extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("acc", a);
                     session.setMaxInactiveInterval(900);
-                    request.getRequestDispatcher("Home").forward(request, response);
+                    if(account.getRole().equals("0") ){
+                       request.getRequestDispatcher("Home").forward(request, response); 
+                    } 
+                    
+                    if(account.getRole().equals("1") || account.getRole().equals("2") 
+                             || account.getRole().equals("4") || account.getRole().equals("3")){
+                        request.getRequestDispatcher("home2.jsp").forward(request, response);
+                    }
+                    
                 }
             } else {
                 String mess = "Tài khoản không tồn tại! Vui lòng đăng ký tài khoản để đăng nhập vào hệ thống.";

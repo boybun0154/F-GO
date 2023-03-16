@@ -31,7 +31,7 @@
                                         <br>
                                         <c:forEach items="${productOrderList}" var="p">
                                             <c:if test="${o.productId == p.productID}">
-                                                <img src="images/${p.productImg}" alt="Hình ảnh xe" width="100">&nbsp&nbsp${p.productName}
+                                                <img src="${p.productImg}" alt="Hình ảnh xe" width="100">&nbsp&nbsp${p.productName}
                                             </c:if>
                                         </c:forEach>
                                     </div>

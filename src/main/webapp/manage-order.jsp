@@ -21,9 +21,9 @@
             <div class="header">
                 <h2>Quản lý đơn thuê</h2>
             </div>
-            <div class="group-function">
+<!--            <div class="group-function">
                 <button class="add-btn btn btn-primary text-uppercase">Thêm đơn thuê mới</button>
-            </div>
+            </div>-->
             <div class="container mb-3 mt-3">
                 <table class="table table-striped table-bordered mydatatable">
                     <thead style="text-align:center;">

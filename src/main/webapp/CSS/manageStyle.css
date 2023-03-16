@@ -105,14 +105,14 @@ a:hover {
 .sub-menu-wrap {
   position: absolute;
   top: 100%;
-  width: 220px;
+  width: 250px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s;
 }
 
 .sub-menu-wrap.open-menu {
-  max-height: 582px;
+  max-height: 900px;
 }
 
 .sub-menu {

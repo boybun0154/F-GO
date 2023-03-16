@@ -41,7 +41,7 @@
                                                 <td data-th="Product">
                                                     <div class="row">
                                                         <div class="col-md-5 text-left">
-                                                            <img src="/images/${p.productImg}" alt=""
+                                                            <img src="${p.productImg}" alt=""
                                                                  class="img-fluid d-none d-md-block rounded mb-2 shadow ">
                                                         </div>
                                                         <div class="col-md-7 text-left mt-sm-2">
