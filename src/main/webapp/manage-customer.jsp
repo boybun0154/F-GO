@@ -163,6 +163,36 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script>
             $('document').ready(function () {
+                $('input[name=faceImg]').on('change', function () {
+                    let $files = $(this).get(0).files;
+                    if ($files.length) {
+                        if ($files[0].size > $(this).data('max-size') * 1024) {
+                            console.log('Vui lòng chọn file có dung lượng nhỏ hơn!');
+                            return false;
+                        }
+
+                        console.log('Đang upload hình ảnh lên imgbb...');
+
+                        let apiUrl = 'https://api.imgbb.com/1/upload?key=c2ac895f56085e398fd942062a073bde';
+                        let settings = {
+                            url: apiUrl,
+                            method: "POST",
+                            timeout: 0,
+                            processData: false,
+                            mimeType: "multipart/form-data",
+                            contentType: false
+                        };
+                        let formData = new FormData();
+                        formData.append('image', $files[0]);
+                        settings.data = formData;
+                        $.ajax(settings).done(function (response) {
+                            console.log(response);
+                            let obj = JSON.parse(response);
+                            $("#faceLink").val(obj.data.url);
+                        });
+                    }
+                });
+
                 $('input[name=nationalId]').on('change', function () {
                     let $files = $(this).get(0).files;
                     if ($files.length) {
@@ -192,10 +222,7 @@
                         });
                     }
                 });
-            });
-        </script>
-        <script>
-            $('document').ready(function () {
+
                 $('input[name=drivinglicense]').on('change', function () {
                     let $files = $(this).get(0).files;
                     if ($files.length) {
