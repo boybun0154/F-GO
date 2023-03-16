@@ -9,9 +9,10 @@ public class Report {
     private String date;
     private String prePic;
     private String afterPic;
+    private int exDistance;
 
-    public Report(int id, int order_id, int damagePercent, String title, String content, String date, String prePic,
-            String afterPic) {
+    public Report(int id, int order_id, int damagePercent, String title, String content, String date,
+            String prePic, String afterPic, int exDistance) {
         this.id = id;
         this.order_id = order_id;
         this.damagePercent = damagePercent;
@@ -20,6 +21,15 @@ public class Report {
         this.date = date;
         this.prePic = prePic;
         this.afterPic = afterPic;
+        this.exDistance = exDistance;
+    }
+
+    public int getExDistance() {
+        return exDistance;
+    }
+
+    public void setExDistance(int exDistance) {
+        this.exDistance = exDistance;
     }
 
     public String getPrePic() {

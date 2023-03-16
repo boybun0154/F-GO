@@ -119,9 +119,12 @@
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="damagePercent">Phần trăm hư hỏng</label>
-                                        <input id="damagePercent" name="damagePercent" type="text" class="form-control validate" required />
+                                        <input id="damagePercent" name="damagePercent" min="0" type="number" class="form-control validate" required />
                                     </div>
-
+                                    <div class="form-group mb-3">
+                                        <label for="exDistance">Số km vượt quá</label>
+                                        <input id="exDistance" name="exDistance" min="0" type="number" class="form-control validate" required />
+                                    </div>
                                     <div class="form-group mb-3">
                                         <label for="title">Tiêu đề</label>
                                         <input id="title" name="title" type="text" class="form-control validate" required />

@@ -29,7 +29,9 @@ public class ReportDAO {
                 String date = rs.getString("date");
                 String prePic = rs.getString("prePic");
                 String afterPic = rs.getString("afterPic");
-                reports.add(new Report(id, order_id, damagePercent, title, content, date, prePic, afterPic));
+                int exDistance = rs.getInt("exDistance");
+                reports.add(
+                        new Report(id, order_id, damagePercent, title, content, date, prePic, afterPic, exDistance));
             }
             conn.close();
         } catch (Exception e) {
@@ -39,9 +41,9 @@ public class ReportDAO {
     }
 
     public void addReport(int order_id, int damagePercent, String title, String content, String prePic,
-            String afterPic) {
+            String afterPic, int exDistance) {
         try {
-            String query = "insert into REPORT(order_id, damagePercent, title, content, date, prePic, afterPic) values(?, ?, ?, ?, CAST( GETDATE() AS Date ), ?, ?)";
+            String query = "insert into REPORT(order_id, damagePercent, title, content, date, prePic, afterPic,exDistance) values(?, ?, ?, ?, CAST( GETDATE() AS Date ), ?, ?,?)";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, order_id);
@@ -50,6 +52,7 @@ public class ReportDAO {
             ps.setString(4, content);
             ps.setString(5, prePic);
             ps.setString(6, afterPic);
+            ps.setInt(7, exDistance);
             ps.executeUpdate();
             conn.close();
         } catch (Exception e) {

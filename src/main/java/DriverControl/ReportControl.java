@@ -120,18 +120,21 @@ public class ReportControl extends HttpServlet {
         String content = request.getParameter("content");
         String afterPic = request.getParameter("afterLink");
         String prePic = request.getParameter("preLink");
-        // TODO: get accountID from session
+        int exDistance = Integer.parseInt(request.getParameter("exDistance"));
+        // get accountID from session
         int accid = Integer.parseInt(request.getParameter("accountID"));
         ReportDAO rdao = new ReportDAO();
         int reportId = Integer.parseInt(orderId);
         int reportPercent = Integer.parseInt(dmgPercent);
-        // TODO: redirect to driverOrderList.jsp
+        // redirect to driverOrderList.jsp
         // update driver status
         OrderDAO odao = new OrderDAO();
         Order o = odao.getOrderById(orderId);
         DriverDAO dao = new DriverDAO();
         int driverID = 0;
         driverID = dao.getDriverId(accid);
+        rdao.addReport(reportId, reportPercent, title, content, afterPic, prePic, exDistance);
+
         // check if driver have any order
         if (dao.getDriverCurrentOrderID(accid).isEmpty()) {
             dao.updateDriverStatus(o.getDriverId(), "available");
@@ -139,7 +142,6 @@ public class ReportControl extends HttpServlet {
         // update order status
         odao.updateOrderStatus(Integer.parseInt(orderId), 0);
         // add report and finish order
-        rdao.addReport(reportId, reportPercent, title, content, afterPic, prePic);
         //
         // display
 
