@@ -72,4 +72,21 @@ public class ReportDAO {
             e.printStackTrace();
         }
     }
+
+    public int getreportIdByOrderId(int order_id) {
+        try {
+            String query = "select id from REPORT where order_id = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, order_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("id");
+            }
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

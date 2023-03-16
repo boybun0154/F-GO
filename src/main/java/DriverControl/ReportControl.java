@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.AddFeeDAO;
 import DAO.CustomerDAO;
 import DAO.DriverDAO;
 import DAO.OrderDAO;
@@ -124,7 +125,7 @@ public class ReportControl extends HttpServlet {
         // get accountID from session
         int accid = Integer.parseInt(request.getParameter("accountID"));
         ReportDAO rdao = new ReportDAO();
-        int reportId = Integer.parseInt(orderId);
+        int orderIdS = Integer.parseInt(orderId);
         int reportPercent = Integer.parseInt(dmgPercent);
         // redirect to driverOrderList.jsp
         // update driver status
@@ -133,7 +134,6 @@ public class ReportControl extends HttpServlet {
         DriverDAO dao = new DriverDAO();
         int driverID = 0;
         driverID = dao.getDriverId(accid);
-        rdao.addReport(reportId, reportPercent, title, content, afterPic, prePic, exDistance);
 
         // check if driver have any order
         if (dao.getDriverCurrentOrderID(accid).isEmpty()) {
@@ -141,8 +141,25 @@ public class ReportControl extends HttpServlet {
         }
         // update order status
         odao.updateOrderStatus(Integer.parseInt(orderId), 0);
-        // add report and finish order
-        //
+        rdao.addReport(orderIdS, reportPercent, title, content, afterPic, prePic, exDistance);
+        ProductDAO pdao = new ProductDAO();
+        // TODO add fee
+        AddFeeDAO fdao = new AddFeeDAO();
+        int reportID = rdao.getreportIdByOrderId(orderIdS);
+        int fee = 0;
+        fee = exDistance * 1000 + reportPercent * 100;// change fee calculation
+        if (exDistance > 0 || reportPercent > 0) {
+            try {
+                fdao.addFee(reportID, "extra Fee", fee, "charge for damage and extra distance");
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        // update product status after submit report
+        pdao.changeProductStatus(o.getProductId(), "1");
+
         // display
 
         if (driverID < 0) {
@@ -160,7 +177,7 @@ public class ReportControl extends HttpServlet {
                 }
                 request.setAttribute("listO", list);
                 CustomerDAO custormerdao = new CustomerDAO();
-                ProductDAO pdao = new ProductDAO();
+                pdao = new ProductDAO();
                 List<Customer> listc = custormerdao.getAllCustomer();
                 List<Product> listp = pdao.getAllProduct();
                 request.setAttribute("listC", listc);

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ page import="DAO.AddFeeDAO" %>
+<%@ page import="entity.additionFee" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,6 +28,7 @@
                                 <th>id</th>
                                 <th>Order id</th>
                                 <th>Damage Percentage</th>
+                                <th>exDistance</th>
                                 <th>Title</th>
                                 <th>Content</th>
                                 <th>Date</th>
@@ -35,28 +37,41 @@
                         <tbody>
                         <c:forEach items="${reports}" var="o">
                         <form action="ReportEditServlet" method="post">
-                        <input type="hidden" name="id" value="${o.id}">
+                            <input type="hidden" name="id" value="${o.id}">
                             <tr style="text-align:center;">
                                 <td>${o.id}</td>
                                 <td>${o.order_id}</td>
                                 <td>${o.damagePercent}</td>
+                                <td>${o.exDistance}</td>
                                 <td>${o.title}</td>
                                 <td>${o.content}</td>
                                 <td>${o.date}</td>
-                                <td >
-                                    <a href="" class="btn btn-warning text-white">Additional fee</a>
-                                </td>
-                                <td >
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </td>
+                                <c:if test="${o.damagePercent!=0 || o.exDistance!=0}">
+                                    <td style="text-align:center;">
+                                        <a data-toggle="modal" data-target="#myModal"title="view addtional fee" class="btn btn-warning"
+                                         data-id="${o.id}"   >Addtional Fee</a>
+                                    </td>
+                                    <td >
+                                        <button disabled type="submit" class="btn btn-danger">Delete</button>
+                                    </td>
+                                </c:if>
+                                <c:if test="${o.damagePercent== 0 && o.exDistance==0}">
+                                    <td style="text-align:center;">
+                                        <a title="no addtional fee" class="btn btn-warning disabled"
+                                           >Addtional Fee</a>
+                                    </td>
+                                    <td >
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </td>
+                                </c:if>
                             </tr>
                         </form>
-                        </c:forEach>
+                    </c:forEach>
+
                     </tbody>
                 </table>
             </div>
         </div>
-        
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -83,7 +98,7 @@
                     subMenu.classList.toggle("open-menu")
                 }
             });
-            
+
         </script>
     </body>
 </html>

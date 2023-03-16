@@ -89,7 +89,7 @@
                                     <p>Thông tin cá nhân</p>
                                 </a>
                                 <a href="ReportControl?accountID=${sessionScope.acc.accountID}" class="sub-menu-link">
-                                    <p>Order</p>
+                                    <p>view Order</p>
                                 </a>
                                 <a href="ReportEditServlet?accountID=${sessionScope.acc.accountID}" class="sub-menu-link">
                                     <p>view Report</p>

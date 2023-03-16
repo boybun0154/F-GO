@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.AddFeeDAO;
 import DAO.DriverDAO;
 import DAO.ReportDAO;
 import entity.Report;
+import entity.additionFee;
 
 /**
  *
@@ -70,7 +72,16 @@ public class ReportEditServlet extends HttpServlet {
         int driver_id = dao.getDriverId(accid);
         ReportDAO rdao = new ReportDAO();
         List<Report> reports = rdao.getReportsbyDriverId(driver_id);
+        AddFeeDAO fdao = new AddFeeDAO();
+        List<additionFee> fees = null;
+        try {
+            fees = fdao.getFeeList();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         request.setAttribute("reports", reports);
+        request.setAttribute("feeList", fees);
         request.getRequestDispatcher("viewReport.jsp").forward(request, response);
     }
 
