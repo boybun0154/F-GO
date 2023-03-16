@@ -282,7 +282,7 @@
             </div>
         </div>
 
-        <%--<jsp:include page="footer.jsp"></jsp:include>--%>
+        <jsp:include page="footer.jsp"></jsp:include>
         <script src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"

@@ -64,7 +64,7 @@
                             <tr>
                                 <td>${o.productID}</td>
                                 <td>${o.productName}</td>
-                                <td style=" text-align: center"><img src="images/${o.productImg}" width= "100"/></td>
+                                <td style=" text-align: center"><img src="${o.productImg}" width= "100"/></td>
                                 <td>${o.productTime}</td>
                             </tr>
                         </c:forEach>
@@ -99,9 +99,8 @@
                 </table>
             </div>
         </div>
-                        
-                        <footer></footer>
 
+        <jsp:include page="footer.jsp"></jsp:include>
         <script src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"

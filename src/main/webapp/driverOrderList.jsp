@@ -204,10 +204,7 @@
                         });
                     }
                 });
-            });
-        </script>
-        <script>
-            $('document').ready(function () {
+
                 $('input[name="afterPic"]').on('change', function () {
                     let $files = $(this).get(0).files;
                     if ($files.length) {

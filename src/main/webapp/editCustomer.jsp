@@ -117,10 +117,7 @@
                         });
                     }
                 });
-            });
-        </script>
-        <script>
-            $('document').ready(function () {
+
                 $('input[name=nationalId]').on('change', function () {
                     let $files = $(this).get(0).files;
                     if ($files.length) {
@@ -150,10 +147,7 @@
                         });
                     }
                 });
-            });
-        </script>
-        <script>
-            $('document').ready(function () {
+
                 $('input[name=drivinglicense]').on('change', function () {
                     let $files = $(this).get(0).files;
                     if ($files.length) {
