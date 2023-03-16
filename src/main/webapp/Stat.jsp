@@ -21,6 +21,8 @@
             </div>
             <canvas id="myChart" style="width:100%;max-width:1000px;margin: 0 auto"></canvas>
         </div>
+
+        <jsp:include page="footer.jsp"></jsp:include>
     </body>
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="./stat.js"></script> 
@@ -67,7 +69,7 @@
         $(document).ready(function () {
 //Call api 
             $.ajax({
-                url: "http://localhost:8080/getStatic",
+                url: "http://localhost:8080/F-Go/getStatic",
 //        dataType: json,
                 type: 'GET',
                 dataType: "json",

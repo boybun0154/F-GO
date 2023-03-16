@@ -114,7 +114,7 @@
                                             <span id="textname"></span>
                                         </div>    
                                         <div class="form-group mb-3">
-                                            <label for="namecar">Id xe thuê
+                                            <label for="carid">Id xe thuê
                                             </label>
                                             <input id="carid" name="carid" type="text" class="form-control validate" required />
                                             
@@ -141,7 +141,7 @@
                                         </div>  
                                          <div class="form-group mt-3 mb-3">
                                             <label for="address">Địa chỉ nhận xe</label>
-                                            <textarea name="address" class="form-control validate" rows="3" required></textarea>
+                                            <textarea id="address" name="address" class="form-control validate" rows="3" required></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -159,7 +159,8 @@
                 </div>
             </div>
         </div>
-        
+
+        <jsp:include page="footer.jsp"></jsp:include>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -167,16 +168,6 @@
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
         <script>
-                        let modal = document.querySelector(".add-modal");
-                        var btnOpen = document.querySelector(".add-btn");
-                        var btnCancel = document.querySelector(".btn-back");
-                        function toggleModal(e) {
-                            console.log(e.target);
-                            modal.classList.toggle("hide")
-                        }
-                        btnOpen.addEventListener('click', toggleModal);
-                        btnCancel.addEventListener('click', toggleModal);
-
                         $(function () {
                             $('.product-card').hover(function () {
                                 $(this).find('.description').animate({

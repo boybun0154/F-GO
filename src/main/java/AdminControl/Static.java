@@ -55,7 +55,7 @@ public class Static extends HttpServlet {
         List<Customer> listperson = cdao.getcustomerTime();
         request.setAttribute("listperson", listperson);
         
-        request.getRequestDispatcher("static.jsp").forward(request, response);
+        request.getRequestDispatcher("Static.jsp").forward(request, response);
 
     }
 

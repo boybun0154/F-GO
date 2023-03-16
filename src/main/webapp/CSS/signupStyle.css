@@ -141,7 +141,3 @@ body {
     color: var(--primary-color)!important;
     text-decoration: none;
 }
-
-.container{
-    width:auto;
-}

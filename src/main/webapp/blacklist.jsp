@@ -18,26 +18,25 @@
         <jsp:include page="navbar.jsp"></jsp:include>
             <div class="content">
                 <div class="header">
-                    <h2>Quản lý tài khoản</h2>
+                    <h2>Quản lý danh sách đen</h2>
                 </div>
                 <div class="group-function">
-                    <button class="add-btn btn btn-primary text-uppercase">Thêm tài khoản</button>
+                    <button class="add-btn btn btn-primary text-uppercase" hidden>Thêm tài khoản</button>
                 </div>
                 <div class="container mb-3 mt-3">
                     <table class="table table-striped table-bordered mydatatable" style="width: 100%">
                         <thead style="text-align:center;">
                             <tr>
-                                <th>accountID</th>
+                                <th>ID</th>
                                 <th>Tên tài khoản</th>
-                                <th>CustomerID</th>
-                                <th>Tên khach hang</th>                              
-                                <th>phone</th>
-                                <th>email</th>
-                                <th>nationalID</th>                              
-                                <th>drivingLicense</th>
-                                <th>Faceimg</th>
-                                <th>Chinh sua</th>
-
+                                <th>Mã khách hàng</th>
+                                <th>Tên khách hàng</th>
+                                <th>Số điện thoại</th>
+                                <th>Email</th>
+                                <th>Căn cước</th>
+                                <th>Bằng lái</th>
+                                <th>Hình ảnh</th>
+                                <th>Chỉnh sửa</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,7 +54,7 @@
                                 <td style="text-align:center;">
                                     <a href="delete_blacklist?cid=${o.accountId}" class="btn">
                                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                        <span><strong>Xoá</strong></span>
+                                        <span style="color: red"><strong>Xoá</strong></span>
                                     </a>
                                 </td>
                             </tr>
@@ -103,10 +102,10 @@
                                 <div class="row" style="justify-content: center">
                                     <div class="col-3 mt-3 text-center">
                                         <button type="submit" class="btn btn-primary text-uppercase">Thêm tài khoản</button>
-                                    </div>  
+                                    </div>
                                     <div class="col-3 mt-3 text-center">
                                         <a href="manageaccount" type="button" class="btn btn-back">Trở lại</a>
-                                    </div> 
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -114,7 +113,8 @@
                 </div>
             </div>
         </div>
-        
+
+        <jsp:include page="footer.jsp"></jsp:include>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -160,7 +160,7 @@
                     {orderSequence: false},
                 ],
                 language: {
-                    lengthMenu: 'Hiển thị _MENU_ xe',
+                    lengthMenu: 'Hiển thị _MENU_ tài khoản',
                     zeroRecords: 'Không tìm thấy kết quả nào!',
                     info: 'Trang _PAGE_ trên _PAGES_',
                     infoEmpty: 'No records available',
