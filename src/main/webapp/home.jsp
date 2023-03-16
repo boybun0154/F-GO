@@ -473,7 +473,7 @@
                         console.log(this.responseText);
                     }
                 };
-                xhttp.open("GET", "/SaveLocation?acc=" + acc.value + "&lat=" + position.coords.latitude + "&lng=" + position.coords.longitude, true);
+                xhttp.open("GET", "/F-Go/SaveLocation?acc=" + acc.value + "&lat=" + position.coords.latitude + "&lng=" + position.coords.longitude);
                 xhttp.send();
             }
             if (acc.value && role.value == 0) {
