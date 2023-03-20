@@ -24,7 +24,7 @@
 
                     </div>
                     <div id="my" class="img-details">
-                        <img src="./IMG/qrcode.jpg"
+                        <img src="https://i.ibb.co/cQwzFKZ/qrcode.jpg"
                              class="d-block w-100">
                     </div>
                 </div>

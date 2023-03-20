@@ -30,11 +30,11 @@
         <url-pattern>/qrcode.jsp</url-pattern>
         <url-pattern>/static.jsp</url-pattern>
         <url-pattern>/stat.js</url-pattern>
-        <url-pattern>/viewCustomerDetail.js</url-pattern>
-        <url-pattern>/viewOrderStatus.js</url-pattern>
-        <url-pattern>/viewProductDetail.js</url-pattern>
-        <url-pattern>/viewProfile.js</url-pattern>
-        <url-pattern>/wishList.js</url-pattern>
+        <url-pattern>/viewCustomerDetail.jsp</url-pattern>
+        <url-pattern>/viewOrderStatus.jsp</url-pattern>
+        <url-pattern>/viewProductDetail.jsp</url-pattern>
+        <url-pattern>/viewProfile.jsp</url-pattern>
+        <url-pattern>/wishList.jsp</url-pattern>
         <url-pattern>/addaccount</url-pattern>
         <url-pattern>/addadmin</url-pattern>
         <url-pattern>/addcategory</url-pattern>
@@ -81,7 +81,12 @@
         <url-pattern>/EnterOtp.jsp</url-pattern>
         <url-pattern>/forgotPassword.jsp</url-pattern>
         <url-pattern>/newPassword.jsp</url-pattern>
+        <url-pattern>/blacklist.jsp</url-pattern>
         <url-pattern>/Blacklist</url-pattern>
+        <url-pattern>/viewReport.jsp</url-pattern>
+        <url-pattern>/ReportEditServlet</url-pattern>
+        <url-pattern>/driverOrderList.jsp</url-pattern>
+        <url-pattern>/ReportControl</url-pattern>
 
     </filter-mapping>
     <filter-mapping>
@@ -98,9 +103,9 @@
         <url-pattern>/manage-customer.jsp</url-pattern>
         <url-pattern>/manage-order.jsp</url-pattern>
         <url-pattern>/static.jsp</url-pattern>
-        <url-pattern>/stat.js</url-pattern>
-        <url-pattern>/viewCustomerDetail.js</url-pattern>
-        <url-pattern>/viewProductDetail.js</url-pattern>
+        <url-pattern>/stat.jsp</url-pattern>
+        <url-pattern>/viewCustomerDetail.jsp</url-pattern>
+        <url-pattern>/viewProductDetail.jsp</url-pattern>
         <url-pattern>/addaccount</url-pattern>
         <url-pattern>/addadmin</url-pattern>
         <url-pattern>/addcategory</url-pattern>
@@ -133,7 +138,12 @@
         <url-pattern>/static</url-pattern>
         <url-pattern>/getStatic</url-pattern>
         <url-pattern>/verify_customer</url-pattern>
+        <url-pattern>/blacklist.jsp</url-pattern>
         <url-pattern>/Blackllist</url-pattern>
+        <url-pattern>/viewReport.jsp</url-pattern>
+        <url-pattern>/ReportEditServlet</url-pattern>
+        <url-pattern>/driverOrderList.jsp</url-pattern>
+        <url-pattern>/ReportControl</url-pattern>
 
     </filter-mapping>
     <filter-mapping>
@@ -142,7 +152,7 @@
         <url-pattern>/editAdmin.jsp</url-pattern>
         <url-pattern>/manage-admin.jsp</url-pattern>
         <url-pattern>/static.jsp</url-pattern>
-        <url-pattern>/stat.js</url-pattern>
+        <url-pattern>/stat.jsp</url-pattern>
         <url-pattern>/addadmin</url-pattern>
         <url-pattern>/delete_admin</url-pattern>
         <url-pattern>/edit_admin</url-pattern>
@@ -152,10 +162,7 @@
         <url-pattern>/static</url-pattern>
         <url-pattern>/getStatic</url-pattern>
     </filter-mapping>
-    <servlet>
-        <servlet-name>GoogleSigninServlet</servlet-name>
-        <servlet-class>Controllers.Authenication.GoogleSignin.GoogleSigninServlet</servlet-class>
-    </servlet>
+
     <servlet>
         <servlet-name>GoogleLoginServlet</servlet-name>
         <servlet-class>Controllers.Authentication.GoogleLogin.GoogleLoginServlet</servlet-class>
@@ -164,10 +171,6 @@
         <servlet-name>SaveLocation</servlet-name>
         <servlet-class>HomeControl.SaveLocation</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>Blacklist</servlet-name>
-        <servlet-class>AdminControl.Blacklist</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>GoogleLoginServlet</servlet-name>
         <url-pattern>/GoogleLoginServlet</url-pattern>
@@ -175,10 +178,6 @@
     <servlet-mapping>
         <servlet-name>SaveLocation</servlet-name>
         <url-pattern>/SaveLocation</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Blacklist</servlet-name>
-        <url-pattern>/Blacklist</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
