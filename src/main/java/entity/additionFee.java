@@ -6,13 +6,15 @@ public class additionFee {
     private String title;
     private int fee;
     private String reason;
+    private int status;
 
-    public additionFee(int id, int report_id, String title, int fee, String reason) {
+    public additionFee(int id, int report_id, String title, int fee, String reason, int status) {
         this.id = id;
         this.report_id = report_id;
         this.title = title;
         this.fee = fee;
         this.reason = reason;
+        this.status = status;
     }
 
     public int getId() {
@@ -53,6 +55,14 @@ public class additionFee {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
 }

@@ -11,14 +11,15 @@ import context.DBContext;
 import entity.additionFee;
 
 public class AddFeeDAO {
-    public void addFee(int report_id, String title, int fee, String reason) throws Exception {
-        String sql = "insert into [additionFee] values (?,?,?,?)";
+    public void addFee(int report_id, String title, int fee, String reason, int status) throws Exception {
+        String sql = "insert into [additionFee] values (?,?,?,?,?)";
         try (Connection conn = new DBContext().getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql);) {
             ps.setInt(1, report_id);
             ps.setString(2, title);
             ps.setInt(3, fee);
             ps.setString(4, reason);
+            ps.setInt(5, status);
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -37,7 +38,8 @@ public class AddFeeDAO {
                 String title = (rs.getString("title"));
                 int fee = (rs.getInt("fee"));
                 String reason = (rs.getString("reason"));
-                additionFee af = new additionFee(id, report_id, title, fee, reason);
+                int status = (rs.getInt("status"));
+                additionFee af = new additionFee(id, report_id, title, fee, reason, status);
                 list.add(af);
             }
         } catch (SQLException e) {
@@ -57,10 +59,22 @@ public class AddFeeDAO {
                 String title = (rs.getString("title"));
                 int fee = (rs.getInt("fee"));
                 String reason = (rs.getString("reason"));
-                additionFee af = new additionFee(id, report_id, title, fee, reason);
+                int status = (rs.getInt("status"));
+                additionFee af = new additionFee(id, report_id, title, fee, reason, status);
                 return af;
             }
         }
         return null;
+    }
+
+    public void updateStatus(int report_id) throws Exception {
+        String sql = "update additionFee set status = 0 where report_id = ?";
+        try (Connection conn = new DBContext().getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);) {
+            ps.setInt(1, report_id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 }

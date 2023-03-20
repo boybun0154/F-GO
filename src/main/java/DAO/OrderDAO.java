@@ -148,4 +148,34 @@ public class OrderDAO {
         } catch (Exception e) {
         }
     }
+
+    public String getCustomerMail(int orderid) {
+        String sql = "select email from CUSTOMER where customerID=(select top 1 customerID from [ORDER] where orderID=?)";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, orderid);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public String getCustomerName(int orderid) {
+        String sql = "select customerName from CUSTOMER where customerID=(select top 1 customerID from [ORDER] where orderID=?)";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, orderid);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
 }

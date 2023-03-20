@@ -141,6 +141,7 @@ public class ReportControl extends HttpServlet {
         }
         // update order status
         odao.updateOrderStatus(Integer.parseInt(orderId), 0);
+        // add report
         rdao.addReport(orderIdS, reportPercent, title, content, afterPic, prePic, exDistance);
         ProductDAO pdao = new ProductDAO();
         // TODO add fee
@@ -150,7 +151,12 @@ public class ReportControl extends HttpServlet {
         fee = exDistance * 1000 + reportPercent * 100;// change fee calculation
         if (exDistance > 0 || reportPercent > 0) {
             try {
-                fdao.addFee(reportID, "extra Fee", fee, "charge for damage and extra distance");
+                if (exDistance > 0 && reportPercent == 0) {
+                    fdao.addFee(reportID, "extra distance", fee, "charge for extra distance", 1);
+                } else if (exDistance == 0 && reportPercent > 0) {
+                    fdao.addFee(reportID, "vehicle damage", fee, "charge for vehicle damage", 1);
+                } else
+                    fdao.addFee(reportID, "extra Fee", fee, "charge for damage and extra distance", 1);
             } catch (NumberFormatException e) {
                 e.printStackTrace();
             } catch (Exception e) {

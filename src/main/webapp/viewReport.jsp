@@ -32,10 +32,16 @@
                                 <th>Title</th>
                                 <th>Content</th>
                                 <th>Date</th>
+                                <th>Payment status</th>
                             </tr>
                         </thead>
                         <tbody>
                         <c:forEach items="${reports}" var="o">
+                        <c:forEach items="${feeList}" var="f">
+                            <c:if test="${o.id == f.report_id}">
+                                <c:set var="status" value= "${f.status}"/>
+                            </c:if>
+                        </c:forEach>
                         <form action="ReportEditServlet" method="post">
                             <input type="hidden" name="id" value="${o.id}">
                             <tr style="text-align:center;">
@@ -46,10 +52,19 @@
                                 <td>${o.title}</td>
                                 <td>${o.content}</td>
                                 <td>${o.date}</td>
+                                <c:if test="${status == null}">
+                                    <td></td>
+                                </c:if>
+                                <c:if test="${status == 1}">
+                                    <td>Not paid</td>
+                                </c:if>
+                                <c:if test="${status == 0}">
+                                    <td>Paid</td>
+                                </c:if>
                                 <c:if test="${o.damagePercent!=0 || o.exDistance!=0}">
                                     <td style="text-align:center;">
-                                        <a data-toggle="modal" data-target="#myModal"title="view addtional fee" class="btn btn-warning"
-                                         data-id="${o.id}"   >Addtional Fee</a>
+                                        <a href="EmailServlet?orderID=${o.order_id}&reportID=${o.id}" title="send mail" class="btn btn-warning"
+                                          >Mail Fee to customer</a>
                                     </td>
                                     <td >
                                         <button disabled type="submit" class="btn btn-danger">Delete</button>
@@ -58,7 +73,7 @@
                                 <c:if test="${o.damagePercent== 0 && o.exDistance==0}">
                                     <td style="text-align:center;">
                                         <a title="no addtional fee" class="btn btn-warning disabled"
-                                           >Addtional Fee</a>
+                                           >Mail Fee to customer</a>
                                     </td>
                                     <td >
                                         <button type="submit" class="btn btn-danger">Delete</button>
@@ -72,6 +87,11 @@
                 </table>
             </div>
         </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <jsp:include page="footer.jsp"></jsp:include>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

@@ -89,4 +89,28 @@ public class ReportDAO {
         }
         return 0;
     }
+
+    public Report getReportById(int id) {
+        try {
+            String query = "select * from REPORT where id = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int order_id = rs.getInt("order_id");
+                int damagePercent = rs.getInt("damagePercent");
+                String title = rs.getString("title");
+                String content = rs.getString("content");
+                String date = rs.getString("date");
+                String prePic = rs.getString("prePic");
+                String afterPic = rs.getString("afterPic");
+                int exDistance = rs.getInt("exDistance");
+                return new Report(id, order_id, damagePercent, title, content, date, prePic, afterPic, exDistance);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
