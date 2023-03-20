@@ -29,7 +29,7 @@
                                         <div class="form-group mb-3">
                                         <label for="pass">Mật khẩu cũ
                                         </label>
-                                        <input name="pass" type="text" class="form-control validate" style="text-align: center;" required />
+                                        <input name="pass" id="pass" type="password" class="form-control validate" style="text-align: center;" required />
                                         <p style="color: red">${requestScope.mess1}</p>
                                     </div>
                                     </c:if>
@@ -38,13 +38,13 @@
                                     <div class="form-group mb-3">
                                         <label for="newpass">Mật khẩu mới
                                         </label>
-                                        <input id="newpass" name="newpass" type="text" class="form-control validate" style="text-align: center;" required />
+                                        <input id="newpass" name="newpass" type="password" class="form-control validate" style="text-align: center;" required />
                                     </div>
 
                                     <div class="form-group mb-3">
                                         <label for="repass">Nhập lại mật khẩu mới
                                         </label>
-                                        <input id="repass" name="repass" type="text" class="form-control validate" style="text-align: center;" required />
+                                        <input id="repass" name="repass" type="password" class="form-control validate" style="text-align: center;" required />
                                         <p style="color: red">${requestScope.mess2}</p>
                                     </div>
                                 </div>
