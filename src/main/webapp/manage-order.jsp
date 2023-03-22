@@ -41,6 +41,7 @@
                             <th class="col-auto">Nơi bắt đầu</th>
                             <th class="col-auto">Nơi kết thúc</th>
                             <th class="col-auto">ID người phụ trách</th>
+                            <th class="col-auto">Trạng thái thanh toán</th>
                             <th class="col-auto">Chức năng</th>
                         </tr>
                     </thead>
@@ -77,6 +78,12 @@
                                 <td>${o.startLocation}</td>
                                 <td>${o.endLocation}</td>
                                 <td>${o.driverId}</td>
+                                <c:if test="${o.statusMoney == 0}">
+                                    <td>Đã thanh toán cọc</td>
+                                </c:if>
+                                <c:if test="${o.statusMoney == 1}">
+                                    <td>Chưa thanh toán cọc</td>
+                                </c:if>
                                 <td style="text-align:center;">
                                     <a href="load_to_edit_order?oid=${o.orderId}" class="btn">
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>

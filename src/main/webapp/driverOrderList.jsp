@@ -41,6 +41,7 @@
                         <th class="col-auto">Vùng hoạt động</th>
                         <th class="col-auto">Nơi bắt đầu</th>
                         <th class="col-auto">Nơi kết thúc</th>
+                        <th class="col-auto">Trạng thái thanh toán</th>
                         <th class="col-auto">Chức năng</th>
                     </tr>
                 </thead>
@@ -77,11 +78,20 @@
                         <td>${Order.area}</td>
                         <td>${Order.startLocation}</td>
                         <td>${Order.endLocation}</td>
+                        <c:if test="${Order.statusMoney == 0}">
+                            <td>Đã thanh toán cọc</td>
+                        </c:if>
+                        <c:if test="${Order.statusMoney == 1}">
+                            <td>Chưa thanh toán cọc</td>
+                        </c:if>
                         <c:if test="${Order.status == 1}">
                         <td style="text-align:center;">
                         <a data-toggle="modal" data-id="${Order.orderId}" title="Report" 
                         class="open-ReportModal" href="#ReportModal">
                         <button class="btn btn-danger">Report</button></a>
+                        <a data-toggle="modal" data-id="" title="" 
+                        class="" href="changeMoneyStatus?orderId=${Order.orderId}">
+                        <button class="btn btn-warning">Thanh toán</button></a>
                         </td>
                         </c:if>
                         <c:if test="${Order.status == 0}">

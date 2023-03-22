@@ -17,10 +17,28 @@ public class Order {
     private String startLocation;
     private String endLocation;
     private int driverId;
+    private int statusMoney;
 
     public Order() {
     }
 
+    public Order(int orderId, int customerID, int productId, String address, int totalMoney, int status,
+            String timeBegin, String timeEnd, String area, String startLocation, String endLocation, int driverId, int statusMoney) {
+        this.orderId = orderId;
+        this.customerID = customerID;
+        this.productId = productId;
+        this.address = address;
+        this.totalMoney = totalMoney;
+        this.status = status;
+        this.timeBegin = timeBegin;
+        this.timeEnd = timeEnd;
+        this.area = area;
+        this.startLocation = startLocation;
+        this.endLocation = endLocation;
+        this.driverId = driverId;
+        this.statusMoney = statusMoney;
+    }
+    
     public Order(int orderId, int customerID, int productId, String address, int totalMoney, int status,
             String timeBegin, String timeEnd, String area, String startLocation, String endLocation, int driverId) {
         this.orderId = orderId;
@@ -132,4 +150,13 @@ public class Order {
     public void setDriverId(int driverId) {
         this.driverId = driverId;
     }
+
+    public int getStatusMoney() {
+        return statusMoney;
+    }
+
+    public void setStatusMoney(int statusMoney) {
+        this.statusMoney = statusMoney;
+    }
+    
 }

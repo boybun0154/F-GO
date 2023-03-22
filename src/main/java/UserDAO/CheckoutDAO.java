@@ -17,9 +17,9 @@ public class CheckoutDAO {
 
     public void addOrder(int customerId, int productID, String address, int totalMoney, String timeBegin,
             String timeEnd, String area, String startLocation, String endLocation) {
-        String query = "  insert into [ORDER](customerID, productID, [address], totalMoney, [status], timeBegin, timeEnd, area, startLocation, endLocation)\n"
+        String query = "insert into [ORDER](customerID, productID, [address], totalMoney, [status], timeBegin, timeEnd, area, startLocation, endLocation, moneyStatus)\n"
                 +
-                "  values (?, ?, ?, ?, 1, ?, ?, ?, ?, ?)";
+                "  values (?, ?, ?, ?, 1, ?, ?, ?, ?, ?, 0)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);

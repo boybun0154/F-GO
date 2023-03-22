@@ -42,8 +42,9 @@ public class OrderDAO {
                 String startLocation = rs.getString("startLocation");
                 String endLocation = rs.getString("endLocation");
                 int driverId = rs.getInt("driver_id");
+                int moneyStatus = rs.getInt("moneyStatus");
                 list.add(new Order(orderId, customerID, productId, address, totalMoney, status, timeBegin, timeEnd,
-                        area, startLocation, endLocation, driverId));
+                        area, startLocation, endLocation, driverId, moneyStatus));
             }
         } catch (Exception e) {
         }
@@ -54,7 +55,7 @@ public class OrderDAO {
             int totalMoney, String status) {
         // to do
         String query = "insert into [ORDER]\n"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -83,7 +84,7 @@ public class OrderDAO {
                 return new Order(rs.getInt(1),
                         rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
                         rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getInt(12));
+                        rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13));
             }
         } catch (Exception e) {
 

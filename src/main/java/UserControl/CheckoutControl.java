@@ -67,6 +67,7 @@ public class CheckoutControl extends HttpServlet {
         String ostartLocation = request.getParameter("startLocation");
         String oendLocation = request.getParameter("endLocation");
         
+        
 //        System.out.println(area + " " + startLocation + " " + endLocation);
 
         String payment_method = request.getParameter("payment_method");
