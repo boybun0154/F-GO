@@ -65,9 +65,25 @@
                                         </c:if>
                                     </div>
                                     <div class="col text-center">
-                                        <div style="margin-bottom: 14px!important;"><strong></strong></div>
+                                        <div style="margin-bottom: 14px!important;"><strong>Phụ trách</strong></div>
                                         <br> 
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#form_${o.orderId}"><i class="fas fa-comments"></i>&nbspĐánh giá xe</button>
+                                        <i class="fas fa-user"></i>
+                                        <c:if test="${o.driverId == 0}">
+                                            Chưa có
+                                        </c:if>
+                                        <c:if test="${o.driverId != 0}">
+                                            Đã có
+                                        </c:if>
+                                    </div>
+                                    <div class="col text-center">
+                                        <div style="margin-bottom: 14px!important;"><strong></strong></div>
+                                        <br>
+                                        <c:if test="${o.status == 1}">
+                                        <button disabled class="btn btn-primary" data-toggle="modal" data-target="#form_${o.orderId}"><i class="fas fa-comments"></i>&nbspĐánh giá xe</button>
+                                        </c:if>
+                                        <c:if test="${o.status == 0}">
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#form_${o.orderId}"><i class="fas fa-comments"></i>&nbspĐánh giá xe</button>
+                                        </c:if>
                                     </div>
                                 </div>
                             </article>

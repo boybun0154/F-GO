@@ -153,4 +153,20 @@ public class AccountDAO {
         return null;
     }
 
+    public Account getLastaccId() {
+        String sql = "SELECT TOP 1 accountID FROM ACCOUNT \n"
+                + "ORDER BY accountID DESC";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Account(rs.getInt(1));
+            }
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
 }
