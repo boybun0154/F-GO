@@ -53,6 +53,25 @@ public class AdminDAO {
 
     }
     
+    public void addAdminacc(String username, String password, String name, String phone, String aimage) {
+        String query = "insert into Account values(?,?,1); insert into [ADMIN] values(?,?,?,@@identity)";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.setString(3, name);
+            ps.setString(4, phone);
+            ps.setString(5, aimage);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    
+    
+    
+    
+    
     public void deleteAdmin(String aid) {
         String query = "delete from ADMIN\n"
                 + "where adminID = ?";

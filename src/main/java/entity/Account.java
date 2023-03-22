@@ -19,6 +19,10 @@ public class Account {
         this.password = password;
         this.role = role;
     }
+    public Account(int accountID) {
+        this.accountID = accountID;
+        
+    }
 
     public int getAccountID() {
         return accountID;

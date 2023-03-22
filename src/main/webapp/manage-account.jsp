@@ -21,7 +21,7 @@
                     <h2>Quản lý tài khoản</h2>
                 </div>
                 <div class="group-function">
-                    <button class="add-btn btn btn-primary text-uppercase">Thêm tài khoản</button>
+                    <button class="add-btn btn btn-primary text-uppercase" hidden>Thêm tài khoản</button>
                 </div>
                 <div class="container mb-3 mt-3">
                     <table class="table table-striped table-bordered mydatatable" style="width: 100%">

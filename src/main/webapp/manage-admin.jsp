@@ -23,24 +23,8 @@
                 </div>
                 <div class="group-function">
 
-                    <!-- <div class="searchBar">
-                        <input type="text" id="searchBar" placeholder="Nhập tên xe bạn muốn tìm kiếm">
-                    </div> -->
-
                     <button class="add-btn btn btn-primary text-uppercase">Thêm Admin mới</button>
 
-
-
-                    <!-- <div class="sortby">
-                        <div class="dropdown">
-                            <button class="dropdown-btn">Sắp xếp theo</button>
-                            <div class="dropdown-content">
-                                <a href="#">Chỗ ngồi</a>
-                                <a href="#">Giá tiền</a>
-                                <a href="#">Năm sản xuất</a>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="container mb-3 mt-3">
                     <table class="table table-striped table-bordered mydatatable" style="width: 100%">
@@ -90,9 +74,27 @@
                                     <h2 class="tm-block-title">Thêm Admin mới</h2>
                                 </div>
                             </div>
-                            <form action="addadmin" method="post" class="tm-edit-product-form" enctype="multipart/form-data">
-                                <div class="row tm-edit-product-row">
-                                    <div class="col-xl-6 col-lg-6 col-md-12">
+                            <form action="addadmin" method="post" class="tm-edit-product-form">
+                                <div class="row tm-edit-product-row" style="justify-content: center">
+                                    <div class="col-xl-9 col-lg-9 col-md-12">
+                                        <div class="form-group mb-3">
+                                            <div class="row">
+                                                <div class="col-12"> 
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="username">Tên tài khoản
+                                                            </label>
+                                                            <input id="username" name="username" type="text" class="form-control validate" required />
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label for="password">Mật khẩu
+                                                            </label>
+                                                            <input id="password" name="password" type="text" class="form-control validate" required />
+                                                        </div>
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                        </div>
                                         <div class="form-group mb-3">
                                             <label for="name">Tên Admin
                                             </label>
@@ -103,43 +105,26 @@
                                             </label>
                                             <input id="phone" name="phone" type="text" class="form-control validate" required />
                                         </div>
-
-
-
-
-                                    </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                                        <!--                                <div class="tm-product-img-dummy mx-auto">
-                                                                            <i class="fa fa-cloud-upload tm-upload-icon"
-                                                                               onclick="document.getElementById('fileInput').click();"></i>
-                                                                        </div>-->
-                                        <!--                                <div class="custom-file mt-3 mb-3">
-                                                                            <input name="image" id="fileInput" type="file" />
-                                                                            <input name="image" type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE"
-                                                                                   onclick="document.getElementById('fileInput').click();" />
-                                                                        </div>-->
                                         <div class="form-group mb-3">
                                             <label>Căn cước công dân</label>
                                             <input id="image" name="image" type="file" accept="image/*" class="form-control" required>
                                             <input id="link" name="link" type="text" class="form-control" value="image-input" hidden>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <label for="accountID">Mã tài khoản
-                                            </label>
-                                            <input id="accountID" name="accountID" type="text" class="form-control validate" required />
-                                        </div>
-
                                     </div>
                                 </div>
-                                <div class="row justify-content-center">        
-                                    <div class="col-3 text-center mt-3">
-                                        <button type="submit" class="btn btn-primary text-uppercase">Thêm Admin</button>
+                                <div class="row" style="justify-content: center">
+                                    <div class="col-3 mt-3 text-center">
+                                        <button type="submit" class="btn btn-primary text-uppercase">Thêm tài khoản</button>
                                     </div>  
-                                    <div class="col-3 text-center mt-3">
-                                        <a href="manageadmin" type="button" class="btn btn-back">Trở lại</a>
-                                    </div>  
+                                    <div class="col-3 mt-3 text-center">
+                                        <a href="addadmin" type="button" class="btn btn-back">Trở lại</a>
+                                    </div> 
                                 </div>
                             </form>
+
+
+
+
                         </div>
                     </div>
                 </div>
