@@ -9,6 +9,7 @@ import entity.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -178,5 +179,16 @@ public class OrderDAO {
         } catch (Exception e) {
         }
         return null;
+    }
+    
+    public void updateStatus(int orderID) throws Exception {
+        String sql = "update [ORDER] set moneyStatus = 1 where orderID = ?";
+        try (Connection conn = new DBContext().getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);) {
+            ps.setInt(1, orderID);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 }

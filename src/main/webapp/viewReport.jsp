@@ -63,8 +63,8 @@
                                 </c:if>
                                 <c:if test="${o.damagePercent!=0 || o.exDistance!=0}">
                                     <td style="text-align:center; color:white">
-                                        <a href="EmailServlet?orderID=${o.order_id}&reportID=${o.id}" title="send mail" class="btn btn-warning"
-                                          >Mail customer</a>
+                                        <a href="EmailServlet?orderID=${o.order_id}&reportID=${o.id}" title="send mail" class="btn btn-warning text-light"
+                                          >Mail</a>
                                     </td>
                                     <td >
                                         <button disabled type="submit" class="btn btn-danger">Delete</button>
@@ -86,8 +86,8 @@
                                 </c:if>
                                 <c:if test="${o.damagePercent== 0 && o.exDistance==0}">
                                     <td style="text-align:center;">
-                                        <a title="no addtional fee" class="btn btn-warning disabled"
-                                           >Mail customer</a>
+                                        <a title="no addtional fee" class="btn btn-warning disabled text-light"
+                                           >Mail</a>
                                     </td>
                                     <td >
                                         <button type="submit" class="btn btn-danger">Delete</button>
