@@ -83,11 +83,6 @@ public class EmailServlet extends HttpServlet {
         if (report != null || additionFee != null) {
 
             service.sendMail(mail, orderID, report, additionFee, customerName);
-            try {
-                addFeeDAO.updateStatus(reportID);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
             request.getRequestDispatcher("viewReport.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("viewReport.jsp").forward(request, response);

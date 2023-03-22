@@ -68,6 +68,7 @@ public class ReportEditServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int accid = Integer.parseInt(request.getParameter("accountID"));
+        String action = request.getParameter("action");
         DriverDAO dao = new DriverDAO();
         int driver_id = dao.getDriverId(accid);
         ReportDAO rdao = new ReportDAO();
@@ -80,6 +81,17 @@ public class ReportEditServlet extends HttpServlet {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        if (action != null)
+            if (action.equals("paid")) {
+                int reportId = Integer.parseInt(request.getParameter("reportID"));
+                try {
+                    fdao.updateStatus(reportId);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        request.setAttribute("accid", accid);
         request.setAttribute("reports", reports);
         request.setAttribute("feeList", fees);
         request.getRequestDispatcher("viewReport.jsp").forward(request, response);
