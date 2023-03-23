@@ -62,21 +62,38 @@
                                     <td>Paid</td>
                                 </c:if>
                                 <c:if test="${o.damagePercent!=0 || o.exDistance!=0}">
-                                    <td style="text-align:center;">
-                                        <a href="EmailServlet?orderID=${o.order_id}&reportID=${o.id}" title="send mail" class="btn btn-warning"
-                                          >Mail Fee to customer</a>
+                                    <td style="text-align:center; color:white">
+                                        <a href="EmailServlet?orderID=${o.order_id}&reportID=${o.id}" title="send mail" class="btn btn-warning text-light"
+                                          >Mail</a>
                                     </td>
                                     <td >
                                         <button disabled type="submit" class="btn btn-danger">Delete</button>
                                     </td>
+                                    <c:if test="${status == null}">
+                                    <td></td>
+                                    </c:if>
+                                    <c:if test="${status == 1}">
+                                    <td >
+                                        <a href="ReportEditServlet?accountID=${accid}&action=paid&&reportID=${o.id}" title="paid" class="btn btn-success">Paid</a>
+                                    </td>
+                                    </c:if>
+                                    <c:if test="${status == 0}">
+                                        <td >
+                                        <a href="ReportEditServlet?accountID=${accid}&action=paid&&reportID=${o.id}" title="paid" class="btn btn-success disabled">Paid</a>
+                                    </td>
+                                    </c:if>
+                                    
                                 </c:if>
                                 <c:if test="${o.damagePercent== 0 && o.exDistance==0}">
                                     <td style="text-align:center;">
-                                        <a title="no addtional fee" class="btn btn-warning disabled"
-                                           >Mail Fee to customer</a>
+                                        <a title="no addtional fee" class="btn btn-warning disabled text-light"
+                                           >Mail</a>
                                     </td>
                                     <td >
                                         <button type="submit" class="btn btn-danger">Delete</button>
+                                    </td>
+                                    <td >
+                                        <a href="ReportEditServlet?accountID=${accid}&action=paid&&reportID=${o.id}" title="paid" class="btn btn-success disabled">Paid</a>
                                     </td>
                                 </c:if>
                             </tr>

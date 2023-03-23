@@ -24,7 +24,7 @@
         <br/>
         <br/>
         <br/>
-        <div class="container">
+        <div class="container" style="display: contents;">
             <h1>${message}</h1>
             <table class="table table-striped table-bordered mydatatable">
                 <thead>
@@ -41,56 +41,84 @@
                         <th class="col-auto">Vùng hoạt động</th>
                         <th class="col-auto">Nơi bắt đầu</th>
                         <th class="col-auto">Nơi kết thúc</th>
+                        <th class="col-auto">Trạng thái thanh toán</th>
                         <th class="col-auto">Chức năng</th>
+                        <th class="col-auto"></th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                     <tr  class="">
-                    <c:forEach items="${listO}" var="Order">
-                        <td>${Order.orderId}</td>
-                        <c:forEach items="${listC}" var="a">
-                            <c:if test="${Order.customerID == a.customerId}">
-                                <td>${a.customerName}</td>
+                        <c:forEach items="${listO}" var="Order">
+                            <td>${Order.orderId}</td>
+                            <c:forEach items="${listC}" var="a">
+                                <c:if test="${Order.customerID == a.customerId}">
+                                    <td>${a.customerName}</td>
+                                </c:if>
+                            </c:forEach>
+                            <c:forEach items="${listC}" var="a">
+                                <c:if test="${Order.customerID == a.customerId}">
+                                    <td>${a.phone}</td>
+                                </c:if>
+                            </c:forEach>
+                            <c:forEach items="${listP}" var="p">
+                                <c:if test="${Order.productId == p.productID}">
+                                    <td>${p.productName}</td>
+                                </c:if>
+                            </c:forEach>
+                            <td>${Order.address}</td>
+                            <td>${Order.totalMoney}</td>       
+                            <c:if test="${Order.status == 0}">
+                                <td>Đã trả xe</td>
                             </c:if>
-                        </c:forEach>
-                        <c:forEach items="${listC}" var="a">
-                            <c:if test="${Order.customerID == a.customerId}">
-                                <td>${a.phone}</td>
+                            <c:if test="${Order.status == 1}">
+                                <td>Đang thuê</td>
                             </c:if>
-                        </c:forEach>
-                        <c:forEach items="${listP}" var="p">
-                            <c:if test="${Order.productId == p.productID}">
-                                <td>${p.productName}</td>
+                            <td>${Order.timeBegin}</td>       
+                            <td>${Order.timeEnd}</td>
+                            <td>${Order.area}</td>
+                            <td>${Order.startLocation}</td>
+                            <td>${Order.endLocation}</td>
+                            <c:if test="${Order.statusMoney == 0}">
+                                <td>Chưa thanh toán</td>
                             </c:if>
-                        </c:forEach>
-                        <td>${Order.address}</td>
-                        <td>${Order.totalMoney}</td>       
-                        <c:if test="${Order.status == 0}">
-                            <td>Đã trả xe</td>
-                        </c:if>
-                        <c:if test="${Order.status == 1}">
-                            <td>Đang thuê</td>
-                        </c:if>
-                        <td>${Order.timeBegin}</td>       
-                        <td>${Order.timeEnd}</td>
-                        <td>${Order.area}</td>
-                        <td>${Order.startLocation}</td>
-                        <td>${Order.endLocation}</td>
-                        <c:if test="${Order.status == 1}">
-                        <td style="text-align:center;">
-                        <a data-toggle="modal" data-id="${Order.orderId}" title="Report" 
-                        class="open-ReportModal" href="#ReportModal">
-                        <button class="btn btn-danger">Report</button></a>
-                        </td>
-                        </c:if>
-                        <c:if test="${Order.status == 0}">
-                        <td style="text-align:center;">
-                            <a  data-id="${Order.orderId}" title="Report" 
-                        class="">
-                        <button disabled class="btn btn-danger">Report</button></a>
-                        </c:if>
-                    </tr>
+                            <c:if test="${Order.statusMoney == 1}">
+                                <td>Đã thanh toán</td>
+                            </c:if>
+                            <c:if test="${Order.status == 1}">
+                                <td style="text-align:center;">
+                                    <a data-toggle="modal" data-id="${Order.orderId}" title="Report" 
+                                       class="open-ReportModal" href="#ReportModal">
+                                        <button class="btn btn-danger">Report</button></a>
+
+                                </td>
+
+
+                            </c:if>
+                            <c:if test="${Order.status == 0}">
+                                <td style="text-align:center;">
+                                    <a  data-id="${Order.orderId}" title="Report" 
+                                        class="">
+                                        <button disabled class="btn btn-danger">Report</button></a>
+                                    </c:if>
+
+                            <c:if test="${Order.statusMoney == 0}">
+                                <td>
+                                    <a data-id="" title="" 
+                                       class="btn btn-warning text-light" href="ReportControl?accountID=${accid}&action=paid&&orderID=${Order.orderId}" >
+                                        Pay</a>  
+                                </td>
+                            </c:if>
+                            <c:if test="${Order.statusMoney == 1}">
+                                <td>
+                                    <a data-id="" title="" 
+                                       class="btn btn-warning disabled text-light" href="ReportControl?accountID=${accid}&action=paid&&orderID=${Order.orderId}">
+                                        Pay</a>
+                                </td>
+                            </c:if>
+
+                        </tr>
                     </c:forEach>
                     </tr>
                 </tbody>
@@ -236,12 +264,12 @@
         </script>
         <script>
             $(document).on("click", ".open-ReportModal", function () {
-            var id = $(this).data('id');
-            $(".modal-body #orderid").val( id );
-            // As pointed out in comments, 
-            // it is unnecessary to have to manually call the modal.
-            // $('#addBookDialog').modal('show');
-});
+                var id = $(this).data('id');
+                $(".modal-body #orderid").val(id);
+                // As pointed out in comments, 
+                // it is unnecessary to have to manually call the modal.
+                // $('#addBookDialog').modal('show');
+            });
             $(function () {
                 $('.product-card').hover(function () {
                     $(this).find('.description').animate({

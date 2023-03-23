@@ -64,18 +64,6 @@
                             <textarea class="form-control validate" name="address" rows="2" required></textarea>
                         </div>
                         <div class="mb-3">
-                            <label class="dis fw-bold mb-2" style="font-size:1rem">Khu vuc</label>
-                            <input class="form-control validate" name="area" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="dis fw-bold mb-2" style="font-size:1rem">Vi tri xuat phat</label>
-                            <input class="form-control validate" name="startLocation" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="dis fw-bold mb-2" style="font-size:1rem">Vi tri ket thuc</label>
-                            <input class="form-control validate" name="endLocation" required>
-                        </div>
-                        <div class="mb-3">
                             <p class="dis fw-bold mb-2" style="font-size:1rem">Khu vực di chuyển</p>
                             <textarea class="form-control validate" name="area" rows="1" required></textarea>
                         </div>

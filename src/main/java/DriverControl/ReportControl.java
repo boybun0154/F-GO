@@ -93,9 +93,27 @@ public class ReportControl extends HttpServlet {
                 }
                 request.setAttribute("listO", list);
                 CustomerDAO custormerdao = new CustomerDAO();
+                
+               
+
                 ProductDAO pdao = new ProductDAO();
                 List<Customer> listc = custormerdao.getAllCustomer();
                 List<Product> listp = pdao.getAllProduct();
+                
+                request.setAttribute("accid", accid);
+                String action = request.getParameter("action");
+                
+                if (action != null)
+                    if (action.equals("paid")) {
+                    int orderID = Integer.parseInt(request.getParameter("orderID"));
+                    try {
+                        odao.updateStatus(orderID);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
                 request.setAttribute("listC", listc);
                 request.setAttribute("listP", listp);
                 request.setAttribute("accid", accid);

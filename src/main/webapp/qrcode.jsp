@@ -33,7 +33,7 @@
                 <div class="box-inner-2">
                     <div class="form">
                         <h3 class="text-center text-dark mb-3">Thanh toán hoá đơn: #${order.orderId}!</h3>
-                        <h4 class="text-center mb-3">Số tiền thanh toán: ${order.totalMoney} VND</h4>
+                        <h4 class="text-center mb-3">Số tiền thanh toán: ${order.totalMoney / 2} VND</h4>
                         <h5 class="text-center mb-3" style="color: red">" Mã xe thuê #${order.productId} "</h5>
                         <h6 class="text-center mb-3">Chúng tôi sẽ kiểm tra và thông báo đến bạn khi thanh toán hoàn tất !</h6>
                         <a href="Home" class="btn btn-back" style="float: right"><i class="fas fa-arrow-left mr-2"></i>Trở về trang chủ</a>

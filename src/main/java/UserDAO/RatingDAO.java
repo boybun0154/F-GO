@@ -55,8 +55,9 @@ public class RatingDAO {
                 String startLocation = rs.getString("startLocation");
                 String endLocation = rs.getString("endLocation");
                 int driverId = rs.getInt("driver_id");
+                int statusMoney = rs.getInt("statusMoney");
                 list.add(new Order(orderId, customerID, productId, address, totalMoney, status, timeBegin, timeEnd,
-                        area, startLocation, endLocation, driverId));
+                        area, startLocation, endLocation, driverId, statusMoney));
             }
         } catch (Exception e) {
         }
