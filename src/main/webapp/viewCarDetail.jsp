@@ -23,6 +23,11 @@
                                  alt="Ảnh xe">
                         </div>
                     </div>
+                        <div class="card mt-2">
+                            <img src="https://maps.googleapis.com/maps/api/staticmap?center=15.978597,108.262071&zoom=14&size=370x200&scale=2
+                                &markers=color:red%7Clabel:C%7C15.978597,108.262071
+                                &key=AIzaSyDBIyHQm-psnijne-QnAKam2nh92CXtlfM" alt="ggmaps">
+                        </div>
                     <div class="card mt-2">
                         <h6 class="text-center">Nhận xét và Đánh giá</h6>
                         <div class="d-flex flex-row justify-content-center">
