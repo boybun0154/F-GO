@@ -24,7 +24,7 @@
         <br/>
         <br/>
         <br/>
-        <div class="container">
+        <div class="container" style="display: contents;">
             <h1>${message}</h1>
             <table class="table table-striped table-bordered mydatatable">
                 <thead>
@@ -103,18 +103,18 @@
                                         <button disabled class="btn btn-danger">Report</button></a>
                                     </c:if>
 
-                                <c:if test="${Order.statusMoney == 0}">
+                            <c:if test="${Order.statusMoney == 0}">
                                 <td>
                                     <a data-id="" title="" 
                                        class="btn btn-warning text-light" href="ReportControl?accountID=${accid}&action=paid&&orderID=${Order.orderId}" >
-                                        Thanh toán</a>  
+                                        Pay</a>  
                                 </td>
                             </c:if>
                             <c:if test="${Order.statusMoney == 1}">
                                 <td>
                                     <a data-id="" title="" 
                                        class="btn btn-warning disabled text-light" href="ReportControl?accountID=${accid}&action=paid&&orderID=${Order.orderId}">
-                                        Thanh toán</a>
+                                        Pay</a>
                                 </td>
                             </c:if>
 
