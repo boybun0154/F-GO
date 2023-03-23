@@ -25,7 +25,11 @@ import javax.servlet.http.Part;
  *
  * @author ADMIN
  */
-
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024 * 10,
+        maxFileSize = 1024 * 1024 * 50,
+        maxRequestSize = 1024 * 1024 * 100
+)
 @WebServlet(name = "AddProductControl", urlPatterns = {"/addproduct"})
 public class AddProductControl extends HttpServlet {
     private static final long SerialVersionUID = 1L;

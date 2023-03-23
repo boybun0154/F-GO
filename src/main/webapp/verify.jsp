@@ -26,10 +26,10 @@
                             </div>
                             <p class="signup-card-description">Đăng ký tài khoản F-Go</p>
                             <form action="VerifyCode" method="post">
-                                <p style="color: red">We already send a verification  code to your email.</p>
+                                <p style="color: forestgreen">Mã xác thực đã được gửi đến mail của bạn tại ${email}</p>
                                 <div class="form-group">
                                     <input type="text" name="email" value="${email}" hidden>
-                                    <input type="text" name="inputcode">
+                                    <input type="text" name="inputcode" placeholder="Mã xác thực">
                                 </div>
                                 <p style="color: red">${mess}</p>
                                 <button class="btn btn-block signup-btn mb-4" type="submit">Xác thực</button>

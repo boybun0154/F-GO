@@ -38,7 +38,7 @@ public class VerifyCode extends HttpServlet {
                 request.getRequestDispatcher("signup2.jsp").forward(request,response);
             }else{
                 out.println("Incorrect verification code");
-                String message = "Incorrect verification code";
+                String message = "Mã xác thực không đúng";
                 request.setAttribute("mess", message);
                 request.getRequestDispatcher("verify.jsp").forward(request,response);
             }
