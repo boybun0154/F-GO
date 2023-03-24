@@ -86,10 +86,10 @@
                             </c:if>
                             <c:if test="${sessionScope.acc.role ==3}">
                                 <a href="ReportControl?accountID=${sessionScope.acc.accountID}" class="sub-menu-link">
-                                    <p>view Order</p>
+                                    <p>Xem danh sách Order</p>
                                 </a>
                                 <a href="ReportEditServlet?accountID=${sessionScope.acc.accountID}" class="sub-menu-link">
-                                    <p>view Report</p>
+                                    <p>Xem danh sách Report</p>
                                 </a>
                             </c:if>
                             <a href="changePassword.jsp" class="sub-menu-link">

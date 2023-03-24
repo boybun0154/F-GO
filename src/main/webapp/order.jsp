@@ -90,7 +90,7 @@
                             </div>
                             <div> 
                             <div class="addresss">
-                                <p class="dis fw-bold mb-3">Hình thức thanh toán: Chỉ nhận thanh toán online</p>
+                                <p class="dis fw-bold mb-3">Hình thức thanh toán: Đặt cọc trước 50% tổng số tiền</p>
                                 <!--                                <div class="d-flex align-items-center justify-content-between mb-2">
                                                                     <p class="fw-bold">Tổng cộng</p>
                                                                     <p class="fw-bold"><i class="fas fa-money-check"></i>&nbsp;3200000đ</p>

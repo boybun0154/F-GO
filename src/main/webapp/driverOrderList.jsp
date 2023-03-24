@@ -26,6 +26,11 @@
         <br/>
         <div class="container" style="display: contents;">
             <h1>${message}</h1>
+                        <h1 style="text-align: center">Danh sách Order</h1>
+                        <br/>
+                                                <br/>
+
+
             <table class="table table-striped table-bordered mydatatable">
                 <thead>
                     <tr class="" style="text-align:center">
@@ -34,7 +39,7 @@
                         <th class="col-auto">Số điện thoại</th>
                         <th class="col-auto">Tên xe thuê</th>
                         <th class="col-auto">Địa chỉ nhận xe</th>
-                        <th class="col-auto">Tổng số tiền</th>
+                        <th class="col-auto">Số tiền còn lại</th>
                         <th class="col-auto">Trạng thái</th>
                         <th class="col-auto">Ngày nhận</th>
                         <th class="col-auto">Ngày hẹn trả</th>
@@ -68,7 +73,7 @@
                                 </c:if>
                             </c:forEach>
                             <td>${Order.address}</td>
-                            <td>${Order.totalMoney}</td>       
+                            <td>${Order.totalMoney / 2}</td>       
                             <c:if test="${Order.status == 0}">
                                 <td>Đã trả xe</td>
                             </c:if>
