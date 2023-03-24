@@ -49,7 +49,7 @@ public class SignupControl extends HttpServlet {
         if(!pass.equals(repass)){
                 String mess = "Nhập lại mật khẩu không chính xác";
                 request.setAttribute("mess", mess);
-                request.getRequestDispatcher("signup.jsp").forward(request, response);
+                request.getRequestDispatcher("signup2.jsp").forward(request, response);
         } else {
             String md5_pass = DigestUtils.md5Hex(pass).toUpperCase();
             SignupDAO signupdao = new SignupDAO();
@@ -65,7 +65,7 @@ public class SignupControl extends HttpServlet {
 
             }else {
                 request.setAttribute("messS", "Tên tài khoản đã tồn tại");
-                request.getRequestDispatcher("signup.jsp").forward(request, response);
+                request.getRequestDispatcher("signup2.jsp").forward(request, response);
             }
         }
 

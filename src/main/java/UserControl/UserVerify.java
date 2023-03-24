@@ -22,10 +22,7 @@ public class UserVerify extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             //fetch params value
-            String id = request.getParameter("cusid");
-            CustomerDAO cdao = new CustomerDAO();
-
-            Customer c = cdao.getCustomerByID(id);
+            String email = request.getParameter("email");
 
             //create instance object of the SendEmail Class
             Mail service = new Mail();
@@ -33,13 +30,14 @@ public class UserVerify extends HttpServlet {
             String code = service.getRandom();
 
             //call the send email method
-            boolean test = service.sendAuth(c,code);
+            boolean test = service.sendAuth(email,code);
 
             //check if the email send successfully
             if(test){
                 HttpSession session  = request.getSession();
                 session.setAttribute("authcode", code);
-                request.setAttribute("detail", c);
+//                request.setAttribute("detail", c);
+                request.setAttribute("email", email);
                 request.getRequestDispatcher("verify.jsp").forward(request,response);
             }else{
                 out.println("Failed to send verification email");

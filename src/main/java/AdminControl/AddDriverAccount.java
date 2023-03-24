@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,11 @@ import entity.Driver;
  *
  * @author LENOVO
  */
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024 * 10,
+        maxFileSize = 1024 * 1024 * 50,
+        maxRequestSize = 1024 * 1024 * 100
+)
 @WebServlet(name = "AddDriverAccount", urlPatterns = { "/AddDriverAccount" })
 public class AddDriverAccount extends HttpServlet {
 

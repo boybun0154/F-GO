@@ -45,9 +45,7 @@
                 </div>
                 <div class="row user-info mb-3">
                     <div class="padding-left-25 text-bold col-6">Email:</div>
-                    <div class="col-6">${detail.email}
-                        <a href="UserVerify?cusid=${detail.customerId}" class="btn btn-primary ml-1">Verify</a>
-                    </div>
+                    <div class="col-6">${detail.email}</div>
                 </div>
                 <div class="row user-info mb-3">
                     <div class="padding-left-25 text-bold col-6">Trạng thái tài khoản:</div>

@@ -116,7 +116,7 @@ public class Mail {
             throw new RuntimeException(exc);
         }
     }
-    public boolean sendAuth(Customer customer,String code) {
+    public boolean sendAuth(String email,String code) {
             boolean test = false;
             // Set Properties
             Properties props = new Properties();

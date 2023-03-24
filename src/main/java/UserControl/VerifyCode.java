@@ -21,20 +21,26 @@ public class VerifyCode extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            Account a = (Account) session.getAttribute("acc");
-            int accid = a.getAccountID();
-
-            CustomerDAO cdao = new CustomerDAO();
-            Customer c = cdao.getCustomerByAccIDInt(accid);
+//            Account a = (Account) session.getAttribute("acc");
+//            int accid = a.getAccountID();
+//
+//            CustomerDAO cdao = new CustomerDAO();
+//            Customer c = cdao.getCustomerByAccIDInt(accid);
 
             String authcode = (String) session.getAttribute("authcode");
 
             String code = request.getParameter("inputcode");
+            String email = request.getParameter("email");
 
             if(code.equals(authcode)){
                 out.println("Verification Done");
+                request.setAttribute("email", email);
+                request.getRequestDispatcher("signup2.jsp").forward(request,response);
             }else{
                 out.println("Incorrect verification code");
+                String message = "Mã xác thực không đúng";
+                request.setAttribute("mess", message);
+                request.getRequestDispatcher("verify.jsp").forward(request,response);
             }
 
         }

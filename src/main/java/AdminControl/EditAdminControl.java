@@ -23,7 +23,11 @@ import javax.servlet.http.Part;
  *
  * @author ADMIN
  */
-
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024 * 10,
+        maxFileSize = 1024 * 1024 * 50,
+        maxRequestSize = 1024 * 1024 * 100
+)
 @WebServlet(name = "EditAdminControl", urlPatterns = {"/edit_admin"})
 public class EditAdminControl extends HttpServlet {
     private static final long SerialVersionUID = 1L;

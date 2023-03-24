@@ -27,13 +27,38 @@
                                     <img src="IMG/logo.png" alt="logo" class="logo">
                                 </div>
                                 <p class="signup-card-description">Đăng ký tài khoản F-Go</p>
-                                <form action="UserVerify" method="post">
+                                <form action="signup" method="post">
                                     <p style="color: red">${mess}</p>
                                     <p style="color: red">${messS}</p>
                                     <div class="form-group">
+                                        <label for="user" class="sr-only">Tài khoản</label>
+                                        <input type="text" name="user" id="user"  class="form-control"
+                                               placeholder="Tài khoản" required>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="password" class="sr-only">Mật Khẩu</label>
+                                        <input type="password" name="pass" id="password" class="form-control"
+                                               placeholder="Mật khẩu" required>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="repassword" class="sr-only">Nhập Lại Mật Khẩu</label>
+                                        <input type="password" name="repass" id="repassword" class="form-control"
+                                               placeholder="Nhập lại mật khẩu" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name" class="sr-only">Ho va ten</label>
+                                        <input type="text" name="name" id="name"  class="form-control"
+                                               placeholder="Ho va ten" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone" class="sr-only">So dien thoai</label>
+                                        <input type="text" name="phone" id="phone"  class="form-control"
+                                               placeholder="So dien thoai" required>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="email" class="sr-only">Email</label>
                                         <input type="text" name="email" id="email"  class="form-control"
-                                               placeholder="Email" required>
+                                               value=${email} readonly>
                                     </div>
                                     <button class="btn btn-block signup-btn mb-4" type="submit">Đăng kí</button>
                                 </form>
