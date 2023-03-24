@@ -4,7 +4,9 @@
  */
 package UserControl;
 
+import DAO.AccountDAO;
 import DAO.CustomerDAO;
+import entity.Account;
 import entity.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,18 +17,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import org.bouncycastle.asn1.x509.qualified.QCStatement;
 
 /**
  *
  * @author ADMIN
  */
-@MultipartConfig(
-        fileSizeThreshold = 1024 * 1024 * 10,
-        maxFileSize = 1024 * 1024 * 50,
-        maxRequestSize = 1024 * 1024 * 100
-)
-@WebServlet(name = "EditCustomerControl", urlPatterns = {"/edit_customer"})
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 10, maxFileSize = 1024 * 1024 * 50, maxRequestSize = 1024 * 1024
+        * 100)
+@WebServlet(name = "EditCustomerControl", urlPatterns = { "/edit_customer" })
 public class EditCustomerControl extends HttpServlet {
 
     private static final long SerialVersionUID = 1L;
@@ -35,10 +37,10 @@ public class EditCustomerControl extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -52,39 +54,28 @@ public class EditCustomerControl extends HttpServlet {
         String cfaceImg = request.getParameter("faceLink");
         String cnationalId = request.getParameter("idLink");
         String cdrivinglicense = request.getParameter("licenseLink");
-//        Part partImg = request.getPart("nationalId");
-//        String cnationalId = getFileName(partImg);
-//        Part partImg2 = request.getPart("drivinglicense");
-//        String cdrivinglicense = getFileName(partImg2);
-//        Part partImg3 = request.getPart("faceImg");
-//        String cfaceImg = getFileName(partImg3);
-//        try {
-//            Part partUpload = request.getPart("nationalId");
-//            partUpload.write(getFileName(partUpload));
-//        } catch (Exception e) {
-//        }
-//        try {
-//            Part partUpload = request.getPart("drivinglicense");
-//            partUpload.write(getFileName(partUpload));
-//        } catch (Exception e) {
-//        }
-//        try {
-//            Part partUpload = request.getPart("faceImg");
-//            partUpload.write(getFileName(partUpload));
-//        } catch (Exception e) {
-//        }
-
+        HttpSession session = request.getSession();
+        String accid = (String) session.getAttribute("accountID");
         CustomerDAO cdao = new CustomerDAO();
+        AccountDAO adao = new AccountDAO();
+        int caccountId = Integer.parseInt(accid);
         Customer c = cdao.getCustomerByID(cid);
+        if (c != null) {
+            caccountId = c.getAccountId();
+        } else {
+            // create new customer
+            Account acc = adao.getAccountById(accid);
+            cdao.addCustomer(cname, cphone, acc.getAccount(), cnationalId, cdrivinglicense, accid, "0", cfaceImg);
+            caccountId = Integer.parseInt(accid);
+        }
 
-        int caccountId = c.getAccountId();
-
-        System.out.println(cname + " " + cphone + " " + cemail + " " + cnationalId + " " + cdrivinglicense + " " + cid + " " + cfaceImg);
+        System.out.println(cname + " " + cphone + " " + cemail + " " + cnationalId + " " + cdrivinglicense + " " + cid
+                + " " + cfaceImg);
 
         cdao.editCustomer(cname, cphone, cemail, cnationalId, cdrivinglicense, 0, cfaceImg, cid);
-//          response.sendRedirect("viewprofile?accountID=" + caccountId);
+        // response.sendRedirect("viewprofile?accountID=" + caccountId);
         String url = "viewprofile?accountID=" + caccountId;
-        out.println("<meta http-equiv='refresh' content='3;URL=" + url + "'>");//redirects after 3 seconds
+        out.println("<meta http-equiv='refresh' content='3;URL=" + url + "'>");// redirects after 3 seconds
         out.println("<div style=\"width: 100vw; height: 100vh;\">\n"
                 + "<div class=\"success-msg\" style=\"color: #270;background-color: #DFF2BF;margin: 10px 0;padding: 10px;border-radius: 3px 3px 3px 3px; width: 640px; margin:0 auto;\">\n"
                 + "  <img src=\"https://cdn-icons-png.flaticon.com/512/5290/5290058.png\" style=\"width: 16px;\">\n"
@@ -93,14 +84,15 @@ public class EditCustomerControl extends HttpServlet {
                 + "</div>");
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -114,16 +106,16 @@ public class EditCustomerControl extends HttpServlet {
         processRequest(request, response);
     }
 
-//    private String getFileName(Part part) {
-//        final String partHeader = part.getHeader("content-disposition");
-//        System.out.println("*****partHeader :" + partHeader);
-//        for (String content : part.getHeader("content-disposition").split(";")) {
-//            if (content.trim().startsWith("filename")) {
-//                return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
-//            }
-//        }
-//        return null;
-//    }
+    // private String getFileName(Part part) {
+    // final String partHeader = part.getHeader("content-disposition");
+    // System.out.println("*****partHeader :" + partHeader);
+    // for (String content : part.getHeader("content-disposition").split(";")) {
+    // if (content.trim().startsWith("filename")) {
+    // return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
+    // }
+    // }
+    // return null;
+    // }
 
     @Override
     public String getServletInfo() {
