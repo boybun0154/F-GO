@@ -1,5 +1,7 @@
 package Controllers.Authentication.Login;
 
+import Service.Mail;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
@@ -31,52 +33,26 @@ public class ForgotPassword extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String email = request.getParameter("email");
-        RequestDispatcher dispatcher = null;
-        int otpvalue = 0;
-        HttpSession mySession = request.getSession();
+        try (PrintWriter out = response.getWriter()) {
+            if (email != null || !email.equals("")) {
+                //create instance object of the SendEmail Class
+                Mail service = new Mail();
+                //get the 6-digit code
+                String code = service.getRandom();
 
-        if (email != null || !email.equals("")) {
-            // sending otp
-            Random rand = new Random();
-            otpvalue = rand.nextInt(1255650);
-
-            String to = email;// change accordingly
-            // Get the session object
-            Properties props = new Properties();
-            props.put("mail.smtp.host", "smtp.gmail.com");
-            props.put("mail.smtp.socketFactory.port", "465");
-            props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.port", "465");
-            Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("fgofpt2022@gmail.com", "plcgmwphufkmxfxy");// Put your email
-                    // id and
-                    // password here
+                boolean test = service.sendOtp(email, code);
+                //check if the email send successfully
+                if(test){
+                    request.setAttribute("message", "Mã OTP đã được gửi vào địa chỉ email của bạn! \nNếu không nhận được mã OTP, vui lòng kiểm tra lại địa chỉ Email của bạn.");
+                    //request.setAttribute("connection", con);
+                    HttpSession mySession = request.getSession();
+                    mySession.setAttribute("otp", code);
+                    mySession.setAttribute("email", email);
+                    request.getRequestDispatcher("EnterOtp.jsp").forward(request, response);
+                }else{
+                    out.println("Failed to send verification email");
                 }
-            });
-            // compose message
-            try {
-                MimeMessage message = new MimeMessage(session);
-                message.setFrom(new InternetAddress(email));// change accordingly
-                message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-                message.setSubject("F-Go xin chào!");
-                message.setText("Mã OTP: " + otpvalue);
-                // send message
-                Transport.send(message);
-                System.out.println("message sent successfully");
-            } catch (MessagingException e) {
-                throw new RuntimeException(e);
             }
-            dispatcher = request.getRequestDispatcher("EnterOtp.jsp");
-            request.setAttribute("message", "Mã OTP đã được gửi vào địa chỉ email của bạn! \nNếu không nhận được mã OTP, vui lòng kiểm tra lại địa chỉ Email của bạn.");
-            //request.setAttribute("connection", con);
-            mySession.setAttribute("otp", otpvalue);
-            mySession.setAttribute("email", email);
-            dispatcher.forward(request, response);
-            //request.setAttribute("status", "success");
         }
-
     }
-
 }

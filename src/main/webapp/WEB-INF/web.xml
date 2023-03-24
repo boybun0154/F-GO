@@ -78,9 +78,6 @@
         <url-pattern>/Rating</url-pattern>
         <url-pattern>/wishlist</url-pattern>
         <url-pattern>/add_to_wishlist</url-pattern>
-        <url-pattern>/EnterOtp.jsp</url-pattern>
-        <url-pattern>/forgotPassword.jsp</url-pattern>
-        <url-pattern>/newPassword.jsp</url-pattern>
         <url-pattern>/blacklist.jsp</url-pattern>
         <url-pattern>/Blacklist</url-pattern>
         <url-pattern>/viewReport.jsp</url-pattern>

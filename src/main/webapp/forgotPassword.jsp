@@ -6,9 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Quên mật khẩu</title>
-        <link
-            href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'
-            rel='stylesheet'>
+        <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet'>
         <link href='' rel='stylesheet'>
         <script type='text/javascript'
         src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
@@ -92,7 +90,7 @@
                         </div>
                         <div class="card-footer">
                             <button class="btn btn-main" type="submit">Khôi phục mật khẩu</button>
-                            <button class="btn ml-3" type="submit">Trở về</button>
+                            <a class="btn btn-secondary ml-3" role="button" href="login.jsp">Trở về</a>
                         </div>
                     </form>
                 </div>

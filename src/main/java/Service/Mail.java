@@ -174,4 +174,55 @@ public class Mail {
         int number = rnd.nextInt(999999);
         return String.format("%06d", number);
     }
+    public boolean sendOtp(String email,String code) {
+        boolean test = false;
+        // Set Properties
+        Properties props = new Properties();
+
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", port);
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", debug);
+        props.put("mail.smtp.socketFactory.port", port);
+        // props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.socketFactory.fallback", "false");
+        props.put("mail.smtp.ssl.trust", host);
+        props.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
+
+        // Create the Session Object
+        Session session = Session.getDefaultInstance(
+                props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        try {
+
+            MimeMessage message = new MimeMessage(session);
+
+            // From
+            message.setFrom(new InternetAddress(senderEmail));
+
+            // Reply To
+            message.setReplyTo(InternetAddress.parse(senderEmail));
+
+            // Recipient
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+
+            // Subject
+            message.setSubject("F-GO send OTP");
+            String content = "Mã OTP: " + code;
+            // Content
+            message.setContent(content, "text/html; charset=utf-8");
+            System.out.println("Sending email...");
+            Transport.send(message);
+            test=true;
+        } catch (MessagingException exc) {
+            throw new RuntimeException(exc);
+        }
+        return test;
+    }
 }
