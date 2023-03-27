@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.AddFeeDAO;
+import DAO.DriverDAO;
 import DAO.OrderDAO;
 import DAO.ReportDAO;
 import Service.Mail;
@@ -70,6 +71,8 @@ public class EmailServlet extends HttpServlet {
         OrderDAO orderDAO = new OrderDAO();
         String mail = orderDAO.getCustomerMail(orderID);
         String customerName = orderDAO.getCustomerName(orderID);
+        DriverDAO driverDAO = new DriverDAO();
+        String driverName = driverDAO.getDriverName(orderID);
         ReportDAO reportDAO = new ReportDAO();
         Report report = reportDAO.getReportById(reportID);
         AddFeeDAO addFeeDAO = new AddFeeDAO();
@@ -82,7 +85,7 @@ public class EmailServlet extends HttpServlet {
         Mail service = new Mail();
         if (report != null || additionFee != null) {
 
-            service.sendMail(mail, orderID, report, additionFee, customerName);
+            service.sendMail(mail, orderID, report, additionFee, customerName, driverName);
             request.getRequestDispatcher("viewReport.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("viewReport.jsp").forward(request, response);
