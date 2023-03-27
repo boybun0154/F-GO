@@ -39,7 +39,7 @@
                                     <div class="form-group mb-3">
                                         <label for="phone">Số điện thoại
                                         </label>
-                                        <input id="phone" name="phone" type="text" class="form-control validate" value="${edit.phone}" required />
+                                        <input id="phone" name="phone" type="number" class="form-control validate" value="${edit.phone}" required />
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="email">Email

@@ -234,7 +234,7 @@
                     <form action="search" method="post" class="searchForm col-sm-6">
                         <input oninput="searchByName(this)" name="txt" type="text" id="searchBar" placeholder="Nhập tên xe bạn muốn tìm kiếm">
                     </form>
-                    <div class="col-2"><a href="advanceFilter.jsp" class="btn btn-warning">Advance search<i class="fa fa-search"></i></a></div>
+                    <div class="col-2"><a href="advanceFilter.jsp" class="btn btn-warning text-white">Advanced <i class="fa fa-search"></i></a></div>
                 </div>
 
                 <div id="content" class="row">
