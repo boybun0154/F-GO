@@ -83,9 +83,9 @@ public class EmailServlet extends HttpServlet {
         if (report != null || additionFee != null) {
 
             service.sendMail(mail, orderID, report, additionFee, customerName);
-            request.getRequestDispatcher("viewReport.jsp").forward(request, response);
+            request.getRequestDispatcher("/ReportEditServlet").forward(request, response);
         } else {
-            request.getRequestDispatcher("viewReport.jsp").forward(request, response);
+            request.getRequestDispatcher("/ReportEditServlet").forward(request, response);
         }
 
     }

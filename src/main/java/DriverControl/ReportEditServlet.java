@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.AddFeeDAO;
 import DAO.DriverDAO;
@@ -67,7 +68,13 @@ public class ReportEditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int accid = Integer.parseInt(request.getParameter("accountID"));
+        int accid;
+        if (request.getParameter("accountID") != null) {
+            accid = Integer.parseInt(request.getParameter("accountID"));
+        } else {
+            HttpSession session = request.getSession();
+            accid = (int) session.getAttribute("accountID");
+        }
         String action = request.getParameter("action");
         DriverDAO dao = new DriverDAO();
         int driver_id = dao.getDriverId(accid);
@@ -91,6 +98,8 @@ public class ReportEditServlet extends HttpServlet {
                     e.printStackTrace();
                 }
             }
+        HttpSession session = request.getSession();
+        session.setAttribute("accountID", accid);
         request.setAttribute("accid", accid);
         request.setAttribute("reports", reports);
         request.setAttribute("feeList", fees);
