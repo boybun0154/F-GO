@@ -68,12 +68,13 @@ public class Product {
     }
 
     // Product for filter
-    public Product(int productID, String productName, String productTitle, int productStatus,
+    public Product(int productID, String productName, String productTitle, String productImg, int productStatus,
             int categoryID, String seat, String gear, String color, String licensePlate, String fuel,
             String yearRelease, int price, String timeEnd) {
         this.productID = productID;
         this.productName = productName;
         this.productTitle = productTitle;
+        this.productImg = productImg;
         this.productStatus = productStatus;
         this.categoryID = categoryID;
         this.seat = seat;

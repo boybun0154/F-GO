@@ -342,6 +342,7 @@ public class ProductDAO {
                 int productID = rs.getInt("productID");
                 String productName = rs.getString("productName");
                 String productTitle = rs.getString("productTitle");
+                String productImg = rs.getString("productImg");
                 int productStatus = rs.getInt("productStatus");
                 int categoryID = rs.getInt("categoryID");
                 String seat = rs.getString("seat");
@@ -352,7 +353,8 @@ public class ProductDAO {
                 String yearRelease = rs.getString("yearRelease");
                 int price = rs.getInt("productPrice");
                 String timeEnd = rs.getString("timeEnd");
-                list.add(new Product(productID, productName, productTitle, productStatus, categoryID, seat, gear, color,
+                list.add(new Product(productID, productName, productTitle, productImg, productStatus, categoryID, seat,
+                        gear, color,
                         licensePlate, fuel, yearRelease, price, timeEnd));
             }
         } catch (Exception e) {

@@ -166,65 +166,13 @@
 				<div class="product-container">
 					<div class="container overflow-auto" style="height: 600px">
 						<div id="content" class="row">
-							<c:forEach items="${listP}" var="o">
-								<div class="product col-sm-6">
-									<a href="view_car_detail?pid=${o.productID}">
-										<div class="product-card">
-											<div class="card-thumbnail">
-												<img class="img-responsive" src="${o.productImg}">
-											</div>
-											<div class="card-content">
-												<div class="order-btn">
-													<a class="order-btn-text" href="view_car_detail?pid=${o.productID}"><i
-															class="fa fa-eye" aria-hidden="true"></i></a>
-												</div>
-												<h1 class="card-title">
-														${o.productName}
-												</h1>
-												<h2 class="card-sub-title">
-														${o.yearRelease}
-												</h2>
-												<div class="description">
-													<ul>
-														<li>
-															<i class="fa fa-th hidden-xs hidden-sm"></i>
-															<span>
-                                                        <span class="attri">${o.licensePlate}</span> </span>
-														</li>
-														<li>
-															<i class="fa fa-users hidden-xs hidden-sm"></i>
-															<span>
-                                                        <span class="attri">${o.seat}</span> </span>
-														</li>
-														<li>
-															<i class="fa fa-cogs hidden-xs hidden-sm"></i>
-															<span>
-                                                        <span class="attri">${o.gear}</span> </span>
-														</li>
-													</ul>
-												</div>
-												<div class="price">
-													<div class="price-text">${o.price} đ</div>
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</c:forEach>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 	</div>
-<%--		<div class="row">--%>
-<%--			<h3>Return Object List in Ajax</h3>--%>
-<%--			<form>--%>
-<%--				<input type="button" value="Dislay" id="buttonDisplay">--%>
-<%--				<br>--%>
-<%--				<span id="result"></span>--%>
-<%--			</form>--%>
-<%--		</div>--%>
-	</div>
+
 	<jsp:include page="footer.jsp"></jsp:include>
 	<script src="https://code.jquery.com/jquery-3.2.1.js"
 			integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
@@ -236,27 +184,84 @@
 			crossorigin="anonymous"></script>
 	<script>
 	$(document).ready(function() {
-		$('#buttonDisplay').click(function() {
-			$.ajax({
-				type : 'GET',
-				headers : {
-					Accept : "application/json; charset=utf-8",
-					"Content-Type" : "application/json; charset=utf-8"
-				},
-				url : '${pageContext.request.contextPath }/ajax',
-				success : function(result) {
-					var products = $.parseJSON(result);
-					var s = '';
-					for(var i = 0; i < products.length; i++) {
-						//print list
-						s += products[i].productID + ' ' + products[i].productName +'<br>'
+		$.ajax({
+			type : 'GET',
+			headers : {
+				Accept : "application/json; charset=utf-8",
+				"Content-Type" : "application/json; charset=utf-8"
+			},
+			url : '${pageContext.request.contextPath }/ajax',
+			success : function(result) {
+				var products = $.parseJSON(result);
+				var s = '';
+				for(var i = 0; i < products.length; i++) {
+					//print list
+					s += "<div class=\"product col-sm-6\">\n" +
+							"    <a href=\"view_car_detail?pid="+ products[i].productID +"\">\n" +
+							"        <div class=\"product-card\">\n" +
+							"            <div class=\"card-thumbnail\">\n" +
+							"                <img class=\"img-responsive\" style=\"height:250px\" src=\""+ products[i].productImg +"\">\n" +
+							"            </div>\n" +
+							"            <div class=\"card-content\">\n" +
+							"                <div class=\"order-btn\">\n" +
+							"                    <a class=\"order-btn-text\" href=\"view_car_detail?pid="+ products[i].productID +"\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i></a>\n" +
+							"                </div>\n" +
+							"                <h1 class=\"card-title\">\n" + products[i].productName +
+							"\n" +
+							"                </h1>\n" +
+							"                <h2 class=\"card-sub-title\">\n" +
+							"                    "+ products[i].yearRelease +"\n" +
+							"                </h2>\n" +
+							"                <div class=\"description\">\n" +
+							"                    <ul>\n" +
+							"                        <li>\n" +
+							"                            <i class=\"fa fa-th hidden-xs hidden-sm\"></i>\n" +
+							"                            <span>\n" +
+							"                                <span class=\"attri\">"+ products[i].licensePlate +"</span> \n" +
+							"                            </span>\n" +
+							"                        </li>\n" +
+							"                        <li>\n" +
+							"                            <i class=\"fa fa-users hidden-xs hidden-sm\"></i>\n" +
+							"                            <span>\n" +
+							"                                <span class=\"attri\">"+ products[i].seat +"</span> \n" +
+							"                            </span>\n" +
+							"                        </li>\n" +
+							"                        <li>\n" +
+							"                            <i class=\"fa fa-cogs hidden-xs hidden-sm\"></i>\n" +
+							"                            <span>\n" +
+							"                                <span class=\"attri\">"+ products[i].gear +"</span> \n" +
+							"                            </span>\n" +
+							"                        </li>\n" +
+							"                    </ul>\n" +
+							"                </div>\n" +
+							"                <div class=\"price\">\n" +
+							"                    <div class=\"price-text\">"+ products[i].price +"đ</div>\n" +
+							"                </div>\n" +
+							"            </div>\n" +
+							"        </div>\n" +
+							"    </a>\n" +
+							"</div>";
 
-					}
-					$('#result').html(s);
 				}
-			});
-		});
+				$('#content').html(s);
+			}
+		});	
 	});
+
+	function filter(){
+		var sortingSelect = document.getElementById("sorting-select").value;
+        var priceRange= document.getElementById("price-range").value;
+        var vehicleType= document.querySelector('.checkBoxType:checked');
+        if(vehicleType != null){
+        var vehicleTypeValue= document.querySelector('.checkBoxType:checked').value;
+        }
+        var carBrand= document.getElementById("car-brand").value;
+        var transmissionType= document.getElementById("transmission-type").value;
+        var seats= document.getElementById("seats").value;
+        var fuel= document.getElementById("fuel").value;
+        var year= document.getElementById("year").value;
+		//TODO: add more filter
+	}
 </script>
 
 </body>
