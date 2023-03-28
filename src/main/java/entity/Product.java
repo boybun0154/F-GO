@@ -23,6 +23,9 @@ public class Product {
 
     private float rating;
     private int cmt;
+
+    private String timeEnd;
+
     public Product() {
     }
 
@@ -44,9 +47,10 @@ public class Product {
         this.price = price;
 
     }
+
     public Product(int productID, String productName, String productTitle, String productImg, int productStatus,
-                   int categoryID, String seat, String gear, String color, String licensePlate, String fuel,
-                   String yearRelease, int price,int exCharge) {
+            int categoryID, String seat, String gear, String color, String licensePlate, String fuel,
+            String yearRelease, int price, int exCharge) {
         this.productID = productID;
         this.productName = productName;
         this.productTitle = productTitle;
@@ -60,7 +64,27 @@ public class Product {
         this.fuel = fuel;
         this.yearRelease = yearRelease;
         this.price = price;
-        this.exCharge=exCharge;
+        this.exCharge = exCharge;
+    }
+
+    // Product for filter
+    public Product(int productID, String productName, String productTitle, String productImg, int productStatus,
+            int categoryID, String seat, String gear, String color, String licensePlate, String fuel,
+            String yearRelease, int price, String timeEnd) {
+        this.productID = productID;
+        this.productName = productName;
+        this.productTitle = productTitle;
+        this.productImg = productImg;
+        this.productStatus = productStatus;
+        this.categoryID = categoryID;
+        this.seat = seat;
+        this.gear = gear;
+        this.color = color;
+        this.licensePlate = licensePlate;
+        this.fuel = fuel;
+        this.yearRelease = yearRelease;
+        this.price = price;
+        this.timeEnd = timeEnd;
     }
 
     public int getCmt() {
@@ -235,6 +259,14 @@ public class Product {
                 + ", productImg=" + productImg + ", price=" + price + ", productStatus=" + productStatus + ", seat="
                 + seat + ", gear=" + gear + ", color=" + color + ", licensePlate=" + licensePlate + ", fuel=" + fuel
                 + ", yearRelease=" + yearRelease + '}';
+    }
+
+    public String getTimeEnd() {
+        return timeEnd;
+    }
+
+    public void setTimeEnd(String timeEnd) {
+        this.timeEnd = timeEnd;
     }
 
 }

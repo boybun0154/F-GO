@@ -29,6 +29,12 @@ public class NewPassword extends HttpServlet {
         String email = (String) session.getAttribute("email");
         AccountDAO adao = new AccountDAO();
         Account a = adao.getAccountByEmail(email);
+        System.out.println(a);
+        if (a == null) {
+            String mess = "Tài khoản không tồn tại!";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("newPassword.jsp").forward(request, response);
+        }
         String newPassword = request.getParameter("password");
         String confPassword = request.getParameter("confPassword");
 

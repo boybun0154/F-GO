@@ -62,7 +62,7 @@
                             </div>
                             <div class="pt-3 pb-3">
                                 <form class="form-horizontal" action="newPassword" method="POST">
-                                    <p style="color: red">${requestScope.mess}</p>
+                                    <p class="row justify-content-center" style="color: red">${requestScope.mess}</p>
                                     <!-- User Name Input -->
                                     <div class="form-group row justify-content-center px-3">
                                         <div class="col-9 px-0">
@@ -79,11 +79,17 @@
                                         </div>
                                     </div>
 
-                                    <!-- Log in Button -->
+                                    <!-- Confirm Button -->
                                     <div class="form-group row justify-content-center">
                                         <div class="col-3 px-3 mt-3">
                                             <input type="submit" value="Xác nhận"
                                                    class="btn btn-block btn-main">
+                                        </div>
+                                    </div>
+                                    <!-- Return Button -->
+                                    <div class="form-group row justify-content-center">
+                                        <div class="col-3 px-3">
+                                            <a href="login.jsp" class="btn btn-block btn-secondary">Quay lại</a>
                                         </div>
                                     </div>
                                 </form>

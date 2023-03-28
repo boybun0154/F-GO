@@ -10,23 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Bin
- */
 @WebServlet(name = "ValidateOtp", urlPatterns = {"/ValidateOtp"})
 public class ValidateOtp extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int value = Integer.parseInt(request.getParameter("otp"));
+        String value = request.getParameter("otp");
         HttpSession session = request.getSession();
-        int otp = (int) session.getAttribute("otp");
+        String otp = (String) session.getAttribute("otp");
 
         RequestDispatcher dispatcher = null;
 
-        if (value == otp) {
+        if (value.equals(otp)) {
 
             request.setAttribute("email", request.getParameter("email"));
             request.setAttribute("status", "success");

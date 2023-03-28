@@ -330,4 +330,35 @@ public class ProductDAO {
         }
         return list;
     }
+
+    public List<Product> getProductFList() {
+        List<Product> list = new ArrayList<Product>();
+        String query = "select distinct * from VEHICLE left join [ORDER] on [VEHICLE].productID= [ORDER].productID";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int productID = rs.getInt("productID");
+                String productName = rs.getString("productName");
+                String productTitle = rs.getString("productTitle");
+                String productImg = rs.getString("productImg");
+                int productStatus = rs.getInt("productStatus");
+                int categoryID = rs.getInt("categoryID");
+                String seat = rs.getString("seat");
+                String gear = rs.getString("gear");
+                String color = rs.getString("color");
+                String licensePlate = rs.getString("licensePlate");
+                String fuel = rs.getString("fuel");
+                String yearRelease = rs.getString("yearRelease");
+                int price = rs.getInt("productPrice");
+                String timeEnd = rs.getString("timeEnd");
+                list.add(new Product(productID, productName, productTitle, productImg, productStatus, categoryID, seat,
+                        gear, color,
+                        licensePlate, fuel, yearRelease, price, timeEnd));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
 }

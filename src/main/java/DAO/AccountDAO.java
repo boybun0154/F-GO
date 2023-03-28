@@ -212,4 +212,21 @@ public class AccountDAO {
         return null;
     }
 
+    public Account getAccountById(String id) {
+        String sql = "Select * from ACCOUNT where accountID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Account(rs.getInt(1),
+                        rs.getString(2), rs.getString(3), rs.getString(4));
+            }
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
 }

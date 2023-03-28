@@ -9,6 +9,7 @@
         <title>Verify Page</title>
         <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="./CSS/signupStyle.css">
     </head>
     <body>
@@ -25,13 +26,16 @@
                                 <img src="IMG/logo.png" alt="logo" class="logo">
                             </div>
                             <p class="signup-card-description">Đăng ký tài khoản F-Go</p>
-                            <form action="VerifyCode" method="post">
+                            <form action="VerifyCode" method="post" autocomplete="off">
                                 <p style="color: forestgreen">Mã xác thực đã được gửi đến mail của bạn tại ${email}</p>
                                 <div class="form-group">
                                     <input type="text" name="email" value="${email}" hidden>
-                                    <input type="text" name="inputcode" placeholder="Mã xác thực">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope fa-2x mx-4"></i></span>
+                                        <input type="text" name="inputcode" placeholder="Mã xác thực">
+                                    </div>
                                 </div>
-                                <p style="color: red">${mess}</p>
+                                <small style="color: red">${mess}</small>
                                 <button class="btn btn-block signup-btn mb-4" type="submit">Xác thực</button>
                             </form>
 

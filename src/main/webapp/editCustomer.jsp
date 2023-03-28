@@ -26,7 +26,7 @@
                             <div class="row tm-edit-product-row">
                                 <div class="col-xl-6 col-lg-6 col-md-12">
                                     <div class="form-group">
-                                        <input name="id" type="hidden" class="form-control validate" value="${edit.customerId}" required  />
+                                        <input name="id" type="hidden" class="form-control validate" value="${edit.customerId}"/>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="name">Họ và tên
@@ -39,7 +39,7 @@
                                     <div class="form-group mb-3">
                                         <label for="phone">Số điện thoại
                                         </label>
-                                        <input id="phone" name="phone" type="text" class="form-control validate" value="${edit.phone}" required />
+                                        <input id="phone" name="phone" type="number" class="form-control validate" value="${edit.phone}" required />
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="email">Email

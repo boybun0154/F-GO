@@ -32,9 +32,9 @@ public class GoogleLoginServlet extends HttpServlet {
         if (a == null) {
             logdao.addEmailToAccount(account, role);
             Account ggaccount = logdao.getAccountByEmail(account);
-            
+
             logdao.addEmailToCustomer(account, ggaccount.getAccountID());
-                    
+
             HttpSession session = request.getSession();
             session.setAttribute("acc", ggaccount);
             session.setMaxInactiveInterval(900);
@@ -48,14 +48,15 @@ public class GoogleLoginServlet extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -66,10 +67,10 @@ public class GoogleLoginServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
