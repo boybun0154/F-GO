@@ -72,6 +72,7 @@ public class ReportControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         String accid = request.getParameter("accountID");
         int id = Integer.parseInt(accid);
         DriverDAO dao = new DriverDAO();
@@ -113,7 +114,11 @@ public class ReportControl extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 request.setAttribute("listC", listc);
                 request.setAttribute("listP", listp);
                 request.setAttribute("accid", accid);
@@ -133,6 +138,7 @@ public class ReportControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         String orderId = request.getParameter("orderid");
         String dmgPercent = request.getParameter("damagePercent");
         String title = request.getParameter("title");

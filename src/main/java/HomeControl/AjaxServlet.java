@@ -27,11 +27,13 @@ public class AjaxServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setCharacterEncoding("UTF-8");
         Gson gson = new Gson();
         ProductDAO pDao = new ProductDAO();
         List<Product> products = pDao.getProductFList();
         PrintWriter out = response.getWriter();
         out.print(gson.toJson(products));
+        System.out.println(gson.toJson(products));
         out.flush();
         out.close();
     }
