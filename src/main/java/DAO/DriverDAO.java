@@ -3,6 +3,7 @@ package DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -172,5 +173,20 @@ public class DriverDAO {
 
         }
         return -1;
+    }
+    public String getDriverName(int orderID){
+        try {
+            Connection conn = new DBContext().getConnection();
+            String sql = "select * from DRIVER where driverID = (select driver_id from [ORDER] where orderID = ?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, orderID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                    return rs.getString("name");
+                }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 }
