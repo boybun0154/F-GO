@@ -48,7 +48,7 @@ public class LoginControl extends HttpServlet {
                 if (a == null) {
                     String mess = "Mật khẩu không chính xác!";
                     request.setAttribute("mess", mess);
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                    request.getRequestDispatcher("home.jsp").forward(request, response);
                 } else {
                     HttpSession session = request.getSession();
                     session.setAttribute("acc", a);
@@ -59,7 +59,7 @@ public class LoginControl extends HttpServlet {
                     
                     if(account.getRole().equals("1") || account.getRole().equals("2") 
                              || account.getRole().equals("4") || account.getRole().equals("3")){
-                        request.getRequestDispatcher("home2.jsp").forward(request, response);
+                        request.getRequestDispatcher("home.jsp").forward(request, response);
                     }
                     
                 }

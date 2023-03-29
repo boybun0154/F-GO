@@ -69,7 +69,7 @@
         </style>
     </head>
     <body>
-        <jsp:include page="header.jsp"></jsp:include>
+        <jsp:include page="header2.jsp"></jsp:include>
             <div class="content">
                 <div class="header">
                     <h2>Quản lý tài khoản</h2>
@@ -90,6 +90,7 @@
                         </thead>
                         <tbody>
                         <c:forEach items="${listA}" var="o">
+                            <c:if test="${o.role == 0}">
                             <tr>
                                 <td>${o.accountID}</td>
                                 <td>${o.account}</td>
@@ -98,18 +99,7 @@
                                 <c:if test="${o.role == 0}">
                                     <td>User</td>
                                 </c:if>
-                                <c:if test="${o.role == 1}">
-                                    <td>Admin</td>
-                                </c:if>
-                                <c:if test="${o.role == 2}">
-                                    <td>Web-owner</td>
-                                </c:if>
-                                <c:if test="${o.role == 3}">
-                                    <td>Driver</td>
-                                </c:if>
-                                <c:if test="${o.role == 4}">
-                                    <td>Bad customer</td>
-                                </c:if>
+                                
 
                                 <td style="text-align:center;">
                                     <a href="delete_account?aid=${o.accountID}" class="btn">
@@ -118,6 +108,7 @@
                                     </a>
                                 </td>
                             </tr>
+                            </c:if>
                         </c:forEach>
                     </tbody>
                 </table>

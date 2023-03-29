@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="CSS/swiper.css" type="text/css" />
 
         <!-- One Page Module Specific Stylesheet -->
-        <link rel="stylesheet" href="one-page/onepage.css" type="text/css" />
+        <!--<link rel="stylesheet" href="one-page/onepage.css" type="text/css" />-->
         <!-- / -->
 
         <link rel="stylesheet" href="CSS/dark.css" type="text/css" />
@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="CSS/animate.css" type="text/css" />
         <link rel="stylesheet" href="CSS/magnific-popup.css" type="text/css" />
 
-        <link rel="stylesheet" href="one-page/css/fonts.css" type="text/css" />
+        <!--<link rel="stylesheet" href="one-page/css/fonts.css" type="text/css" />-->
 
         <link rel="stylesheet" href="CSS/custom.css" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -212,75 +212,12 @@
 
 
 
-
-
-
-
+            <jsp:include page="footer.jsp"></jsp:include>
 
 
     <!-- Footer
     ============================================= -->
-    <footer id="footer" class="dark">
-        <!-- Copyrights
-        ============================================= -->
-        <div id="copyrights">
-            <div class="container">
-
-                <div class="row justify-content-between col-mb-30">
-                    <div class="col-12 col-lg-auto text-center text-lg-start order-last order-lg-first">
-                        <img src="images/footer-logo.png" alt="Image" class="mb-4"><br>
-                        Copyrights &copy; 2020 All Rights Reserved by Canvas Inc.
-                    </div>
-
-                    <div class="col-12 col-lg-auto text-center text-lg-end">
-                        <div class="copyrights-menu copyright-links">
-                            <a href="#">Home</a>/<a href="#">About</a>/<a href="#">Features</a>/<a href="#">Portfolio</a>/<a href="#">FAQs</a>/<a href="#">Contact</a>
-                        </div>
-                        <a href="#" class="social-icon inline-block si-small si-borderless mb-0 si-facebook">
-                            <i class="icon-facebook"></i>
-                            <i class="icon-facebook"></i>
-                        </a>
-
-                        <a href="#" class="social-icon inline-block si-small si-borderless mb-0 si-twitter">
-                            <i class="icon-twitter"></i>
-                            <i class="icon-twitter"></i>
-                        </a>
-
-                        <a href="#" class="social-icon inline-block si-small si-borderless mb-0 si-gplus">
-                            <i class="icon-gplus"></i>
-                            <i class="icon-gplus"></i>
-                        </a>
-
-                        <a href="#" class="social-icon inline-block si-small si-borderless mb-0 si-pinterest">
-                            <i class="icon-pinterest"></i>
-                            <i class="icon-pinterest"></i>
-                        </a>
-
-                        <a href="#" class="social-icon inline-block si-small si-borderless mb-0 si-vimeo">
-                            <i class="icon-vimeo"></i>
-                            <i class="icon-vimeo"></i>
-                        </a>
-
-                        <a href="#" class="social-icon inline-block si-small si-borderless mb-0 si-github">
-                            <i class="icon-github"></i>
-                            <i class="icon-github"></i>
-                        </a>
-
-                        <a href="#" class="social-icon inline-block si-small si-borderless mb-0 si-yahoo">
-                            <i class="icon-yahoo"></i>
-                            <i class="icon-yahoo"></i>
-                        </a>
-
-                        <a href="#" class="social-icon inline-block si-small si-borderless mb-0 si-linkedin">
-                            <i class="icon-linkedin"></i>
-                            <i class="icon-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div><!-- #copyrights end -->
-    </footer><!-- #footer end -->
+    <!-- #footer end -->
 
 </div><!-- #wrapper end -->
 

@@ -1,60 +1,15 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<div id="top-bar" class="transparent-topbar dark">
-    <div class="container">
 
-        <div class="row justify-content-between">
-            <div class="col-12 col-md-auto">
 
-                <!-- Top Links
-                ============================================= -->
-                <div class="top-links">
-                    <ul class="top-links-container">
-                        <li class="top-links-item"><a href="Home">Home</a></li>
-                        
-                        
-                            <c:if test="${sessionScope.acc == null}">
-                            <li class="top-links-item"><a href="#modal-login-form" data-lightbox="inline">Login</a></li>
-                            <li class="top-links-item"><a href="signup.jsp">Signup</a></li>
-                            </c:if>
-                            <c:if test="${sessionScope.acc != null}">
 
-                            <li class="top-links-item"><a href="logout">Logout</a></li>
-                            </c:if>
-
-                        <!--<li class="top-links-item"><a href="contact.html">Contact</a></li>-->
-
-                    </ul>
-                </div><!-- .top-links end -->
-
-            </div>
-
-            <div class="col-12 col-md-auto">
-
-                <!-- Top Social
-                ============================================= -->
-                <ul id="top-social">
-                    <li><a href="#" class="si-facebook"><span class="ts-icon"><i class="icon-facebook"></i></span><span class="ts-text">Facebook</span></a></li>
-                    <li><a href="#" class="si-twitter"><span class="ts-icon"><i class="icon-twitter"></i></span><span class="ts-text">Twitter</span></a></li>
-                    <li><a href="#" class="si-pinterest"><span class="ts-icon"><i class="icon-pinterest"></i></span><span class="ts-text">Pinterest</span></a></li>
-                    <li><a href="#" class="si-instagram"><span class="ts-icon"><i class="icon-instagram2"></i></span><span class="ts-text">Instagram</span></a></li>
-                    <li><a href="tel:+1.11.85412542" class="si-call"><span class="ts-icon"><i class="icon-call"></i></span><span class="ts-text">+1.11.85412542</span></a></li>
-                    <li><a href="mailto:info@canvas.com" class="si-email3"><span class="ts-icon"><i class="icon-envelope-alt"></i></span><span class="ts-text">info@canvas.com</span></a></li>
-                </ul><!-- #top-social end -->
-
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<header id="header" class="transparent-header floating-header">
-    <div id="header-wrap" ">
+<header id="header" class="full-header dark">
+    <div id="header-wrap">
         <div class="container">
-            <div class="header-row" >
+            <div class="header-row">
+
                 <!-- Logo
                 ============================================= -->
                 <div id="logo">
@@ -72,15 +27,9 @@
 
                     <!-- Top Cart
                     ============================================= -->
-                    <div id="top-cart" class="header-misc-icon d-none d-sm-block">
-                        <!--<a href="#" id="top-cart-trigger"><i class="icon-line-bag"></i><span class="top-cart-number">5</span></a>-->
-
-                        <c:if test="${sessionScope.acc.role == 0}">
-                            <a   type="button" href="wishlist"><i class="icon-line-bag"></i></a>
-                            </c:if>
-
-
-                    </div><!-- #top-cart end -->
+                    <c:if test="${sessionScope.acc.role == 0}">
+                        <a   type="button" href="wishlist"><i class="icon-line-bag"></i></a>
+                    </c:if><!-- #top-cart end -->
 
                 </div>
 
@@ -178,7 +127,9 @@
                                     <li class="menu-item">
                                         <a class="menu-link" href="changePassword.jsp"><div><i class="icon-wpforms"></i>Đổi mật khẩu</div></a>
                                     </li>
-                                    
+                                    <li class="menu-item">
+                                        <a class="menu-link" href="logout"><div><i class="icon-wpforms"></i>Đăng xuất</div></a>
+                                    </li>
                                 </ul>
                             </li>
                         </c:if>
@@ -195,30 +146,4 @@
         </div>
     </div>
     <div class="header-wrap-clone"></div>
-    <div class="modal1 mfp-hide" id="modal-login-form">
-    <div class="block mx-auto col-padding" style="background-color: #FFF; max-width: 400px;">
-        <h4 class="text-uppercase ls1">Login to your Account</h4>
-        <form action="LoginControl" class="row mb-0" style="max-width: 300px;">
-            <div class="col-12 form-group">
-                <label for="" class="text-capitalize fw-semibold">Username or Email:</label>
-                <input type="text" name="account" id="account" value="" class="sm-form-control" />
-            </div>
-            <div class="col-12 form-group">
-                <label for="" class="text-capitalize fw-semibold">Password:</label>
-                <input type="password" name="password" id="password" value="" class="sm-form-control" />
-            </div>
-            <div class="col-12 form-group mb-0">
-                <div class="row">
-                    <div class="col-6">
-                        <button name="login" id="login" type="submit" class="button button-rounded button-small button-dark m-0" value="Đăng nhập">Login</button>
-                    </div>
-                    <div class="col-6">
-                        <p class="mb-0 text-end"><small class="fw-light"><em><a href="#">Forgot Password?</a></em></small></p>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-    
 </header>
