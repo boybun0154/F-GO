@@ -25,8 +25,6 @@
                                     <img src="IMG/logo.png" alt="logo" class="logo">
                                 </div>
                                 <p class="login-card-description">Đăng nhập vào F-Go</p>
-                                
-                                
                                 <form action="LoginControl" method="post">
                                     <p style="color: red">${mess}</p>
                                     <div class="form-group">

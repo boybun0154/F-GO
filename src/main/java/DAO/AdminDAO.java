@@ -74,12 +74,11 @@ public class AdminDAO {
     
     public void deleteAdmin(String aid) {
         String query = "delete from ADMIN\n"
-                + "where accountId = ?;delete from ACCOUNT where accountId=?";
+                + "where adminID = ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, aid);
-            ps.setString(2, aid);
             ps.executeUpdate();
         } catch (Exception e) {
         }
