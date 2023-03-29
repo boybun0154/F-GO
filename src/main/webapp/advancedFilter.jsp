@@ -40,41 +40,6 @@
 											<span class="max-value">3000000K</span>
 										</div>
 								</div>
-
-								<div class="form-group">
-									<label for="vehicle-type">Loại xe</label>
-									<div class="row" id="vehicle-type">
-										<div class="form-check col-md-4">
-											<input class="form-check-input checkBoxType" type="checkbox" name="vt_1" id="vt_1" value="4">
-											<label class="form-check-label" for="vt_1">
-												<img src="https://n1-cstg.mioto.vn/m/vehicle-types/mf-4-sedan.png" class="img-fluid" alt="4 chỗ">
-												4 chỗ
-											</label>
-										</div>
-										<div class="form-check col-md-4">
-											<input class="form-check-input checkBoxType" type="checkbox" name="vt_5" id="vt_5" value="5">
-											<label class="form-check-label" for="vt_5">
-												<img src="https://n1-cstg.mioto.vn/m/vehicle-types/mf-5-suv.png" class="img-fluid" alt="5 chỗ">
-												5 chỗ
-											</label>
-										</div>
-										<div class="form-check col-md-4">
-											<input class="form-check-input checkBoxType" type="checkbox" name="vt_6" id="vt_6" value="2">
-											<label class="form-check-label" for="vt_6">
-												<img src="https://n1-cstg.mioto.vn/m/vehicle-types/mf-4-sedan.png" class="img-fluid" alt="2 chỗ">
-												2 chỗ
-											</label>
-										</div>
-										<div class="form-check col-md-4">
-											<input class="form-check-input checkBoxType" type="checkbox" name="vt_7" id="vt_7" value="7">
-											<label class="form-check-label" for="vt_7">
-											<img src="https://n1-cstg.mioto.vn/m/vehicle-types/mf-pickup.png" class="img-fluid">
-												Bán tải
-											</label>
-										</div>
-									</div>
-								</div>
-
 								<div class="form-group">
 									<label for="car-brand">Hãng xe</label>
 									<select class="form-control" name="car_brand" id="car-brand">
@@ -103,7 +68,7 @@
 								<div class="form-group">
 									<label for="seats">Số chỗ</label>
 									<input type="range" class="form-control-range" id="seats" name="seats"
-										   min="2" max="10" step="1" value="4">
+										   min="2" max="10" step="1" value="10">
 									<div class="d-flex justify-content-between">
 										<span class="min-value">2</span>
 										<span class="max-value">10</span>
@@ -227,16 +192,12 @@
 		event.preventDefault();
 		var sortingSelect = document.getElementById("sorting-select").value;
         var priceRange= document.getElementById("price-range").value;
-        var vehicleType= document.querySelector('.checkBoxType:checked');
-        if(vehicleType != null){
-        var vehicleTypeValue= document.querySelector('.checkBoxType:checked').value;
-        }
         var carBrand= document.getElementById("car-brand").value;
         var transmissionType= document.getElementById("transmission-type").value;
         var seats= document.getElementById("seats").value;
         var fuel= document.getElementById("fuel").value;
         var year= document.getElementById("year").value;
-		console.log("priceRange: "+priceRange+" vehicleTypeValue: "+vehicleTypeValue+" carBrand: "+carBrand+" transmissionType: "+transmissionType+" seats: "+seats+" fuel: "+fuel+" year: "+year)
+		console.log("priceRange: "+priceRange+"+ carBrand: "+carBrand+" transmissionType: "+transmissionType+" seats: "+seats+" fuel: "+fuel+" year: "+year)
 		$.ajax({
 			type : 'GET',
 			headers : {
@@ -306,7 +267,7 @@
 							"</div>";
 						//filter
 						var checkPrice=parseInt(products[i].price)<parseInt(priceRange);
-						var checkSeat=parseInt(vehicleTypeValue)==parseInt(products[i].seat);
+						var checkSeat=parseInt(seats)==parseInt(products[i].seat);
 						var checkcarBrand=parseInt(carBrand)==parseInt(products[i].categoryID);
 						switch(transmissionType){
 							case "1":
@@ -335,7 +296,7 @@
 						var checkfuel=fuelType==products[i].fuel;
 						var checkyear=parseInt(year)>parseInt(products[i].yearRelease);
 						//check null
-						if(vehicleType==null)	checkSeat=true;
+						if(parseInt(seats)==10)	checkSeat=true;
 						if(parseInt(carBrand)==0)	checkcarBrand=true;
 						if(parseInt(transmissionType)==0)	checktransmissionType=true;
 						if(parseInt(fuel)==0)	checkfuel=true;
