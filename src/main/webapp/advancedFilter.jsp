@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>get List from ajax</title>
+	<title>Advanced Search</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
@@ -15,7 +15,7 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>
-	<div class="container" style="margin-top: 6%">
+	<div class="container" style="margin-top: 7%">
 		<div class="row">
 			<div class="col-4">
 				<div class="filter-container">
@@ -31,13 +31,23 @@
 									</select>
 								</div>
 
+<%--								<div class="form-group">--%>
+<%--									<label for="dateBeginPickerId">Bắt đầu</label>--%>
+<%--									<input type="date" class="form-control validate" id="dateBeginPickerId">--%>
+<%--								</div>--%>
+<%--								<div class="form-group">--%>
+<%--									<label for="dateEndPickerId">Kết thúc</label>--%>
+<%--									<input type="date" class="form-control validate" id="dateEndPickerId">--%>
+<%--								</div>--%>
+
 								<div class="form-group">
-										<label for="price-range">Mức giá</label>
+										<div class="d-flex justify-content-between"><label for="price-range">Mức giá</label>
+											<span id="price-select"></span></div>
 										<input type="range" class="form-control-range" id="price-range" name="price-range"
-											   min="300" max="3000000" step="100" value="3000000">
+											   min="300000" max="3000000" step="100000" value="3000000">
 										<div class="d-flex justify-content-between">
-											<span class="min-value">300K</span>
-											<span class="max-value">3000000K</span>
+											<span class="min-value">300.000</span>
+											<span class="max-value">3.000.000</span>
 										</div>
 								</div>
 								<div class="form-group">
@@ -66,7 +76,8 @@
 
 							<div class="advance-filter ">
 								<div class="form-group">
-									<label for="seats">Số chỗ</label>
+									<div class="d-flex justify-content-between"><label for="seats">Số chỗ</label>
+										<span id="seats-select"></span></div>
 									<input type="range" class="form-control-range" id="seats" name="seats"
 										   min="2" max="10" step="1" value="10">
 									<div class="d-flex justify-content-between">
@@ -76,7 +87,8 @@
 								</div>
 
 								<div class="form-group">
-									<label for="year">Năm sản xuất</label>
+									<div class="d-flex justify-content-between"><label for="year">Số chỗ</label>
+										<span id="year-select"></span></div>
 									<input type="range" class="form-control-range" id="year" name="year"
 										   min="2005" max="2023" step="1" value="2023">
 									<div class="d-flex justify-content-between">
@@ -310,7 +322,63 @@
 			}
 		});	
 	}
-</script>
+
+	// var today = new Date();
+	// var tomorrow = new Date();
+	// var dd = today.getDate();
+	// var mm = today.getMonth() + 1; //January is 0!
+	// var yyyy = today.getFullYear();
+	// if (dd < 10) {
+	// 	dd = '0' + dd;
+	// }
+	// if (mm < 10) {
+	// 	mm = '0' + mm;
+	// }
+	// today = yyyy + '-' + mm + '-' + dd;
+	// tomorrow = yyyy + '-' + mm + '-' + (dd + 1);
+	//
+	// $('#dateBeginPickerId').attr("min", today);
+	// $('#dateEndPickerId').attr("min", tomorrow);
+	//
+	// function DateCheck() {
+	// 	var StartDate = $('#dateBeginPickerId').val();
+	// 	var EndDate = $('#dateEndPickerId').val();
+	// 	var eDate = new Date(EndDate);
+	// 	var sDate = new Date(StartDate);
+	// 	if (StartDate !== '' && StartDate !== '' && sDate > eDate){
+	// 		alert("Ngày trả xe phải sau ngày nhận xe!");
+	// 		$('#dateEndPickerId').val(null);
+	// 	}
+	// }
+	//
+	// $(document).ready(function () {
+	// 	$('#dateBeginPickerId').change(function () {
+	// 		DateCheck();
+	// 	});
+	// 	$('#dateEndPickerId').change(function () {
+	// 		DateCheck();
+	// 	});
+	// });
+
+	$(document).ready(function() {
+		// price range
+		$("#price-select").html($("#price-range".val()));
+		$("#price-range").on("input", function() {
+			$("#price-select").html(this.value);
+		});
+		// seats
+		$("#seats-select").html($("#seats".val()));
+		$("#seats").on("input", function() {
+			$("#seats-select").html(this.value);
+		});
+		// year
+		$("#year-select").html($("#year".val()));
+		$("#year").on("input", function() {
+			$("#year-select").html(this.value);
+		});
+	});
+
+	</script>
 
 </body>
 </html>
