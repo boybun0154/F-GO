@@ -101,6 +101,11 @@
                                            aria-controls="collapsedefult">Momo</label>
                                 </div>
                                 <div class="payment">
+                                    <input id="payment_default" type="radio" name="payment_method" value="vnpay">
+                                    <label for="payment_default" data-toggle="collapse" data-target="#collapsedefult"
+                                           aria-controls="collapsedefult">VNPay</label>
+                                </div>
+                                <div class="payment">
                                     <input id="payment_default" type="radio" name="payment_method" value="paypal">
                                     <label for="payment_default" data-toggle="collapse" data-target="#collapsedefult"
                                            aria-controls="collapsedefult">PayPal</label>
