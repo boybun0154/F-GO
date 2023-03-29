@@ -360,23 +360,24 @@
 	// 	});
 	// });
 
-	$(document).ready(function() {
-		// price range
-		$("#price-select").html($("#price-range".val()));
-		$("#price-range").on("input", function() {
-			$("#price-select").html(this.value);
-		});
-		// seats
-		$("#seats-select").html($("#seats".val()));
-		$("#seats").on("input", function() {
-			$("#seats-select").html(this.value);
-		});
-		// year
-		$("#year-select").html($("#year".val()));
-		$("#year").on("input", function() {
-			$("#year-select").html(this.value);
-		});
-	});
+	var slider = document.getElementById("price-range");
+	var output = document.getElementById("price-select");
+	output.innerHTML = slider.value;
+	slider.oninput = function() {
+		output.innerHTML = this.value;
+	}
+	var seats = document.getElementById("seats");
+	var outputSeats = document.getElementById("seats-select");
+	outputSeats.innerHTML = seats.value;
+	seats.oninput = function() {
+		outputSeats.innerHTML = this.value;
+	}
+	var year = document.getElementById("year");
+	var outputYear = document.getElementById("year-select");
+	outputYear.innerHTML = year.value;
+	year.oninput = function() {
+		outputYear.innerHTML = this.value;
+	}
 
 	</script>
 
