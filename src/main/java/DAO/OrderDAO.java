@@ -207,4 +207,16 @@ public class OrderDAO {
         }
         return orders;
     }
+
+    public void updateOrderDriver(int orderID, int driverID) {
+        String query = "update [ORDER] set driver_id= ? where orderID= ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, driverID);
+            ps.setInt(2, orderID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 }

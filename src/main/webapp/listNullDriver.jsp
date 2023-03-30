@@ -79,7 +79,7 @@
                             <td>${Order.startLocation}</td>
                             <td>${Order.endLocation}</td>
                             <td>
-                                <a href="/F-Go/nulldriver?orderID=${Order.orderId}&driverID=${driverID}&action=update" class="">
+                                <a href="/F-Go/nulldriver?orderID=${Order.orderId}&driverID=${driverID}&action=update&accid=${accid}" class="">
                                     <button class="btn btn-danger">Nhận</button></a>
                             </td>
 
