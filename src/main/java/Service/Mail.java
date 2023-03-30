@@ -931,7 +931,7 @@ public class Mail {
                 message.setReplyTo(InternetAddress.parse(senderEmail));
 
                 // Recipient
-                message.addRecipient(Message.RecipientType.TO, new InternetAddress("fgoandrun@gmail.com"));
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
 
                 // Subject
                 message.setSubject("F-GO - Authentication");

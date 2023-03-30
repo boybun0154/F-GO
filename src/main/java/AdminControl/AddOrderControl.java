@@ -28,17 +28,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ADMIN
  */
-@WebServlet(name = "AddOrderControl", urlPatterns = {"/addorder"})
+@WebServlet(name = "AddOrderControl", urlPatterns = { "/addorder" })
 public class AddOrderControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,14 +46,15 @@ public class AddOrderControl extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -64,22 +65,27 @@ public class AddOrderControl extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+
         String oname = request.getParameter("name");
-        String ocarid = request.getParameter("carid");
+        int ocarid = Integer.parseInt(request.getParameter("carid"));
         String ophone = request.getParameter("phone");
         String otimeBegin = request.getParameter("timeBegin");
         String otimeEnd = request.getParameter("timeEnd");
         String oaddress = request.getParameter("address");
         String ostatus = "1";
+
+        String oarea = request.getParameter("area");
+        String ostartLocation = request.getParameter("startLocation");
+        String oendLocation = request.getParameter("endLocation");
 
         CustomerDAO cdao = new CustomerDAO();
         Customer c = cdao.getCustomerByPhone(ophone);
@@ -89,9 +95,9 @@ public class AddOrderControl extends HttpServlet {
         System.out.println(ocarid);
 
         ProductDAO pdao = new ProductDAO();
-        Product p = pdao.getProductById(ocarid);
+        Product p = pdao.getProductById(String.valueOf(ocarid));
         int price = p.getPrice();
-        
+
         int totalMoney;
         long diffrence = 0;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
@@ -106,13 +112,15 @@ public class AddOrderControl extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(AddOrderControl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         totalMoney = (int) (price * diffrence);
 
-        System.out.println(oname + " " + ocarid + " " + ophone + " " + otimeBegin + " " + otimeEnd + " " + totalMoney + " " + oaddress);
+        System.out.println(oname + " " + ocarid + " " + ophone + " " + otimeBegin + " " + otimeEnd + " " + totalMoney
+                + " " + oaddress);
 
         OrderDAO odao = new OrderDAO();
-        odao.addOrder(customerId, ocarid, otimeBegin, otimeEnd, oaddress, totalMoney, ostatus);
+//        odao.addOrder(customerId, ocarid, oaddress, totalMoney, otimeBegin, otimeEnd, oarea, ostartLocation,
+//                oendLocation);
 
         response.sendRedirect("manageorder");
     }

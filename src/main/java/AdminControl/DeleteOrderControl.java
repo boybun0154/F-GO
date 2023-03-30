@@ -38,7 +38,7 @@ public class DeleteOrderControl extends HttpServlet {
         OrderDAO odao = new OrderDAO();
         ProductDAO pdao = new ProductDAO();
         Order o = odao.getOrderById(oid);
-        pdao.changeProductStatus(o.getProductId(), "1");
+//        pdao.changeProductStatus(o.getProductId(), "1");
         odao.deleteOrder(oid);
         response.sendRedirect("manageorder");
     }

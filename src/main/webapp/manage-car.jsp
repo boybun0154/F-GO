@@ -104,7 +104,6 @@
                                 <th>Tên xe</th>
                                 <th>Hình ảnh</th>
                                 <th>Loại xe</th>
-                                <th>Trình trạng</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
@@ -119,12 +118,7 @@
                                         <td>${a.categoryName}</td>
                                     </c:if>
                                 </c:forEach>
-                                <c:if test="${o.productStatus == 1}">
-                                    <td>Còn xe</td>
-                                </c:if>
-                                <c:if test="${o.productStatus == 0}">
-                                    <td>Đang được thuê</td>
-                                </c:if>
+                                
                                 <td style="text-align:center;">
                                     <a href="load_to_view?pid=${o.productID}" class="btn">
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
@@ -220,7 +214,7 @@
                                             <textarea id="des" name="des" class="form-control validate" rows="2" required></textarea>
                                         </div>
                                         <div class="form-group mt-3 mb-3">
-                                            <label for="exCharge">Phi phat
+                                            <label for="exCharge">Phí phạt
                                             </label>
                                             <input id="exCharge" name="exCharge" type="text" class="form-control validate" required />
                                         </div>

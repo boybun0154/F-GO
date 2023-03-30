@@ -29,8 +29,8 @@ public class ProductDAO {
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14)));
+                        rs.getString(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -65,8 +65,8 @@ public class ProductDAO {
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14)));
+                        rs.getString(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -85,8 +85,8 @@ public class ProductDAO {
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14)));
+                        rs.getString(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -105,8 +105,8 @@ public class ProductDAO {
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14)));
+                        rs.getString(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -123,8 +123,8 @@ public class ProductDAO {
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14)));
+                        rs.getString(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
@@ -145,35 +145,34 @@ public class ProductDAO {
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14)));
+                        rs.getString(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13)));
             }
         } catch (Exception e) {
         }
         return list;
     }
 
-    public void addProduct(String name, String des, String image, String price, String status,
+    public void addProduct(String name, String des, String image,
             String cateId, String seat, String gear, String color, String licensePlate, String fuel,
-            String yearRelease, String exCharge) {
+            String yearRelease, String price, String exCharge) {
         String query = "insert into Vehicle\n"
-                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, name);
             ps.setString(2, des);
             ps.setString(3, image);
-            ps.setString(4, price);
-            ps.setString(5, status);
-            ps.setString(6, cateId);
-            ps.setString(7, seat);
-            ps.setString(8, gear);
-            ps.setString(9, color);
-            ps.setString(10, licensePlate);
-            ps.setString(11, fuel);
-            ps.setString(12, yearRelease);
-            ps.setString(13, exCharge);
+            ps.setString(4, cateId);
+            ps.setString(5, seat);
+            ps.setString(6, gear);
+            ps.setString(7, color);
+            ps.setString(8, licensePlate);
+            ps.setString(9, fuel);
+            ps.setString(10, yearRelease);
+            ps.setString(11, price);
+            ps.setString(12, exCharge);
 
             ps.executeUpdate();
         } catch (Exception e) {
@@ -191,8 +190,8 @@ public class ProductDAO {
             while (rs.next()) {
                 return new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14));
+                        rs.getString(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13));
             }
         } catch (Exception e) {
 
@@ -212,22 +211,23 @@ public class ProductDAO {
         }
     }
 
-    public void editProduct(String name, String des, String image, String price, String status,
-            String cateId, String seat, String gear, String color, String licensePlate, String fuel, String yearRelease,
+    public void editProduct(String name, String des, String image, 
+            String cateId, String seat, String gear, String color, String licensePlate, String fuel, String yearRelease, String price,
+            String exCharge,
             String pid) {
         String query = "update Vehicle\n"
                 + "set productName = ?,\n"
                 + "	productTitle =?,\n"
                 + "	productImg =?,\n"
-                + "	productPrice = ?,\n"
-                + "	productStatus = ?,\n"
-                + "    categoryID = ?,\n"
+                + "     categoryID = ?,\n"
                 + "	seat = ?,\n"
                 + "	gear = ?,\n"
                 + "	color = ?,\n"
                 + "	licensePlate = ?,\n"
                 + "	fuel = ?,\n"
-                + "	yearRelease = ?\n"
+                + "	yearRelease = ?,\n"
+                + "	productPrice = ?,\n"
+                + "	exCharge = ?\n"
                 + "Where productID = ?";
         try {
             conn = new DBContext().getConnection();
@@ -235,15 +235,15 @@ public class ProductDAO {
             ps.setString(1, name);
             ps.setString(2, des);
             ps.setString(3, image);
-            ps.setString(4, price);
-            ps.setString(5, status);
-            ps.setString(6, cateId);
-            ps.setString(7, seat);
-            ps.setString(8, gear);
-            ps.setString(9, color);
-            ps.setString(10, licensePlate);
-            ps.setString(11, fuel);
-            ps.setString(12, yearRelease);
+            ps.setString(4, cateId);
+            ps.setString(5, seat);
+            ps.setString(6, gear);
+            ps.setString(7, color);
+            ps.setString(8, licensePlate);
+            ps.setString(9, fuel);
+            ps.setString(10, yearRelease);
+            ps.setString(11, price);
+            ps.setString(12, exCharge);
             ps.setString(13, pid);
 
             ps.executeUpdate();
@@ -253,10 +253,10 @@ public class ProductDAO {
 
     public List<Product> getTop6most() {
         List<Product> list = new ArrayList<>();
-        String query = "select top 6 Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.productStatus,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease,avg(rate.rate) as rating,count(rate.rate) as Soluongrate from RATE LEFT JOIN Vehicle\n"
+        String query = "select top 6 Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease,avg(rate.rate) as rating,count(rate.rate) as Soluongrate from RATE LEFT JOIN Vehicle\n"
                 +
                 "                 on Vehicle.productID=rate.productID \n" +
-                "                 group by Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.productStatus,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease\n"
+                "                 group by Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease\n"
                 +
                 "                 order by avg(rate.rate) desc";
         try {
@@ -267,9 +267,9 @@ public class ProductDAO {
             int cmt = 0;
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
-                        rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13),
+                        rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12),
                         rating = rs.getFloat("rating"), cmt = rs.getInt("Soluongrate")));
             }
         } catch (Exception e) {
@@ -312,8 +312,8 @@ public class ProductDAO {
             while (rs.next()) {
                 return new Product(rs.getInt(1),
                         rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14));
+                        rs.getString(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13));
             }
         } catch (Exception e) {
 
@@ -321,19 +321,19 @@ public class ProductDAO {
         return null;
     }
 
-    public void changeProductStatus(int id, String status) {
-        String query = "update Vehicle\n"
-                + "set productStatus = ?\n"
-                + "where productID = ?";
-        try {
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(query);
-            ps.setString(1, status);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-        } catch (Exception e) {
-        }
-    }
+//    public void changeProductStatus(int id, String status) {
+//        String query = "update Vehicle\n"
+//                + "set productStatus = ?\n"
+//                + "where productID = ?";
+//        try {
+//            conn = new DBContext().getConnection();
+//            ps = conn.prepareStatement(query);
+//            ps.setString(1, status);
+//            ps.setInt(2, id);
+//            ps.executeUpdate();
+//        } catch (Exception e) {
+//        }
+//    }
 
     public List<Product> getproductTime() {
         List<Product> list = new ArrayList<>();
@@ -368,7 +368,6 @@ public class ProductDAO {
                 String productName = rs.getString("productName");
                 String productTitle = rs.getString("productTitle");
                 String productImg = rs.getString("productImg");
-                int productStatus = rs.getInt("productStatus");
                 int categoryID = rs.getInt("categoryID");
                 String seat = rs.getString("seat");
                 String gear = rs.getString("gear");
@@ -378,7 +377,7 @@ public class ProductDAO {
                 String yearRelease = rs.getString("yearRelease");
                 int price = rs.getInt("productPrice");
                 String timeEnd = rs.getString("timeEnd");
-                list.add(new Product(productID, productName, productTitle, productImg, productStatus, categoryID, seat,
+                list.add(new Product(productID, productName, productTitle, productImg, categoryID, seat,
                         gear, color,
                         licensePlate, fuel, yearRelease, price, timeEnd));
             }

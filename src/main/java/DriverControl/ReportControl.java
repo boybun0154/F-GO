@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.AddFeeDAO;
 import DAO.CustomerDAO;
@@ -74,7 +75,14 @@ public class ReportControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String accid = request.getParameter("accountID");
-        int id = Integer.parseInt(accid);
+        int id;
+        if (accid != null) {
+            id = Integer.parseInt(accid);
+        } else {
+            HttpSession session = request.getSession();
+            id = Integer.parseInt((String) session.getAttribute("accountID"));
+        }
+
         DriverDAO dao = new DriverDAO();
         int driverID = 0;
         driverID = dao.getDriverId(id);
@@ -94,26 +102,24 @@ public class ReportControl extends HttpServlet {
                 }
                 request.setAttribute("listO", list);
                 CustomerDAO custormerdao = new CustomerDAO();
-                
-               
 
                 ProductDAO pdao = new ProductDAO();
                 List<Customer> listc = custormerdao.getAllCustomer();
                 List<Product> listp = pdao.getAllProduct();
-                
+
                 request.setAttribute("accid", accid);
                 String action = request.getParameter("action");
-                
+
                 if (action != null)
                     if (action.equals("paid")) {
-                    int orderID = Integer.parseInt(request.getParameter("orderID"));
-                    try {
-                        odao.updateStatus(orderID);
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
+                        int orderID = Integer.parseInt(request.getParameter("orderID"));
+                        try {
+                            odao.updateStatus(orderID);
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -188,7 +194,7 @@ public class ReportControl extends HttpServlet {
             }
         }
         // update product status after submit report
-        pdao.changeProductStatus(o.getProductId(), "1");
+        // pdao.changeProductStatus(o.getProductId(), "1");
 
         // display
 

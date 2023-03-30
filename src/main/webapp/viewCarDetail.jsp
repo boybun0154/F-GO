@@ -210,14 +210,7 @@
                         <div class="about d-flex justify-content-between align-items-center">
                             <h4 class="font-weight-bold">${detail.productName}</h4>
                             <h5 class="font-weight-bold mt-1">${detail.price}đ/ngày</h5>
-                            <span style="margin-right: 13px; color: #FF9933; cursor: default; font-size: 1.2rem;">
-                                <c:if test="${detail.productStatus == 1}">
-                                    <td>Còn xe</td>
-                                </c:if>
-                                <c:if test="${detail.productStatus == 0}">
-                                    <td>Đang được thuê</td>
-                                </c:if>
-                            </span>
+                            
                         </div>
                         <div class="buttons">
                             <a href="load_to_order?pid=${detail.productID}">
