@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     </head>
 
     <body>
@@ -79,13 +79,15 @@
                             <p class="dis fw-bold mb-2" style="font-size:1rem">Ngày thuê xe</p>
                             <div class="d-flex w-50 mb-3">
                                 <div class="d-flex w-100">
-                                    <input id="dateBeginPickerId" type="date" name="dateBegin" class="form-control validate px-0" required>
+                                    <input id="dateBeginPickerId" type="text" name="dateBegin"
+                                           class="form-control validate px-0" autocomplete="off" required>
                                 </div>
                             </div>
                             <p class="dis fw-bold mb-2" style="font-size:1rem">Hạn trả xe</p>
                             <div class="d-flex w-50 mb-3">
                                 <div class="d-flex w-100">
-                                    <input id="dateEndPickerId" type="date" name="dateEnd" class="form-control validate px-0" required>
+                                    <input id="dateEndPickerId" type="text" name="dateEnd"
+                                           class="form-control validate px-0" autocomplete="off" required>
                                 </div>
                             </div>
                             <div> 
@@ -122,6 +124,7 @@
         <jsp:include page="footer.jsp"></jsp:include>
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -146,24 +149,98 @@
                 }
             });
 
-            var today = new Date();
-            var tomorrow = new Date();
+            // var today = new Date();
+            // var tomorrow = new Date();
+            // var dd = today.getDate();
+            // var mm = today.getMonth() + 1; //January is 0!
+            // var yyyy = today.getFullYear();
+            // if (dd < 10) {
+            //     dd = '0' + dd;
+            // }
+            // if (mm < 10) {
+            //     mm = '0' + mm;
+            // }
+            // today = yyyy + '-' + mm + '-' + dd;
+            // tomorrow = yyyy + '-' + mm + '-' + (dd + 1);
+            // document.getElementById("dateBeginPickerId").setAttribute("min", today);
+            // document.getElementById("dateEndPickerId").setAttribute("min", tomorrow);
+            $(function () {
+                $.ajax({
+                    type : 'GET',
+                    headers : {
+                        Accept : "application/json; charset=utf-8",
+                        "Content-Type" : "application/json; charset=utf-8"
+                    },
+                    url : '${pageContext.request.contextPath }/productAjax',
+                    success : function(result) {
+                        var data = $.parseJSON(result);
+                        var dates = [];
+                        for (var i = 0; i < data.length; i++) {
+                            if (data[i].productId == $('input[name="pid"]').val()) {
+                                var timeBegin = new Date(data[i].timeBegin);
+                                var timeEnd = new Date(data[i].timeEnd);
+                                var currentDate = new Date(timeBegin);
+                                while (currentDate <= timeEnd) {
+                                    dates.push(currentDate.toISOString().slice(0,10));
+                                    currentDate.setDate(currentDate.getDate() + 1);
+                                }
+                            }
+                        }
+                        console.log(dates);
+                        $("#dateBeginPickerId").datepicker({
+                            dateFormat : 'yy-mm-dd',
+                            minDate : 0,
+                            maxDate: '+6m',
+                            numberOfMonths: 2,
+                            beforeShowDay : function (date) {
+                                var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+                                return [dates.indexOf(string) == -1]
+                            },
+                            onSelect: function(dateText, inst) {
+                                var startDate = $("#dateBeginPickerId").datepicker("getDate");
+                                var endDate = $("#dateEndPickerId").datepicker("getDate");
+                                checkSelectedDates(startDate, endDate, dates);
+                                DateCheck();
+                            }
+                        });
+                        $("#dateEndPickerId").datepicker({
+                            dateFormat : 'yy-mm-dd',
+                            minDate : 1,
+                            maxDate: '+6m',
+                            numberOfMonths: 2,
+                            beforeShowDay : function (date) {
+                                var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+                                return [dates.indexOf(string) == -1]
+                            },
+                            onSelect: function(dateText, inst) {
+                                var startDate = $("#dateBeginPickerId").datepicker("getDate");
+                                var endDate = $("#dateEndPickerId").datepicker("getDate");
+                                checkSelectedDates(startDate, endDate, dates);
+                                DateCheck();
+                            }
+                        });
+                    }
+                });
+            });
 
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1; //January is 0!
-            var yyyy = today.getFullYear();
-            if (dd < 10) {
-                dd = '0' + dd;
-            }
-            if (mm < 10) {
-                mm = '0' + mm;
-            }
-            today = yyyy + '-' + mm + '-' + dd;
-
-            tomorrow = yyyy + '-' + mm + '-' + (dd + 1);
-
-            document.getElementById("dateBeginPickerId").setAttribute("min", today);
-            document.getElementById("dateEndPickerId").setAttribute("min", tomorrow);
+            function checkSelectedDates(startDate, endDate, dates) {
+                var selectedDates = [];
+                var currentDate = new Date(startDate);
+                while (currentDate <= endDate) {
+                    selectedDates.push(currentDate.toISOString().slice(0,10));
+                    currentDate.setDate(currentDate.getDate() + 1);
+                }
+                // console.log(selectedDates);
+                for (var i = 0; i < selectedDates.length; i++) {
+                    if (dates.indexOf(selectedDates[i]) != -1) {
+                        // There is a disabled date in the selected range
+                        // Show an error message or take any other appropriate action
+                        alert("Ngày bạn chọn đã có người đặt!");
+                        document.getElementById('dateEndPickerId').value = null;
+                        break;
+                    }
+                }
+            };
 
             function DateCheck() {
                 var StartDate = document.getElementById('dateBeginPickerId').value;
@@ -174,13 +251,15 @@
                     alert("Ngày trả xe phải sau ngày nhận xe!");
                     document.getElementById('dateEndPickerId').value = null;
                 }
-            }
-            ;
-            $(document).ready(function () {
-                $("#dateEndPickerId").change(function () {
-                    DateCheck();
-                });
-            });
+            };
+            // $(document).ready(function () {
+            //     $("#dateEndPickerId").change(function () {
+            //         DateCheck();
+            //     });
+            //     $("#dateBeginPickerId").change(function () {
+            //         DateCheck();
+            //     });
+            // });
         </script>
     </body>
 
