@@ -192,5 +192,19 @@ public class OrderDAO {
         }
     }
 
-   
+    public List<Order> getOrdersTime() {
+        List<Order> orders = new ArrayList<Order>();
+        String sql = "select [ORDER].orderID,VEHICLE.productID,timeBegin,timeEnd from VEHICLE right join [ORDER] on [VEHICLE].productID= [ORDER].productID";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                orders.add(new Order(rs.getInt("orderID"), rs.getInt("productID"), rs.getString("timeBegin"),
+                        rs.getString("timeEnd")));
+            }
+        } catch (Exception e) {
+        }
+        return orders;
+    }
 }

@@ -23,7 +23,8 @@ public class Order {
     }
 
     public Order(int orderId, int customerID, int productId, String address, int totalMoney, int status,
-            String timeBegin, String timeEnd, String area, String startLocation, String endLocation, int driverId, int statusMoney) {
+            String timeBegin, String timeEnd, String area, String startLocation, String endLocation, int driverId,
+            int statusMoney) {
         this.orderId = orderId;
         this.customerID = customerID;
         this.productId = productId;
@@ -38,7 +39,7 @@ public class Order {
         this.driverId = driverId;
         this.statusMoney = statusMoney;
     }
-    
+
     public Order(int orderId, int customerID, int productId, String address, int totalMoney, int status,
             String timeBegin, String timeEnd, String area, String startLocation, String endLocation, int driverId) {
         this.orderId = orderId;
@@ -53,6 +54,14 @@ public class Order {
         this.startLocation = startLocation;
         this.endLocation = endLocation;
         this.driverId = driverId;
+    }
+
+    // constructor for order history
+    public Order(int orderId, int productId, String timeBegin, String timeEnd) {
+        this.orderId = orderId;
+        this.productId = productId;
+        this.timeBegin = timeBegin;
+        this.timeEnd = timeEnd;
     }
 
     public int getOrderId() {
@@ -158,5 +167,5 @@ public class Order {
     public void setStatusMoney(int statusMoney) {
         this.statusMoney = statusMoney;
     }
-    
+
 }
