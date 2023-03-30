@@ -4,19 +4,69 @@
 <html>
 
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Đặt xe</title>
-        <link rel="stylesheet" href="./CSS/orderStyle.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="author" content="SemiColonWeb" />
+                
+        <link rel="stylesheet" href="./CSS/orderStyle2.css">
+        <!-- Stylesheets
+        ============================================= -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:300,400,500,700&display=swap" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="CSS/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="CSS/style.css" type="text/css" />
+        <link rel="stylesheet" href="CSS/swiper.css" type="text/css" />
+
+        <!-- One Page Module Specific Stylesheet -->
+        <!--<link rel="stylesheet" href="one-page/onepage.css" type="text/css" />-->
+        <!-- / -->
+
+        <link rel="stylesheet" href="CSS/dark.css" type="text/css" />
+        <link rel="stylesheet" href="CSS/font-icons.css" type="text/css" />
+        <link rel="stylesheet" href="one-page/css/et-line.css" type="text/css" />
+        <link rel="stylesheet" href="CSS/animate.css" type="text/css" />
+        <link rel="stylesheet" href="CSS/magnific-popup.css" type="text/css" />
+
+        <!--<link rel="stylesheet" href="one-page/css/fonts.css" type="text/css" />-->
+
+        <link rel="stylesheet" href="CSS/custom.css" type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Document Title
+        ============================================= -->
+        <title>F-GO</title>
+
+        <style>
+            @media (min-width: 992px) {
+
+                #top-bar.transparent-topbar {
+                    z-index: 399;
+                    border-bottom: 0;
+                    margin-top: 15px;
+                }
+
+                #top-bar.transparent-topbar {
+                    background: transparent !important;
+                }
+
+                #top-bar + #header.transparent-header.floating-header {
+                    margin-top: 15px;
+                }
+
+            }
+
+            .dark .top-links li > a,
+            .dark #top-social li a { color: #FFF; }
+
+            .dark .top-links li:hover { background-color: rgba(255,255,255,0.15); }
+
+            .dark #top-social li { border-left: 0; }
+        </style>
+
     </head>
+ 
 
     <body>
-        <jsp:include page="navbar.jsp"></jsp:include>
+        <jsp:include page="header2.jsp"></jsp:include>
 
             <div class="container-content d-lg-flex">
                 <div class="box-1 bg-light user">
@@ -182,6 +232,19 @@
                 });
             });
         </script>
+        <!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+<!-- JavaScripts
+============================================= -->
+<script src="JS/jquery.js"></script>
+<script src="JS/plugins.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?key=YOUR-API-KEY"></script>
+
+<!-- Footer Scripts
+============================================= -->
+<script src="JS/functions.js"></script>
     </body>
 
 </html>

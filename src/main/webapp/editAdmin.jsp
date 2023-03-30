@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>JSP Page</title>
+        <title>F-GO</title>
         <link rel="stylesheet" href="./CSS/editProductStyle.css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -128,5 +128,19 @@
         </script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+        
+<!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+<!-- JavaScripts
+============================================= -->
+<script src="JS/jquery.js"></script>
+<script src="JS/plugins.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?key=YOUR-API-KEY"></script>
+
+<!-- Footer Scripts
+============================================= -->
+<script src="JS/functions.js"></script>
     </body>
 </html>

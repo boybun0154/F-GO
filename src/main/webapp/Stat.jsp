@@ -1,19 +1,70 @@
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Doanh thu tháng</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
-        <link rel="stylesheet" href="./CSS/manageStyle.css">
+     <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="author" content="SemiColonWeb" />
+                
+
+        <!-- Stylesheets
+        ============================================= -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:300,400,500,700&display=swap" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="CSS/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="CSS/style.css" type="text/css" />
+        <link rel="stylesheet" href="CSS/swiper.css" type="text/css" />
+
+        <!-- One Page Module Specific Stylesheet -->
+        <!--<link rel="stylesheet" href="one-page/onepage.css" type="text/css" />-->
+        <!-- / -->
+
+        <link rel="stylesheet" href="CSS/dark.css" type="text/css" />
+        <link rel="stylesheet" href="CSS/font-icons.css" type="text/css" />
+        <link rel="stylesheet" href="one-page/css/et-line.css" type="text/css" />
+        <link rel="stylesheet" href="CSS/animate.css" type="text/css" />
+        <link rel="stylesheet" href="CSS/magnific-popup.css" type="text/css" />
+
+        <!--<link rel="stylesheet" href="one-page/css/fonts.css" type="text/css" />-->
+
+        <link rel="stylesheet" href="CSS/custom.css" type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Document Title
+        ============================================= -->
+        <title>F-GO</title>
+
+        <style>
+            @media (min-width: 992px) {
+
+                #top-bar.transparent-topbar {
+                    z-index: 399;
+                    border-bottom: 0;
+                    margin-top: 15px;
+                }
+
+                #top-bar.transparent-topbar {
+                    background: transparent !important;
+                }
+
+                #top-bar + #header.transparent-header.floating-header {
+                    margin-top: 15px;
+                }
+
+            }
+
+            .dark .top-links li > a,
+            .dark #top-social li a { color: #FFF; }
+
+            .dark .top-links li:hover { background-color: rgba(255,255,255,0.15); }
+
+            .dark #top-social li { border-left: 0; }
+        </style>
+
     </head>
     <body>
-        <jsp:include page="navbar.jsp"></jsp:include>
+        <jsp:include page="header2.jsp"></jsp:include>
 
         <div class="content">
             <div class="header">
@@ -24,6 +75,19 @@
 
         <jsp:include page="footer.jsp"></jsp:include>
     </body>
+    <!-- Go To Top
+============================================= -->
+<div id="gotoTop" class="icon-angle-up"></div>
+
+<!-- JavaScripts
+============================================= -->
+<script src="JS/jquery.js"></script>
+<script src="JS/plugins.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?key=YOUR-API-KEY"></script>
+
+<!-- Footer Scripts
+============================================= -->
+<script src="JS/functions.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="./stat.js"></script> 
     <script src="https://code.jquery.com/jquery-3.2.1.js"

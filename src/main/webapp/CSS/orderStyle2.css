@@ -118,11 +118,6 @@ a:hover {
     max-height: 582px;
 }
 
-.sub-menu {
-    background: #f2f2f2;
-    padding: 20px;
-    margin: 10px;
-}
 
 .sub-menu-link {
     display: flex;

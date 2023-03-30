@@ -49,7 +49,7 @@ public class Home extends HttpServlet {
         }
 
         ProductDAO productdao = new ProductDAO();
-        List<Product> listHome = productdao.getTop6most();
+        List<Product> listHome = productdao.getnoibatmost();
         request.setAttribute("listP", listHome);
 //            out.print(listHome);
         request.getRequestDispatcher("home.jsp").forward(request, response);

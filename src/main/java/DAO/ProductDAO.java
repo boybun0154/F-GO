@@ -276,6 +276,31 @@ public class ProductDAO {
         }
         return list;
     }
+    public List<Product> getnoibatmost() {
+        List<Product> list = new ArrayList<>();
+        String query = "select Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.productStatus,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease,avg(rate.rate) as rating,count(rate.rate) as Soluongrate from RATE LEFT JOIN Vehicle\n"
+                +
+                "                 on Vehicle.productID=rate.productID \n" +
+                "                 group by Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.productStatus,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease\n"
+                +
+                "                 order by avg(rate.rate) desc";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            float rating = 0;
+            int cmt = 0;
+            while (rs.next()) {
+                list.add(new Product(rs.getInt(1),
+                        rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
+                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9),
+                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13),
+                        rating = rs.getFloat("rating"), cmt = rs.getInt("Soluongrate")));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
 
     public Product getProductByIdInt(int id) {
         String sql = "select * from Vehicle where productID = ?";
