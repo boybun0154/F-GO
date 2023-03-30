@@ -71,6 +71,49 @@ public class AccountDAO {
 
     }
 
+    public int getCusID(String aid) {
+        String query = "select customerID from CUSTOMER where accountID=?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, aid);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("customerID");
+            }
+        } catch (Exception e) {
+
+        }
+        return -1;
+    }
+
+    public void deleteCustomer(String aid) {
+        String query = "delete from CUSTOMER where accountID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, aid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void deleteAllofCus(int aid) {
+        String query = "delete from RATE where customerID = ?\n"
+                + "delete from WISHLIST where customerID = ?\n"
+                + "delete from [ORDER] where customerID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, aid);
+            ps.setInt(2, aid);
+            ps.setInt(3, aid);
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public void deleteAccount(String aid) {
         String query = "delete from ACCOUNT\n"
                 + "where accountID = ?";

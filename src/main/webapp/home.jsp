@@ -36,8 +36,6 @@
             </div>
             <input type="hidden" id="testacc" value="${sessionScope.acc.account}" />
         <input type="hidden" id="testaccrole" value="${sessionScope.acc.role}" />
-
-
         <div class="service">
             <div class="service-heading">
                 <div class="line"></div>

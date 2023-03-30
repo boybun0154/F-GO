@@ -48,12 +48,12 @@
                                     <div class="form-group">
                                         <label for="name" class="sr-only">Ho va ten</label>
                                         <input type="text" name="name" id="name"  class="form-control"
-                                               placeholder="Ho va ten" required>
+                                               placeholder="Họ và tên" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="phone" class="sr-only">So dien thoai</label>
                                         <input type="text" name="phone" id="phone"  class="form-control"
-                                               placeholder="So dien thoai" required>
+                                               placeholder="Số điện thoại" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="sr-only">Email</label>

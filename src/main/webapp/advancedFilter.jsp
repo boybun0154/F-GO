@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>get List from ajax</title>
+	<title>Advanced Search</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
@@ -15,102 +15,50 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>
-	<div class="container" style="margin-top: 6%">
+	<div class="container" style="margin-top: 7%">
 		<div class="row">
 			<div class="col-4">
 				<div class="filter-container">
 					<div class="container overflow-auto" style="height: 600px">
-						<form action="#" method="post">
+						<form onsubmit="filter()">
 							<div class="basic-filter">
 								<div class="form-group">
 									<label for="sorting-select">Sắp xếp theo:</label>
 									<select class="form-control" id="sorting-select">
-										<option value="op">Tối ưu</option>
-										<option value="dt">Khoảng cách gần nhất</option>
-										<option value="pl">Giá thấp nhất</option>
-										<option value="ph">Giá cao nhất</option>
-										<option value="rt">Đánh giá tốt nhất</option>
+										<option value="0">Mặc định</option>
+										<option value="1">Giá thấp nhất</option>
+										<option value="2">Giá cao nhất</option>
 									</select>
 								</div>
 
+<%--								<div class="form-group">--%>
+<%--									<label for="dateBeginPickerId">Bắt đầu</label>--%>
+<%--									<input type="date" class="form-control validate" id="dateBeginPickerId">--%>
+<%--								</div>--%>
+<%--								<div class="form-group">--%>
+<%--									<label for="dateEndPickerId">Kết thúc</label>--%>
+<%--									<input type="date" class="form-control validate" id="dateEndPickerId">--%>
+<%--								</div>--%>
+
 								<div class="form-group">
-										<label for="price-range">Mức giá</label>
+										<div class="d-flex justify-content-between"><label for="price-range">Mức giá</label>
+											<span id="price-select"></span></div>
 										<input type="range" class="form-control-range" id="price-range" name="price-range"
-											   min="300" max="3000" step="100" value="3000">
+											   min="300000" max="3000000" step="100000" value="3000000">
 										<div class="d-flex justify-content-between">
-											<span class="min-value">300K</span>
-											<span class="max-value">3000K</span>
+											<span class="min-value">300.000</span>
+											<span class="max-value">3.000.000</span>
 										</div>
 								</div>
-
-								<div class="form-group">
-									<label for="vehicle-type">Loại xe</label>
-									<div class="row" id="vehicle-type">
-										<div class="form-check col-md-4">
-											<input class="form-check-input" type="checkbox" name="vt_3" id="vt_3" value="3">
-											<label class="form-check-label" for="vt_3">
-												<img src="https://n1-cstg.mioto.vn/m/vehicle-types/mf-4-mini.png" class="img-fluid" alt="4 chỗ (Mini)">
-												4 chỗ (Mini) (165 xe)
-											</label>
-										</div>
-										<div class="form-check col-md-4">
-											<input class="form-check-input" type="checkbox" name="vt_1" id="vt_1" value="1">
-											<label class="form-check-label" for="vt_1">
-												<img src="https://n1-cstg.mioto.vn/m/vehicle-types/mf-4-sedan.png" class="img-fluid" alt="4 chỗ (Sedan)">
-												4 chỗ (Sedan) (642 xe)
-											</label>
-										</div>
-										<div class="form-check col-md-4">
-											<input class="form-check-input" type="checkbox" name="vt_4" id="vt_4" value="4">
-											<label class="form-check-label" for="vt_4">
-												<img src="https://n1-cstg.mioto.vn/m/vehicle-types/mf-4-hatchback.png" class="img-fluid" alt="4 chỗ (Hatchback)">
-												4 chỗ (Hatchback) (31 xe)
-											</label>
-										</div>
-										<div class="form-check col-md-4">
-											<input class="form-check-input" type="checkbox" name="vt_5" id="vt_5" value="5">
-											<label class="form-check-label" for="vt_5">
-												<img src="https://n1-cstg.mioto.vn/m/vehicle-types/mf-5-suv.png" class="img-fluid" alt="5 chỗ (Gầm cao)">
-												5 chỗ (Gầm cao) (128 xe)
-											</label>
-										</div>
-										<div class="form-check col-md-4">
-											<input class="form-check-input" type="checkbox" name="vt_2" id="vt_2" value="2">
-											<label class="form-check-label" for="vt_2">
-												<img src="https://n1-cstg.mioto.vn/m/vehicle-types/mf-7-suv.png" class="img-fluid" alt="7 chỗ (Gầm cao)">
-												7 chỗ (Gầm cao) (494 xe)
-											</label>
-										</div>
-										<div class="form-check col-md-4">
-											<input class="form-check-input" type="checkbox" name="vt_6" id="vt_6" value="6">
-											<label class="form-check-label" for="vt_6">
-												<div class="thumbnail" style="padding: 0.5rem;"><img src="https://n1-cstg.mioto.vn/m/vehicle-types/mf-7-mpv.png" class="img-fluid"></div>
-												7 chỗ (Gầm thấp) (235 xe)
-											</label>
-										</div>
-										<div class="form-check col-md-4">
-											<input class="form-check-input" type="checkbox" name="vt_7" id="vt_7" value="7">
-											<label class="form-check-label" for="vt_7">
-												<div class="thumbnail" style="padding: 0.5rem;"><img src="https://n1-cstg.mioto.vn/m/vehicle-types/mf-pickup.png" class="img-fluid"></div>
-												Bán tải (78 xe)
-											</label>
-										</div>
-									</div>
-								</div>
-
 								<div class="form-group">
 									<label for="car-brand">Hãng xe</label>
 									<select class="form-control" name="car_brand" id="car-brand">
 										<option value="0">Tất cả</option>
-										<option value="2">BMW (5 xe)</option>
-										<option value="4">Ford (75 xe)</option>
-										<option value="10">Honda (143 xe)</option>
-										<option value="11">Hyundai (195 xe)</option>
-										<option value="43">Tesla (1 xe)</option>
-										<option value="6">Mazda (116 xe)</option>
-										<option value="7">Mercedes (12 xe)</option>
-										<option value="9">Toyota (321 xe)</option>
-										<option value="29">Vinfast (126 xe)</option>
+										<option value="1">Hyundai</option>
+										<option value="2">VinFast</option>
+										<option value="3">Mazda</option>
+										<option value="4">Toyota</option>
+										<option value="5">Honda</option>
 									</select>
 								</div>
 
@@ -120,15 +68,18 @@
 										<option value="0">Tất cả</option>
 										<option value="1">Số tự động</option>
 										<option value="2">Số sàn</option>
+										<option value="3">Xe số</option>
+										<option value="4">Xe tay ga</option>
 									</select>
 								</div>
 							</div>
 
 							<div class="advance-filter ">
 								<div class="form-group">
-									<label for="seats">Số chỗ</label>
+									<div class="d-flex justify-content-between"><label for="seats">Số chỗ</label>
+										<span id="seats-select"></span></div>
 									<input type="range" class="form-control-range" id="seats" name="seats"
-										   min="2" max="10" step="1" value="4">
+										   min="2" max="10" step="1" value="10">
 									<div class="d-flex justify-content-between">
 										<span class="min-value">2</span>
 										<span class="max-value">10</span>
@@ -136,9 +87,10 @@
 								</div>
 
 								<div class="form-group">
-									<label for="year">Năm sản xuất</label>
+									<div class="d-flex justify-content-between"><label for="year">Số chỗ</label>
+										<span id="year-select"></span></div>
 									<input type="range" class="form-control-range" id="year" name="year"
-										   min="2005" max="2023" step="1" value="2005">
+										   min="2005" max="2023" step="1" value="2023">
 									<div class="d-flex justify-content-between">
 										<span class="min-value">2005</span>
 										<span class="max-value">2023</span>
@@ -148,9 +100,9 @@
 								<div class="form-group">
 									<label for="fuel">Nhiên liệu</label>
 									<select class="form-control" id="fuel">
-										<option value="">Tất cả</option>
+										<option value="0">Tất cả</option>
 										<option value="1">Xăng</option>
-										<option value="2">Dầu</option>
+										<option value="2">Điện</option>
 									</select>
 								</div>
 							</div>
@@ -164,7 +116,7 @@
 			</div>
 			<div class="col-8">
 				<div class="product-container">
-					<div class="container overflow-auto" style="height: 600px">
+					<div class="container overflow-auto" style="height: 600px; width: 900px">
 						<div id="content" class="row">
 						</div>
 					</div>
@@ -249,20 +201,185 @@
 	});
 
 	function filter(){
+		event.preventDefault();
 		var sortingSelect = document.getElementById("sorting-select").value;
         var priceRange= document.getElementById("price-range").value;
-        var vehicleType= document.querySelector('.checkBoxType:checked');
-        if(vehicleType != null){
-        var vehicleTypeValue= document.querySelector('.checkBoxType:checked').value;
-        }
         var carBrand= document.getElementById("car-brand").value;
         var transmissionType= document.getElementById("transmission-type").value;
         var seats= document.getElementById("seats").value;
         var fuel= document.getElementById("fuel").value;
         var year= document.getElementById("year").value;
-		//TODO: add more filter
+		console.log("priceRange: "+priceRange+"+ carBrand: "+carBrand+" transmissionType: "+transmissionType+" seats: "+seats+" fuel: "+fuel+" year: "+year)
+		$.ajax({
+			type : 'GET',
+			headers : {
+				Accept : "application/json; charset=utf-8",
+				"Content-Type" : "application/json; charset=utf-8"
+			},
+			url : '${pageContext.request.contextPath }/ajax',
+			success : function(result) {
+				var products = $.parseJSON(result);
+				var s = '';
+				//sort by price
+				if(sortingSelect == "1"){
+					products.sort(function(a, b) {
+						return a.price - b.price;
+					});
+				}else if(sortingSelect=="2"){
+					products.sort(function(a, b) {
+						return b.price - a.price;
+					});
+				}
+
+				for(var i = 0; i < products.length; i++) {
+					var p=	"<div class=\"product col-sm-6\">\n" +
+							"    <a href=\"view_car_detail?pid="+ products[i].productID +"\">\n" +
+							"        <div class=\"product-card\">\n" +
+							"            <div class=\"card-thumbnail\">\n" +
+							"                <img class=\"img-responsive\" style=\"height:250px\" src=\""+ products[i].productImg +"\">\n" +
+							"            </div>\n" +
+							"            <div class=\"card-content\">\n" +
+							"                <div class=\"order-btn\">\n" +
+							"                    <a class=\"order-btn-text\" href=\"view_car_detail?pid="+ products[i].productID +"\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i></a>\n" +
+							"                </div>\n" +
+							"                <h1 class=\"card-title\">\n" + products[i].productName +
+							"\n" +
+							"                </h1>\n" +
+							"                <h2 class=\"card-sub-title\">\n" +
+							"                    "+ products[i].yearRelease +"\n" +
+							"                </h2>\n" +
+							"                <div class=\"description\">\n" +
+							"                    <ul>\n" +
+							"                        <li>\n" +
+							"                            <i class=\"fa fa-th hidden-xs hidden-sm\"></i>\n" +
+							"                            <span>\n" +
+							"                                <span class=\"attri\">"+ products[i].licensePlate +"</span> \n" +
+							"                            </span>\n" +
+							"                        </li>\n" +
+							"                        <li>\n" +
+							"                            <i class=\"fa fa-users hidden-xs hidden-sm\"></i>\n" +
+							"                            <span>\n" +
+							"                                <span class=\"attri\">"+ products[i].seat +"</span> \n" +
+							"                            </span>\n" +
+							"                        </li>\n" +
+							"                        <li>\n" +
+							"                            <i class=\"fa fa-cogs hidden-xs hidden-sm\"></i>\n" +
+							"                            <span>\n" +
+							"                                <span class=\"attri\">"+ products[i].gear +"</span> \n" +
+							"                            </span>\n" +
+							"                        </li>\n" +
+							"                    </ul>\n" +
+							"                </div>\n" +
+							"                <div class=\"price\">\n" +
+							"                    <div class=\"price-text\">"+ products[i].price +"đ</div>\n" +
+							"                </div>\n" +
+							"            </div>\n" +
+							"        </div>\n" +
+							"    </a>\n" +
+							"</div>";
+						//filter
+						var checkPrice=parseInt(products[i].price)<parseInt(priceRange);
+						var checkSeat=parseInt(seats)==parseInt(products[i].seat);
+						var checkcarBrand=parseInt(carBrand)==parseInt(products[i].categoryID);
+						switch(transmissionType){
+							case "1":
+								var gear ="Số tự động";
+								break;
+							case "2":
+								var gear ="Số sàn";
+								break;
+							case "3":
+								var gear ="Xe số";
+								break;
+							case "4":
+								var gear ="Xe tay ga";
+								break;
+						}
+
+						var checktransmissionType=gear==products[i].gear;
+						switch(fuel){
+							case "1":
+								var fuelType ="Xăng";
+								break;
+							case "2":
+								var fuelType ="Điện";
+								break;
+						}
+						var checkfuel=fuelType==products[i].fuel;
+						var checkyear=parseInt(year)>parseInt(products[i].yearRelease);
+						//check null
+						if(parseInt(seats)==10)	checkSeat=true;
+						if(parseInt(carBrand)==0)	checkcarBrand=true;
+						if(parseInt(transmissionType)==0)	checktransmissionType=true;
+						if(parseInt(fuel)==0)	checkfuel=true;
+						//check filter
+						if(checkPrice && checkSeat && checkcarBrand && checktransmissionType && checkfuel && checkyear){
+							s+=p;
+						}
+
+				}
+				$('#content').html(s);
+			}
+		});	
 	}
-</script>
+
+	// var today = new Date();
+	// var tomorrow = new Date();
+	// var dd = today.getDate();
+	// var mm = today.getMonth() + 1; //January is 0!
+	// var yyyy = today.getFullYear();
+	// if (dd < 10) {
+	// 	dd = '0' + dd;
+	// }
+	// if (mm < 10) {
+	// 	mm = '0' + mm;
+	// }
+	// today = yyyy + '-' + mm + '-' + dd;
+	// tomorrow = yyyy + '-' + mm + '-' + (dd + 1);
+	//
+	// $('#dateBeginPickerId').attr("min", today);
+	// $('#dateEndPickerId').attr("min", tomorrow);
+	//
+	// function DateCheck() {
+	// 	var StartDate = $('#dateBeginPickerId').val();
+	// 	var EndDate = $('#dateEndPickerId').val();
+	// 	var eDate = new Date(EndDate);
+	// 	var sDate = new Date(StartDate);
+	// 	if (StartDate !== '' && StartDate !== '' && sDate > eDate){
+	// 		alert("Ngày trả xe phải sau ngày nhận xe!");
+	// 		$('#dateEndPickerId').val(null);
+	// 	}
+	// }
+	//
+	// $(document).ready(function () {
+	// 	$('#dateBeginPickerId').change(function () {
+	// 		DateCheck();
+	// 	});
+	// 	$('#dateEndPickerId').change(function () {
+	// 		DateCheck();
+	// 	});
+	// });
+
+	var slider = document.getElementById("price-range");
+	var output = document.getElementById("price-select");
+	output.innerHTML = slider.value;
+	slider.oninput = function() {
+		output.innerHTML = this.value;
+	}
+	var seats = document.getElementById("seats");
+	var outputSeats = document.getElementById("seats-select");
+	outputSeats.innerHTML = seats.value;
+	seats.oninput = function() {
+		outputSeats.innerHTML = this.value;
+	}
+	var year = document.getElementById("year");
+	var outputYear = document.getElementById("year-select");
+	outputYear.innerHTML = year.value;
+	year.oninput = function() {
+		outputYear.innerHTML = this.value;
+	}
+
+	</script>
 
 </body>
 </html>
