@@ -76,10 +76,10 @@ public class EditOrderControl extends HttpServlet {
         
         OrderDAO odao = new OrderDAO();
         odao.editOrder(ocusid, oxeid, otimeBegin, otimeEnd, oaddress, totalMoney, ostatus, oid);
-        if(ostatus.equals("0")){
-            Order o = odao.getOrderById(oid);
-            pdao.changeProductStatus(o.getProductId(), "1");
-        }
+//        if(ostatus.equals("0")){
+//            Order o = odao.getOrderById(oid);
+//            pdao.changeProductStatus(o.getProductId(), "1");
+//        }
         
                 response.sendRedirect("manageorder");
 

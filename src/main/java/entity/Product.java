@@ -10,7 +10,6 @@ public class Product {
     private String productName;
     private String productTitle;
     private String productImg;
-    private int productStatus;
     private int categoryID;
     private String seat;
     private String gear;
@@ -29,14 +28,13 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productID, String productName, String productTitle, String productImg, int productStatus,
+    public Product(int productID, String productName, String productTitle, String productImg,
             int categoryID, String seat, String gear, String color, String licensePlate, String fuel,
             String yearRelease, int price) {
         this.productID = productID;
         this.productName = productName;
         this.productTitle = productTitle;
         this.productImg = productImg;
-        this.productStatus = productStatus;
         this.categoryID = categoryID;
         this.seat = seat;
         this.gear = gear;
@@ -48,14 +46,13 @@ public class Product {
 
     }
 
-    public Product(int productID, String productName, String productTitle, String productImg, int productStatus,
+    public Product(int productID, String productName, String productTitle, String productImg,
             int categoryID, String seat, String gear, String color, String licensePlate, String fuel,
             String yearRelease, int price, int exCharge) {
         this.productID = productID;
         this.productName = productName;
         this.productTitle = productTitle;
         this.productImg = productImg;
-        this.productStatus = productStatus;
         this.categoryID = categoryID;
         this.seat = seat;
         this.gear = gear;
@@ -68,14 +65,13 @@ public class Product {
     }
 
     // Product for filter
-    public Product(int productID, String productName, String productTitle, String productImg, int productStatus,
+    public Product(int productID, String productName, String productTitle, String productImg,
             int categoryID, String seat, String gear, String color, String licensePlate, String fuel,
             String yearRelease, int price, String timeEnd) {
         this.productID = productID;
         this.productName = productName;
         this.productTitle = productTitle;
         this.productImg = productImg;
-        this.productStatus = productStatus;
         this.categoryID = categoryID;
         this.seat = seat;
         this.gear = gear;
@@ -104,14 +100,13 @@ public class Product {
     }
 
     public Product(int productID, String productName, String productTitle, String productImg, int price,
-            int productStatus, int categoryID, String seat, String gear, String color, String licensePlate, String fuel,
+            int categoryID, String seat, String gear, String color, String licensePlate, String fuel,
             String yearRelease, float rating, int cmt) {
         this.productID = productID;
         this.productName = productName;
         this.productTitle = productTitle;
         this.productImg = productImg;
         this.price = price;
-        this.productStatus = productStatus;
         this.categoryID = categoryID;
         this.seat = seat;
         this.gear = gear;
@@ -181,14 +176,6 @@ public class Product {
         this.price = price;
     }
 
-    public int getProductStatus() {
-        return productStatus;
-    }
-
-    public void setProductStatus(int productStatus) {
-        this.productStatus = productStatus;
-    }
-
     public int getCategoryID() {
         return categoryID;
     }
@@ -256,7 +243,7 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" + "productID=" + productID + ", productName=" + productName + ", productTitle=" + productTitle
-                + ", productImg=" + productImg + ", price=" + price + ", productStatus=" + productStatus + ", seat="
+                + ", productImg=" + productImg + ", price=" + price + ", seat="
                 + seat + ", gear=" + gear + ", color=" + color + ", licensePlate=" + licensePlate + ", fuel=" + fuel
                 + ", yearRelease=" + yearRelease + '}';
     }

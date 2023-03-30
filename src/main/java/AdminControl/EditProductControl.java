@@ -52,7 +52,7 @@ public class EditProductControl extends HttpServlet {
         String pname = request.getParameter("name");
         String pcategory = request.getParameter("category");
         String pprice = request.getParameter("price");
-        String pstatus = request.getParameter("status");
+//        String pstatus = request.getParameter("status");
         String pseat = request.getParameter("seat");
         String pgear = request.getParameter("gear");
         String plicensePlate = request.getParameter("licensePlate");
@@ -61,6 +61,8 @@ public class EditProductControl extends HttpServlet {
         String pyearRelease = request.getParameter("yearRelease");
         String pdes = request.getParameter("des");
         String pimage = request.getParameter("link");
+        String pexCharge = request.getParameter("exCharge");
+
 //        Part partImg = request.getPart("image");
 //        String pimage = getFileName(partImg);
 //        try {
@@ -70,9 +72,9 @@ public class EditProductControl extends HttpServlet {
 //        }
         
         ProductDAO pdao = new ProductDAO();
-        pdao.editProduct(pname, pdes, pimage, pprice, pstatus, pcategory, pseat, pgear, pcolor, plicensePlate, pfuel, pyearRelease, pid);
-        System.out.println(pname + " " + pcategory + " " + pprice + " " + pseat + " " + pgear + " " + plicensePlate + " " + pfuel + " " + pcolor + " " + pimage + " " + pyearRelease + " " + pdes + " " + pstatus + " " + pid);
-        //response.sendRedirect("manageproduct");
+        pdao.editProduct(pname, pdes, pimage, pcategory, pseat, pgear, pcolor, plicensePlate, pfuel, pyearRelease,pprice, pexCharge, pid);
+//        System.out.println(pname + " " + pcategory + " " + pprice + " " + pseat + " " + pgear + " " + plicensePlate + " " + pfuel + " " + pcolor + " " + pimage + " " + pyearRelease + " " + pdes + " " + pstatus + " " + pid);
+//        response.sendRedirect("manageproduct");
         out.println("<meta http-equiv='refresh' content='3;URL=manageproduct'>");//redirects after 3 seconds
         out.println("<div style=\"width: 100vw; height: 100vh;\">\n"
                 + "<div class=\"success-msg\" style=\"color: #270;background-color: #DFF2BF;margin: 10px 0;padding: 10px;border-radius: 3px 3px 3px 3px; width: 640px; margin:0 auto;\">\n"

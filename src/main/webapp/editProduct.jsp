@@ -101,21 +101,7 @@
                                         <input id="image" name="image" type="file" accept="image/*" class="form-control" required>
                                         <input id="link" name="link" type="text" class="form-control" value="image-input" hidden>
                                     </div>
-                                    <div class="form-group mb-3">
-                                        <label for="category">Tình trạng</label>
-                                        <select name = "status" class="custom-select tm-select-accounts" id="status">
-                                            <option value="${edit.productStatus}" selected hidden>
-                                                <c:if test="${edit.productStatus == 0}">
-                                                    Hết xe
-                                                </c:if>
-                                                <c:if test="${edit.productStatus == 1}">
-                                                    Còn xe
-                                                </c:if>
-                                            </option>
-                                                <option value="0">Hết xe</option>
-                                                <option value="1">Còn xe</option>
-                                        </select>
-                                    </div>
+                                    
                                     <div class="form-group mt-3 mb-3">
                                         <label for="color">Màu
                                         </label>
@@ -134,6 +120,10 @@
                                     <div class="form-group mt-3 mb-3">
                                         <label for="des">Mô tả</label>
                                         <textarea id="des" name="des" class="form-control validate" rows="3" required>${edit.productTitle}</textarea>
+                                    </div>
+                                    <div class="form-group mt-3 mb-3">
+                                        <label for="des">Phí phạt</label>
+                                        <textarea id="des" name="exCharge" class="form-control validate" rows="1" required>${edit.exCharge}</textarea>
                                     </div>
                                 </div> 
                             </div>

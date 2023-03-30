@@ -48,12 +48,7 @@
                         <div class="car-info mb-3">Biển số xe: ${detail.licensePlate}</div>
                         <div class="car-info mb-3">Nhiên liệu: ${detail.fuel}</div>
                         <div class="car-info mb-3">Năm sản xuất: ${detail.yearRelease}</div>
-                        <div class="car-info mb-3">Trạng thái: <c:if test="${detail.productStatus == 1}">
-                                Còn xe
-                            </c:if>
-                            <c:if test="${detail.productStatus == 0}">
-                                Hết xe
-                            </c:if></div>
+                        
                     </div>
                 </div>
                 <div class="row">

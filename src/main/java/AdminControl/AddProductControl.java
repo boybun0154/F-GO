@@ -58,7 +58,7 @@ public class AddProductControl extends HttpServlet {
         String pcolor = request.getParameter("color");
         String pyearRelease = request.getParameter("yearRelease");
         String pdes = request.getParameter("des");
-        String pstatus = "1";
+//        String pstatus = "1";
         String pimage = request.getParameter("link");
         String exCharge = request.getParameter("exCharge");
 //        Part partImg = request.getPart("image");
@@ -69,11 +69,11 @@ public class AddProductControl extends HttpServlet {
 //        } catch (Exception e) {
 //        }
         
-        System.out.println(pname + " " + pcategory + " " +pprice + " " +pseat+ " " +pgear + " " +plicensePlate+ " " +pfuel+ " " +pcolor+ " " +pimage+ " " +pyearRelease+ " " +pdes+ " " +pstatus);
+//        System.out.println(pname + " " + pcategory + " " +pprice + " " +pseat+ " " +pgear + " " +plicensePlate+ " " +pfuel+ " " +pcolor+ " " +pimage+ " " +pyearRelease+ " " +pdes+ " " +pstatus);
         
         ProductDAO productdao = new ProductDAO();
-        productdao.addProduct(pname,pdes,pimage,pprice,
-                pstatus,pcategory,pseat,pgear,pcolor,plicensePlate, pfuel, pyearRelease,exCharge );
+        productdao.addProduct(pname,pdes,pimage,
+                pcategory,pseat,pgear,pcolor,plicensePlate, pfuel, pyearRelease,pprice, exCharge );
 //        response.sendRedirect("manageproduct");
         out.println("<meta http-equiv='refresh' content='3;URL=manageproduct'>");//redirects after 3 seconds
         out.println("<div style=\"width: 100vw; height: 100vh;\">\n"

@@ -188,7 +188,7 @@ public class ReportControl extends HttpServlet {
             }
         }
         // update product status after submit report
-        pdao.changeProductStatus(o.getProductId(), "1");
+//        pdao.changeProductStatus(o.getProductId(), "1");
 
         // display
 

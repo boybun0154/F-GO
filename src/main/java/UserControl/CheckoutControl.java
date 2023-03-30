@@ -100,7 +100,7 @@ public class CheckoutControl extends HttpServlet {
         CheckoutDAO checkoutdao = new CheckoutDAO();
         checkoutdao.addOrder(cid, pid, oaddress, totalMoney, dateBegin, dateEnd, oarea, ostartLocation, oendLocation);
 
-        pdao.changeProductStatus(p.getProductID(), "0");
+//        pdao.changeProductStatus(p.getProductID(), "0");
 
         if (payment_method.equals("momo")) {
             Order order = checkoutdao.getOrder();
