@@ -180,7 +180,7 @@ public class OrderDAO {
         }
         return null;
     }
-    
+
     public void updateStatus(int orderID) throws Exception {
         String sql = "update [ORDER] set moneyStatus = 1 where orderID = ?";
         try (Connection conn = new DBContext().getConnection();
@@ -190,5 +190,21 @@ public class OrderDAO {
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+
+    public List<Order> getOrdersTime() {
+        List<Order> orders = new ArrayList<Order>();
+        String sql = "select [ORDER].orderID,VEHICLE.productID,timeBegin,timeEnd from VEHICLE right join [ORDER] on [VEHICLE].productID= [ORDER].productID";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                orders.add(new Order(rs.getInt("orderID"), rs.getInt("productID"), rs.getString("timeBegin"),
+                        rs.getString("timeEnd")));
+            }
+        } catch (Exception e) {
+        }
+        return orders;
     }
 }
