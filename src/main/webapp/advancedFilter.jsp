@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="CSS/bootstrap.css" type="text/css" />
         <link rel="stylesheet" href="CSS/style.css" type="text/css" />
         <link rel="stylesheet" href="CSS/swiper.css" type="text/css" />
+	 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/ui-lightness/jquery-ui.css">
 
         <!-- One Page Module Specific Stylesheet -->
         <!--<link rel="stylesheet" href="one-page/onepage.css" type="text/css" />-->
@@ -84,14 +85,16 @@
 									</select>
 								</div>
 
-<%--								<div class="form-group">--%>
-<%--									<label for="dateBeginPickerId">Bắt đầu</label>--%>
-<%--									<input type="date" class="form-control validate" id="dateBeginPickerId">--%>
-<%--								</div>--%>
-<%--								<div class="form-group">--%>
-<%--									<label for="dateEndPickerId">Kết thúc</label>--%>
-<%--									<input type="date" class="form-control validate" id="dateEndPickerId">--%>
-<%--								</div>--%>
+								<div class="form-group">
+									<label for="dateBeginPickerId">Bắt đầu</label>
+									<input id="dateBeginPickerId" type="text" name="dateBegin"
+										   class="form-control validate px-0" autocomplete="off" readonly required>
+								</div>
+								<div class="form-group">
+									<label for="dateEndPickerId">Kết thúc</label>
+									<input id="dateEndPickerId" type="text" name="dateEnd"
+										   class="form-control validate px-0" autocomplete="off" readonly required>
+								</div>
 
 								<div class="form-group">
 										<div class="d-flex justify-content-between"><label for="price-range">Mức giá</label>
@@ -187,6 +190,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
 			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 			crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	<script>
 	$(document).ready(function() {
 		$.ajax({
@@ -376,6 +380,18 @@
 		});	
 	}
 
+	$(function () {
+		$("#dateBeginPickerId").datepicker({
+			dateFormat : 'yy-mm-dd',
+			minDate : 0,
+			maxDate: '+6m',
+			numberOfMonths: 2});
+		$("#dateEndPickerId").datepicker({
+			dateFormat : 'yy-mm-dd',
+			minDate : 1,
+			maxDate: '+6m',
+			numberOfMonths: 2})
+	});
 	// var today = new Date();
 	// var tomorrow = new Date();
 	// var dd = today.getDate();

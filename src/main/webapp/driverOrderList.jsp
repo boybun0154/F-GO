@@ -8,7 +8,6 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="SemiColonWeb" />
 
-
         <!-- Stylesheets
         ============================================= -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:300,400,500,700&display=swap" rel="stylesheet" type="text/css" />
@@ -187,9 +186,9 @@
         <br/>
         <div style="display:none!important" class="modal hide"  id="ReportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
             <div class="add-block" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;" > 
-                <div class="modal-content tm-bg-primary-dark tm-block tm-block-h-auto"> 
-                    <div class="modal-header" style="display: contents;"> 
-                        <h3 class="modal-title tm-block-title">Report</h3> 
+                <div  class="modal-content tm-bg-primary-dark tm-block tm-block-h-auto">
+                    <div  class="modal-header" style="justify-content: center;">
+                        <h3  class="modal-title tm-block-title">Report</h3>
                     </div> 
                     <div class="modal-body">
                         <form action="ReportControl" method="post" class="tm-edit-product-form">

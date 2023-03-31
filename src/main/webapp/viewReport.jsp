@@ -64,8 +64,8 @@
     <body>
         <jsp:include page="header2.jsp"></jsp:include>
             <div class="content">
-                <div style="justify-content: center;" class="header">
-                    <h2>Quản lý report</h2>
+                <div  class="header mt-2">
+                    <h2 style="text-align: center">Quản lý report</h2>
                 </div>
                 <div class="container mb-3 mt-3">
                     <table class="table table-striped table-bordered" style="width: 100%">

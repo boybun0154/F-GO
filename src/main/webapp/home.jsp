@@ -149,47 +149,46 @@
                         <div class="fancy-title title-center title-border topmargin">
                             <h3>Các xe nổi bật</h3>
                         </div>
-                    </div>
-                    <div  id="related-portfolio" class="owl-carousel owl-carousel-full portfolio-carousel carousel-widget" data-margin="0" data-pagi="false" data-items-xs="1" data-items-sm="2" data-items-md="3" data-items-lg="4">
-                    <c:forEach items="${listP}" var="o">
-                        <article  class="portfolio-item pf-graphics pf-illustrations">
-                            <div class="grid-inner">
-                                <div class="portfolio-image">
-                                    <div class="fslider" data-arrows="false">
-                                        <div class="flexslider">
-                                            <div class="slider-wrap">
-                                                <div class="slide"><a href="portfolio-single-gallery.html"><img style='width:100%;height:300px;' src="${o.productImg} alt="Car"></a></div>
-                                                <!--                                                    <div class="slide"><a href="portfolio-single-gallery.html"><img src="images/portfolio/4/6-1.jpg" alt="Shake It"></a></div>
-                                                                                                    <div class="slide"><a href="portfolio-single-gallery.html"><img src="images/portfolio/4/6-2.jpg" alt="Shake It"></a></div>
-                                                                                                    <div class="slide"><a href="portfolio-single-gallery.html"><img src="images/portfolio/4/6-3.jpg" alt="Shake It"></a></div>-->
+                        <div id="oc-portfolio" class="owl-carousel portfolio-carousel carousel-widget" data-pagi="false" data-items-xs="1" data-items-sm="2" data-items-md="3" data-items-lg="4">
+                            <c:forEach items="${listP}" var="o">
+
+                                <div class="portfolio-item">
+                                    <div class="portfolio-image">
+                                        <a   href="portfolio-single-gallery.html">
+                                            <img style='width:100%;height:250px;' src="${o.productImg}" alt="Shake It!">
+                                        </a>
+                                        <div class="bg-overlay" data-lightbox="gallery">
+                                            <div class="bg-overlay-content dark" data-hover-animate="fadeIn">
+                                                <a href="${o.productImg}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="gallery-item"><i class="icon-line-expand"></i></a>
+                                                <a href="${o.productImg}" class="d-none" data-lightbox="gallery-item"></a>
                                             </div>
+                                            <div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
                                         </div>
                                     </div>
-                                    <div class="bg-overlay" data-lightbox="gallery">
-                                        <div class="bg-overlay-content dark flex-column" data-hover-animate="fadeIn">
-                                            <div class="portfolio-desc pt-0 center" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350">
-                                                <h3><a href="view_car_detail?pid=${o.productID}">${o.productName}</a></h3>
-                                                <span><a href="#"><fmt:formatNumber value = "${o.price}" type = "currency" /></a> </span>
-                                                <span><a href="#">${o.yearRelease}</a></span>
-                                            </div>
-                                            <div class="d-flex">
-                                                <a href="images/portfolio/full/6.jpg" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInUpSmall" data-hover-animate-out="fadeOutDownSmall" data-hover-speed="350" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
-                                                <a href="images/portfolio/full/6-1.jpg" class="d-none" data-lightbox="gallery-item"></a>
-                                                <a href="images/portfolio/full/6-2.jpg" class="d-none" data-lightbox="gallery-item"></a>
-                                                <a href="images/portfolio/full/6-3.jpg" class="d-none" data-lightbox="gallery-item"></a>
-                                                <a href="portfolio-single-gallery.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInUpSmall" data-hover-animate-out="fadeOutDownSmall" data-hover-speed="350"><i class="icon-line-ellipsis"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+                                    <div class="portfolio-desc">
+                                        <h3><a href="view_car_detail?pid=${o.productID}">${o.productName}</a></h3>
+                                        <span><a href="#"><fmt:formatNumber value = "${o.price}" type = "currency" /></a> </span>
+                                        <span><a href="#">${o.yearRelease}</a></span>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
-                    </c:forEach>
-                </div>
+
+                            </c:forEach>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
                 </section>
         </div>
-        <div style="text-align:center;" class="watchmore-btn">
+        <div style="text-align:center;" class="watchmore-btn mt-4">
             <form action="allproduct" method="POST">
                 <button type="submit" class="button">Xem thêm toàn bộ xe</button>
             </form>

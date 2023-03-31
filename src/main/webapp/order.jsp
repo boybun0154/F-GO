@@ -131,14 +131,14 @@
                             <div class="d-flex w-50 mb-3">
                                 <div class="d-flex w-100">
                                     <input id="dateBeginPickerId" type="text" name="dateBegin"
-                                           class="form-control validate px-0" autocomplete="off" required>
+                                           class="form-control validate px-0" autocomplete="off" readonly required>
                                 </div>
                             </div>
                             <p class="dis fw-bold mb-2" style="font-size:1rem">Hạn trả xe</p>
                             <div class="d-flex w-50 mb-3">
                                 <div class="d-flex w-100">
                                     <input id="dateEndPickerId" type="text" name="dateEnd"
-                                           class="form-control validate px-0" autocomplete="off" required>
+                                           class="form-control validate px-0" autocomplete="off" readonly required>
                                 </div>
                             </div>
                             <div> 
