@@ -211,8 +211,9 @@ public class ProductDAO {
         }
     }
 
-    public void editProduct(String name, String des, String image, 
-            String cateId, String seat, String gear, String color, String licensePlate, String fuel, String yearRelease, String price,
+    public void editProduct(String name, String des, String image,
+            String cateId, String seat, String gear, String color, String licensePlate, String fuel, String yearRelease,
+            String price,
             String exCharge,
             String pid) {
         String query = "update Vehicle\n"
@@ -276,6 +277,7 @@ public class ProductDAO {
         }
         return list;
     }
+
     public List<Product> getnoibatmost() {
         List<Product> list = new ArrayList<>();
         String query = "select Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease,avg(rate.rate) as rating,count(rate.rate) as Soluongrate from RATE LEFT JOIN Vehicle\n"
@@ -321,19 +323,19 @@ public class ProductDAO {
         return null;
     }
 
-//    public void changeProductStatus(int id, String status) {
-//        String query = "update Vehicle\n"
-//                + "set productStatus = ?\n"
-//                + "where productID = ?";
-//        try {
-//            conn = new DBContext().getConnection();
-//            ps = conn.prepareStatement(query);
-//            ps.setString(1, status);
-//            ps.setInt(2, id);
-//            ps.executeUpdate();
-//        } catch (Exception e) {
-//        }
-//    }
+    // public void changeProductStatus(int id, String status) {
+    // String query = "update Vehicle\n"
+    // + "set productStatus = ?\n"
+    // + "where productID = ?";
+    // try {
+    // conn = new DBContext().getConnection();
+    // ps = conn.prepareStatement(query);
+    // ps.setString(1, status);
+    // ps.setInt(2, id);
+    // ps.executeUpdate();
+    // } catch (Exception e) {
+    // }
+    // }
 
     public List<Product> getproductTime() {
         List<Product> list = new ArrayList<>();
@@ -358,7 +360,7 @@ public class ProductDAO {
 
     public List<Product> getProductFList() {
         List<Product> list = new ArrayList<Product>();
-        String query = "select distinct * from VEHICLE left join [ORDER] on [VEHICLE].productID= [ORDER].productID";
+        String query = "select distinct * from VEHICLE";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -376,10 +378,9 @@ public class ProductDAO {
                 String fuel = rs.getString("fuel");
                 String yearRelease = rs.getString("yearRelease");
                 int price = rs.getInt("productPrice");
-                String timeEnd = rs.getString("timeEnd");
                 list.add(new Product(productID, productName, productTitle, productImg, categoryID, seat,
                         gear, color,
-                        licensePlate, fuel, yearRelease, price, timeEnd));
+                        licensePlate, fuel, yearRelease, price));
             }
         } catch (Exception e) {
         }
