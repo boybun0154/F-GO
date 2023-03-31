@@ -15,7 +15,9 @@
         <!-- One Page Module Specific Stylesheet -->
         <!--<link rel="stylesheet" href="one-page/onepage.css" type="text/css" />-->
         <!-- / -->
-
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+       <link rel="stylesheet" href="./CSS/viewProfileStyle2.css"/>
         <link rel="stylesheet" href="CSS/dark.css" type="text/css" />
         <link rel="stylesheet" href="CSS/font-icons.css" type="text/css" />
         <link rel="stylesheet" href="one-page/css/et-line.css" type="text/css" />
@@ -150,7 +152,6 @@
 ============================================= -->
 <script src="JS/jquery.js"></script>
 <script src="JS/plugins.min.js"></script>
-<script src="https://maps.google.com/maps/api/js?key=YOUR-API-KEY"></script>
 
 <!-- Footer Scripts
 ============================================= -->

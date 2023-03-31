@@ -337,7 +337,7 @@
                             <a href="view_car_detail?pid=${o.productID}">
                                 <div class="product-card">
                                     <div class="card-thumbnail">
-                                        <img class="img-responsive" src="${o.productImg}">
+                                        <img style="height: 250px;" class="img-responsive" src="${o.productImg}">
                                     </div>
                                     <div class="card-content">
                                         <div class="order-btn">
@@ -479,7 +479,6 @@
     ============================================= -->
     <script src="JS/jquery.js"></script>
     <script src="JS/plugins.min.js"></script>
-    <script src="https://maps.google.com/maps/api/js?key=YOUR-API-KEY"></script>
 
     <!-- Footer Scripts
     ============================================= -->

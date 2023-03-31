@@ -62,7 +62,7 @@
     <body>
         <jsp:include page="header2.jsp"></jsp:include>
         <div class="content">
-            <div class="header">
+            <div style="justify-content: center" class="header">
                 <h2>Chi tiết thông tin xe</h2>
             </div>
 
@@ -144,7 +144,6 @@
 ============================================= -->
 <script src="JS/jquery.js"></script>
 <script src="JS/plugins.min.js"></script>
-<script src="https://maps.google.com/maps/api/js?key=YOUR-API-KEY"></script>
 
 <!-- Footer Scripts
 ============================================= -->

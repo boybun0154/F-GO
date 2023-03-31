@@ -12,6 +12,11 @@
         <link rel="stylesheet" href="CSS/bootstrap.css" type="text/css" />
         <link rel="stylesheet" href="CSS/style.css" type="text/css" />
         <link rel="stylesheet" href="CSS/swiper.css" type="text/css" />
+        <link rel="stylesheet" href="./CSS/wishlistStyle2.css">
+        <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 
         <!-- One Page Module Specific Stylesheet -->
         <!--<link rel="stylesheet" href="one-page/onepage.css" type="text/css" />-->
@@ -163,7 +168,6 @@
         ============================================= -->
         <script src="JS/jquery.js"></script>
         <script src="JS/plugins.min.js"></script>
-        <script src="https://maps.google.com/maps/api/js?key=YOUR-API-KEY"></script>
 
         <!-- Footer Scripts
         ============================================= -->

@@ -126,7 +126,6 @@
 ============================================= -->
 <script src="JS/jquery.js"></script>
 <script src="JS/plugins.min.js"></script>
-<script src="https://maps.google.com/maps/api/js?key=YOUR-API-KEY"></script>
 
 <!-- Footer Scripts
 ============================================= -->

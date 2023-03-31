@@ -168,7 +168,7 @@
                                     <div class="bg-overlay" data-lightbox="gallery">
                                         <div class="bg-overlay-content dark flex-column" data-hover-animate="fadeIn">
                                             <div class="portfolio-desc pt-0 center" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350">
-                                                <h3><a href="view_car_detail?pid=${o.productID}">${o.productName}</h3>
+                                                <h3><a href="view_car_detail?pid=${o.productID}">${o.productName}</a></h3>
                                                 <span><a href="#"><fmt:formatNumber value = "${o.price}" type = "currency" /></a> </span>
                                                 <span><a href="#">${o.yearRelease}</a></span>
                                             </div>
@@ -187,6 +187,7 @@
                         </article>
                     </c:forEach>
                 </div>
+                </section>
         </div>
         <div style="text-align:center;" class="watchmore-btn">
             <form action="allproduct" method="POST">
@@ -217,7 +218,6 @@
 ============================================= -->
 <script src="JS/jquery.js"></script>
 <script src="JS/plugins.min.js"></script>
-<script src="https://maps.google.com/maps/api/js?key=YOUR-API-KEY"></script>
 
 <!-- Footer Scripts
 ============================================= -->

@@ -299,7 +299,7 @@ hr {
     font-size:  1.2rem;;
     font-weight: 700;
 }
- 
+
 .product-card {
     position: relative;
     margin: 10px 0px;
@@ -407,7 +407,7 @@ hr {
 
 .description ul{
     list-style: none;
-    display:flex; 
+    display:flex;
     justify-content: space-between;
 }
 

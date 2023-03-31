@@ -278,10 +278,10 @@ public class ProductDAO {
     }
     public List<Product> getnoibatmost() {
         List<Product> list = new ArrayList<>();
-        String query = "select Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.productStatus,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease,avg(rate.rate) as rating,count(rate.rate) as Soluongrate from RATE LEFT JOIN Vehicle\n"
+        String query = "select Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease,avg(rate.rate) as rating,count(rate.rate) as Soluongrate from RATE LEFT JOIN Vehicle\n"
                 +
                 "                 on Vehicle.productID=rate.productID \n" +
-                "                 group by Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.productStatus,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease\n"
+                "                 group by Vehicle.productID,productName,productTitle,productImg,Vehicle.productPrice,Vehicle.categoryID,Vehicle.seat,Vehicle.gear,Vehicle.color,Vehicle.licensePlate,Vehicle.fuel,Vehicle.yearRelease\n"
                 +
                 "                 order by avg(rate.rate) desc";
         try {

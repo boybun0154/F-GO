@@ -11,6 +11,10 @@
         <link rel="stylesheet" href="CSS/bootstrap.css" type="text/css" />
         <link rel="stylesheet" href="CSS/style.css" type="text/css" />
         <link rel="stylesheet" href="CSS/swiper.css" type="text/css" />
+        <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+        <script type='text/javascript'> src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js%27%3E'</script>
+        <link rel="stylesheet" href="./CSS/viewCarDetail2.css">
 
         <!-- One Page Module Specific Stylesheet -->
         <!--<link rel="stylesheet" href="one-page/onepage.css" type="text/css" />-->
@@ -125,8 +129,8 @@
                             <span class="ml-1 font-weight-bold">${avg}</span>
                         </div>
                         <hr>
-                        <div class="badges text-center"> <span class="badge">Tổng cộng</span>
-                            <span class="badge"> <i class="fa fa-comments-o"></i> ${countCmt} </span>
+                        <div  class="badges text-center"> <span style="color: black;" class="badge">Tổng cộng</span>
+                            <span style="color: black;" class="badge"> <i class="fa fa-comments-o"></i> ${countCmt} </span>
                             <span class="badge bg-primary-color">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -200,7 +204,7 @@
                                 <hr>
                             </c:forEach>
                         </div>
-                        <div class="button text-center">
+                        <div class="text-center">
                             <button class="btn btn-more mt-5">Xem thêm</button>
                         </div>
                     </div>
@@ -372,7 +376,6 @@
 ============================================= -->
 <script src="JS/jquery.js"></script>
 <script src="JS/plugins.min.js"></script>
-<script src="https://maps.google.com/maps/api/js?key=YOUR-API-KEY"></script>
 
 <!-- Footer Scripts
 ============================================= -->

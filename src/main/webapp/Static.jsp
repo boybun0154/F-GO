@@ -7,7 +7,11 @@
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="SemiColonWeb" />
-
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="./CSS/manageStyle.css">
 
         <!-- Stylesheets
         ============================================= -->
@@ -187,7 +191,6 @@
         ============================================= -->
         <script src="JS/jquery.js"></script>
         <script src="JS/plugins.min.js"></script>
-        <script src="https://maps.google.com/maps/api/js?key=YOUR-API-KEY"></script>
 
         <!-- Footer Scripts
         ============================================= -->
