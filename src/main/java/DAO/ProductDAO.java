@@ -292,9 +292,9 @@ public class ProductDAO {
             int cmt = 0;
             while (rs.next()) {
                 list.add(new Product(rs.getInt(1),
-                        rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-                        rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9),
-                        rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13),
+                        rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8),
+                        rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12),
                         rating = rs.getFloat("rating"), cmt = rs.getInt("Soluongrate")));
             }
         } catch (Exception e) {
