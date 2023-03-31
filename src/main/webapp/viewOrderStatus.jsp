@@ -78,12 +78,8 @@
                                 <div class="card-body row">
                                     <div class="col text-center"> 
                                         <div><strong>Tên xe</strong></div> 
-                                        <br>
-                                        <c:forEach items="${productOrderList}" var="p">
-                                            <c:if test="${o.productId == p.productID}">
-                                                <img src="${p.productImg}" alt="Hình ảnh xe" width="100">&nbsp&nbsp${p.productName}
-                                            </c:if>
-                                        </c:forEach>
+                                        <br>          
+                                    <img src="${o.productImg}" alt="Hình ảnh xe" width="100">
                                     </div>
                                     <div class="col text-center">
                                         <div style="margin-bottom: 14px!important;"><strong>Ngày nhận xe:</strong></div>

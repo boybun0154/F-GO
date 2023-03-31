@@ -18,6 +18,7 @@ public class Order {
     private String endLocation;
     private int driverId;
     private int statusMoney;
+    private String productImg;
 
     public Order() {
     }
@@ -62,6 +63,25 @@ public class Order {
         this.productId = productId;
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
+    }
+
+    public Order(int orderId, int customerID, int productId, String address, int totalMoney, int status,
+            String timeBegin, String timeEnd, String area, String startLocation, String endLocation, int driverId,
+            int statusMoney, String productImg) {
+        this.orderId = orderId;
+        this.customerID = customerID;
+        this.productId = productId;
+        this.address = address;
+        this.totalMoney = totalMoney;
+        this.status = status;
+        this.timeBegin = timeBegin;
+        this.timeEnd = timeEnd;
+        this.area = area;
+        this.startLocation = startLocation;
+        this.endLocation = endLocation;
+        this.driverId = driverId;
+        this.statusMoney = statusMoney;
+        this.productImg = productImg;
     }
 
     public int getOrderId() {
@@ -122,6 +142,14 @@ public class Order {
 
     public String getTimeEnd() {
         return timeEnd;
+    }
+
+    public String getProductImg() {
+        return productImg;
+    }
+
+    public void setProductImg(String productImg) {
+        this.productImg = productImg;
     }
 
     public void setTimeEnd(String timeEnd) {

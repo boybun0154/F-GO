@@ -37,7 +37,7 @@ public class RatingDAO {
 
     public List<Order> getOrderingByCusID(int customerID) {
         List<Order> list = new ArrayList<>();
-        String query = "SELECT * FROM [ORDER] WHERE customerID = ?";
+        String query = "select * from [ORDER] left join [VEHICLE] on [ORDER].productID=[VEHICLE].productID where [ORDER].customerID= ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -56,8 +56,9 @@ public class RatingDAO {
                 String endLocation = rs.getString("endLocation");
                 int driverId = rs.getInt("driver_id");
                 int moneyStatus = rs.getInt("moneyStatus");
+                String productImg = rs.getString("productImg");
                 list.add(new Order(orderId, customerID, productId, address, totalMoney, status, timeBegin, timeEnd,
-                        area, startLocation, endLocation, driverId, moneyStatus));
+                        area, startLocation, endLocation, driverId, moneyStatus, productImg));
             }
         } catch (Exception e) {
         }
