@@ -74,7 +74,7 @@
 			<div class="col-4">
 				<div class="filter-container">
 					<div class="container overflow-auto" style="height: 600px">
-						<form onsubmit="filter()">
+						<form onsubmit="dateFilter()">
 							<div class="basic-filter">
 								<div class="form-group">
 									<label for="sorting-select">Sắp xếp theo:</label>
@@ -192,6 +192,7 @@
 			crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	<script>
+	//load list vehicle
 	$(document).ready(function() {
 		$.ajax({
 			type : 'GET',
@@ -256,8 +257,8 @@
 			}
 		});	
 	});
-
-	function filter(){
+	//filter attribute in vehicle
+	function filter(products){
 		event.preventDefault();
 		var sortingSelect = document.getElementById("sorting-select").value;
         var priceRange= document.getElementById("price-range").value;
@@ -267,15 +268,15 @@
         var fuel= document.getElementById("fuel").value;
         var year= document.getElementById("year").value;
 		console.log("priceRange: "+priceRange+"+ carBrand: "+carBrand+" transmissionType: "+transmissionType+" seats: "+seats+" fuel: "+fuel+" year: "+year)
-		$.ajax({
-			type : 'GET',
-			headers : {
-				Accept : "application/json; charset=utf-8",
-				"Content-Type" : "application/json; charset=utf-8"
-			},
-			url : '${pageContext.request.contextPath }/ajax',
-			success : function(result) {
-				var products = $.parseJSON(result);
+		// $.ajax({
+		// 	type : 'GET',
+		// 	headers : {
+		// 		Accept : "application/json; charset=utf-8",
+		// 		"Content-Type" : "application/json; charset=utf-8"
+		// 	},
+		// 	url : '${pageContext.request.contextPath }/ajax',
+		// 	success : function(result) {
+		// 		var products = $.parseJSON(result);
 				var s = '';
 				//sort by price
 				if(sortingSelect == "1"){
@@ -376,8 +377,8 @@
 
 				}
 				$('#content').html(s);
-			}
-		});	
+		// 	}
+		// });	
 	}
 
 	$(function () {
@@ -385,49 +386,58 @@
 			dateFormat : 'yy-mm-dd',
 			minDate : 0,
 			maxDate: '+6m',
-			numberOfMonths: 2});
+			numberOfMonths: 2
+			});
 		$("#dateEndPickerId").datepicker({
 			dateFormat : 'yy-mm-dd',
 			minDate : 1,
 			maxDate: '+6m',
-			numberOfMonths: 2})
+			numberOfMonths: 2
+			})
 	});
-	// var today = new Date();
-	// var tomorrow = new Date();
-	// var dd = today.getDate();
-	// var mm = today.getMonth() + 1; //January is 0!
-	// var yyyy = today.getFullYear();
-	// if (dd < 10) {
-	// 	dd = '0' + dd;
-	// }
-	// if (mm < 10) {
-	// 	mm = '0' + mm;
-	// }
-	// today = yyyy + '-' + mm + '-' + dd;
-	// tomorrow = yyyy + '-' + mm + '-' + (dd + 1);
-	//
-	// $('#dateBeginPickerId').attr("min", today);
-	// $('#dateEndPickerId').attr("min", tomorrow);
-	//
-	// function DateCheck() {
-	// 	var StartDate = $('#dateBeginPickerId').val();
-	// 	var EndDate = $('#dateEndPickerId').val();
-	// 	var eDate = new Date(EndDate);
-	// 	var sDate = new Date(StartDate);
-	// 	if (StartDate !== '' && StartDate !== '' && sDate > eDate){
-	// 		alert("Ngày trả xe phải sau ngày nhận xe!");
-	// 		$('#dateEndPickerId').val(null);
-	// 	}
-	// }
-	//
-	// $(document).ready(function () {
-	// 	$('#dateBeginPickerId').change(function () {
-	// 		DateCheck();
-	// 	});
-	// 	$('#dateEndPickerId').change(function () {
-	// 		DateCheck();
-	// 	});
-	// });
+	var today = new Date();
+	var tomorrow = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth() + 1; //January is 0!
+	var yyyy = today.getFullYear();
+	//default date end = date begin + 1 year
+	var defaultEndDate= new Date(yyyy, mm, dd);
+	if (dd < 10) {
+		dd = '0' + dd;
+	}
+	if (mm < 10) {
+		mm = '0' + mm;
+	}
+	
+	today = yyyy + '-' + mm + '-' + dd;
+	tomorrow = yyyy + '-' + mm + '-' + (dd + 1);
+	defaultEndDate= yyyy+1 + '-' + mm + '-' + dd;
+	$('#dateBeginPickerId').attr("min", today);
+	$('#dateEndPickerId').attr("min", tomorrow);
+	$('#dateBeginPickerId').val(today);
+	
+
+	
+	
+	function DateCheck() {
+		var StartDate = $('#dateBeginPickerId').val();
+		var EndDate = $('#dateEndPickerId').val();
+		var eDate = new Date(EndDate);
+		var sDate = new Date(StartDate);
+		if (StartDate !== '' && StartDate !== '' && sDate > eDate){
+			alert("Ngày trả xe phải sau ngày nhận xe!");
+			$('#dateEndPickerId').val(null);
+		}
+	}
+	
+	$(document).ready(function () {
+		$('#dateBeginPickerId').change(function () {
+			DateCheck();
+		});
+		$('#dateEndPickerId').change(function () {
+			DateCheck();
+		});
+	});
 
 	var slider = document.getElementById("price-range");
 	var output = document.getElementById("price-select");
@@ -447,6 +457,30 @@
 	year.oninput = function() {
 		outputYear.innerHTML = this.value;
 	}
+
+	
+	//filter date
+	function dateFilter(){
+		event.preventDefault();
+		$('#dateEndPickerId').val(defaultEndDate);
+		var startDate= document.getElementById("dateBeginPickerId").value;
+		var endDate= document.getElementById("dateEndPickerId").value;
+		console.log("startDate: "+startDate+" endDate: "+endDate);
+		//pass startDate,endDate to ajax url:/datefilterajax
+		$.ajax({
+				type : 'GET',
+			headers : {
+				Accept : "application/json; charset=utf-8",
+				"Content-Type" : "application/json; charset=utf-8"
+			},
+			url : '${pageContext.request.contextPath }/datefilterajax?startDate='+startDate+'&endDate='+endDate,
+			success : function(result) {
+				var products = $.parseJSON(result);
+				filter(products);
+			}
+		})
+	}
+
 
 	</script>
 

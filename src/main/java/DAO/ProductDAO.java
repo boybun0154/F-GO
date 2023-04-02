@@ -386,4 +386,47 @@ public class ProductDAO {
         }
         return list;
     }
+
+    public List<Product> getProductBydate(String startDate, String endDate) {
+        List<Product> list = new ArrayList<Product>();
+        String query = "declare @start as date=?\n" +
+                "declare @end as date =?\n" +
+                "SELECT * FROM VEHICLE V\n" +
+                "WHERE NOT EXISTS (\n" +
+                "SELECT 'X' FROM [ORDER] O \n" +
+                "WHERE V.productID = O.productID\n" +
+                "AND (\n" +
+                "(O.timeBegin <= @start AND o.timeEnd >= @end)\n" +
+                "OR\n" +
+                "(O.timeBegin <= @start AND o.timeEnd >= @start)\n" +
+                "OR\n" +
+                "(O.timeBegin >= @end AND o.timeEnd <= @end)\n" +
+                "));";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, startDate);
+            ps.setString(2, endDate);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int productID = rs.getInt("productID");
+                String productName = rs.getString("productName");
+                String productTitle = rs.getString("productTitle");
+                String productImg = rs.getString("productImg");
+                int categoryID = rs.getInt("categoryID");
+                String seat = rs.getString("seat");
+                String gear = rs.getString("gear");
+                String color = rs.getString("color");
+                String licensePlate = rs.getString("licensePlate");
+                String fuel = rs.getString("fuel");
+                String yearRelease = rs.getString("yearRelease");
+                int price = rs.getInt("productPrice");
+                list.add(new Product(productID, productName, productTitle, productImg, categoryID, seat,
+                        gear, color,
+                        licensePlate, fuel, yearRelease, price));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
 }
