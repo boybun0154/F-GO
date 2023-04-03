@@ -141,7 +141,8 @@
         <url-pattern>/ReportEditServlet</url-pattern>
         <url-pattern>/driverOrderList.jsp</url-pattern>
         <url-pattern>/ReportControl</url-pattern>
-
+        <url-pattern>/load_to_order</url-pattern>
+        
     </filter-mapping>
     <filter-mapping>
         <filter-name>DeniedAdmin</filter-name>

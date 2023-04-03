@@ -1,6 +1,8 @@
 package filter;
 
+import DAO.CustomerDAO;
 import entity.Account;
+import entity.Customer;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -107,7 +109,10 @@ public class DeniedUser implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
         Account a = (Account) session.getAttribute("acc");
-        if (a.getRole().equals("0")) {
+        CustomerDAO cdao = new CustomerDAO();
+        Customer c = cdao.getCustomerByAccID(String.valueOf(a.getAccountID()));
+        
+        if (a.getRole().equals("0") && c.getIsVerify() == 0) {
             res.sendRedirect("denied.jsp");
         }
         

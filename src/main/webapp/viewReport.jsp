@@ -64,6 +64,10 @@
     <body>
         <jsp:include page="header2.jsp"></jsp:include>
             <div class="content">
+                        <br/>
+        <br/>
+        <br/>
+
                 <div  class="header mt-2">
                     <h2 style="text-align: center">Quản lý report</h2>
                 </div>
@@ -155,6 +159,21 @@
         <br/>
         <br/>
         <br/>
+                <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+                <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+                <br/>
+        
+
+
+
         <jsp:include page="footer.jsp"></jsp:include>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

@@ -184,6 +184,16 @@
         <br/>
         <br/>
         <br/>
+                <br/>
+        <br/>
+        <br/>
+                <br/>
+        <br/>
+               
+        
+
+
+
         <div style="display:none!important" class="modal hide"  id="ReportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
             <div class="add-block" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;" > 
                 <div  class="modal-content tm-bg-primary-dark tm-block tm-block-h-auto">
@@ -200,7 +210,7 @@
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="damagePercent">Phần trăm hư hỏng</label>
-                                        <input id="damagePercent" name="damagePercent" min="0" type="number" class="form-control validate" required />
+                                        <input id="damagePercent" name="damagePercent" min="0" max="100" type="number" class="form-control validate" required />
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="exDistance">Số km vượt quá</label>
