@@ -115,7 +115,7 @@
                                     <h2 class="tm-block-title">Thêm tài khoản mới</h2>
                                 </div>
                             </div>
-                            <form action="AddDriverAccount" method="post" class="tm-edit-product-form">
+                            <form id="form" action="AddDriverAccount" method="post" class="tm-edit-product-form">
                                 <div class="row tm-edit-product-row" style="justify-content: center">
                                     <div class="col-xl-9 col-lg-9 col-md-12">
                                         <div class="form-group mb-3">
@@ -125,12 +125,14 @@
                                                         <div class="col-6">
                                                             <label for="username">Tên tài khoản
                                                             </label>
-                                                            <input id="username" name="username" type="text" class="form-control validate" required />
+                                                            <input id="username" name="username" type="text" class="form-control validate" required onkeyup="validationAccName()" />
+                                                            <span id="textusername"></span>
                                                         </div>
                                                         <div class="col-6">
                                                             <label for="password">Mật khẩu
                                                             </label>
-                                                            <input id="password" name="password" type="text" class="form-control validate" required />
+                                                            <input id="password" name="password" type="password" class="form-control validate" required onkeyup="validationPass()" />
+                                                            <span id="textpass"></span>
                                                         </div>
                                                     </div>
                                                 </div>  
@@ -139,22 +141,28 @@
                                         <div class="form-group mb-3">
                                             <label for="name">Tên tài xế
                                             </label>
-                                            <input id="name" name="name" type="text" class="form-control validate" required />
+                                            <input id="name" name="name" type="text" class="form-control validate" required onkeyup="validationname()" />
+                                                                                        <span id="textname"></span>
+
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="phone">Số điện thoại
                                             </label>
-                                            <input id="phone" name="phone" type="text" class="form-control validate" required />
+                                            <input id="phone" name="phone" type="text" class="form-control validate" required onkeyup="validationphone()" />
+                                                                                        <span id="textphone"></span>
+
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="address">Địa chỉ
                                             </label>
-                                            <input id="address" name="address" type="text" class="form-control validate" required />
+                                            <input id="address" name="address" type="text" class="form-control validate" required onkeyup="validationAddress()" />
+                                            <span id="textAddress"></span>
                                         </div>
                                         <div class="form-group mb-3">
                                             <label for="license">Bằng lái
                                             </label>
-                                            <input id="license" name="license" type="text" class="form-control validate" required />
+                                            <input id="license" name="license" type="text" class="form-control validate" required onkeyup="validationLicense()" />
+                                            <span id="textLicense"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -226,6 +234,187 @@
                     infoFiltered: '(filtered from _MAX_ total records)',
                 },
             });
+        </script>
+        <script type="text/javascript">
+            function validation(){
+                var form = document.getElementById("form");
+                var email = document.getElementById("email").value;
+                var text = document.getElementById("text");
+                var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                if(email.match(pattern)){
+                    form.classList.add("valid");
+                    form.classList.remove("invalid");
+                    text.innerHTML = "Đúng định dạng"
+                    text.style.color = "#00ff00"
+                } else {
+                    form.classList.remove("valid");
+                    form.classList.add("invalid");
+                    text.innerHTML = "Chưa đúng định dạng"
+                    text.style.color = "#ff0000"
+
+                }
+                if(email == ""){
+                    form.classList.remove("valid");
+                    form.classList.remove("invalid");
+                    text.innerHTML = ""
+                }
+            }
+            
+            
+        </script>
+        <script type="text/javascript">
+            function validationphone(){
+                var form = document.getElementById("form");
+                var phone = document.getElementById("phone").value;
+                var textphone = document.getElementById("textphone");
+                var pattern = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$";
+                if(phone.match(pattern)){
+                    form.classList.add("valid");
+                    form.classList.remove("invalid");
+                    textphone.innerHTML = "Đúng định dạng"
+                    textphone.style.color = "#00ff00"
+                } else {
+                    form.classList.remove("valid");
+                    form.classList.add("invalid");
+                    textphone.innerHTML = "Chưa đúng định dạng"
+                    textphone.style.color = "#ff0000"
+
+                }
+                if(phone == ""){
+                    form.classList.remove("valid");
+                    form.classList.remove("invalid");
+                    textphone.innerHTML = ""
+                }
+            }
+            
+            function validationname(){
+                var form = document.getElementById("form");
+                var name = document.getElementById("name").value;
+                var textname = document.getElementById("textname");
+                var pattern = "^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$";
+                if(name.match(pattern)){
+                    form.classList.add("valid");
+                    form.classList.remove("invalid");
+                    textname.innerHTML = "Đúng định dạng"
+                    textname.style.color = "#00ff00"
+
+                } else {
+                    form.classList.remove("valid");
+                    form.classList.add("invalid");
+                    textname.innerHTML = "Chưa đúng định dạng"
+                    textname.style.color = "#ff0000"
+                }
+                if(name == ""){
+                    form.classList.remove("valid");
+                    form.classList.remove("invalid");
+                    textphone.innerHTML = ""
+                }
+            }
+            function validationAccName(){
+                var form = document.getElementById("form");
+                var username = document.getElementById("username").value;
+                var textusername = document.getElementById("textusername");
+                var pattern = "^[A-Za-z0-9]+$";
+                if(username.match(pattern)){
+                    form.classList.add("valid");
+                    form.classList.remove("invalid");
+                    textusername.innerHTML = "Đúng định dạng"
+                    textusername.style.color = "#00ff00"
+
+                } else {
+                    form.classList.remove("valid");
+                    form.classList.add("invalid");
+                    textusername.innerHTML = "Chưa đúng định dạng"
+                    textusername.style.color = "#ff0000"
+                }
+                if(username == ""){
+                    form.classList.remove("valid");
+                    form.classList.remove("invalid");
+                    username.innerHTML = ""
+                }
+            }
+            
+            
+            function validationPass(){
+                var form = document.getElementById("form");
+                var password = document.getElementById("password").value;
+                var textpass = document.getElementById("textpass");
+                var pattern = "^[A-Za-z0-9]+$";
+                if(password.match(pattern)){
+                    form.classList.add("valid");
+                    form.classList.remove("invalid");
+                    textpass.innerHTML = "Đúng định dạng"
+                    textpass.style.color = "#00ff00"
+
+                } else {
+                    form.classList.remove("valid");
+                    form.classList.add("invalid");
+                    textpass.innerHTML = "Chưa đúng định dạng"
+                    textpass.style.color = "#ff0000"
+                }
+                if(password == ""){
+                    form.classList.remove("valid");
+                    form.classList.remove("invalid");
+                    password.innerHTML = ""
+                }
+            }
+            
+            
+            function validationAddress(){
+                var form = document.getElementById("form");
+                var address = document.getElementById("address").value;
+                var textAddress = document.getElementById("textAddress");
+                var pattern = "[^a-zA-Z\d\s]";
+                if(address.match(pattern)){
+                    form.classList.add("valid");
+                    form.classList.remove("invalid");
+                    textAddress.innerHTML = "Đúng định dạng"
+                    textAddress.style.color = "#00ff00"
+
+                } else {
+                    form.classList.remove("valid");
+                    form.classList.add("invalid");
+                    textAddress.innerHTML = "Chưa đúng định dạng"
+                    textAddress.style.color = "#ff0000"
+                }
+                if(address == ""){
+                    form.classList.remove("valid");
+                    form.classList.remove("invalid");
+                    address.innerHTML = ""
+                }
+            }
+            
+            
+            function validationLicense(){
+                var form = document.getElementById("form");
+                var license = document.getElementById("license").value;
+                var textLicense = document.getElementById("textLicense");
+                var pattern = "^[A-Za-z0-9]+$";
+                if(license.match(pattern)){
+                    form.classList.add("valid");
+                    form.classList.remove("invalid");
+                    textLicense.innerHTML = "Đúng định dạng"
+                    textLicense.style.color = "#00ff00"
+
+                } else {
+                    form.classList.remove("valid");
+                    form.classList.add("invalid");
+                    textLicense.innerHTML = "Chưa đúng định dạng"
+                    textLicense.style.color = "#ff0000"
+                }
+                if(license == ""){
+                    form.classList.remove("valid");
+                    form.classList.remove("invalid");
+                    license.innerHTML = ""
+                }
+            }
+
+            
+            
+            
+            
+            
+            
         </script>
     </body>
 </html>

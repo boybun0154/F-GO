@@ -178,19 +178,11 @@
 
                     </div>
 
-
-
-
-
-
-
-
-
                 </section>
         </div>
         <div style="text-align:center;" class="watchmore-btn mt-4">
             <form action="allproduct" method="POST">
-                <button type="submit" class="button">Xem thêm toàn bộ xe</button>
+                <button style="background-color: #FF9933" type="submit" class="button">Xem thêm toàn bộ xe</button>
             </form>
         </div>
 

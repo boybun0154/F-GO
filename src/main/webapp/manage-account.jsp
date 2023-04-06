@@ -90,6 +90,9 @@
                         </thead>
                         <tbody>
                         <c:forEach items="${listA}" var="o">
+                            <c:if test="${o.role==0}">
+                                
+                            
                             <tr>
                                 <td>${o.accountID}</td>
                                 <td>${o.account}</td>
@@ -118,6 +121,7 @@
                                     </a>
                                 </td>
                             </tr>
+                            </c:if>
                         </c:forEach>
                     </tbody>
                 </table>

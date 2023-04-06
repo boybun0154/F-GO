@@ -46,12 +46,12 @@
                                                placeholder="Nhập lại mật khẩu" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="name" class="sr-only">Ho va ten</label>
+                                        <label for="name" class="sr-only">Họ và tên</label>
                                         <input type="text" name="name" id="name"  class="form-control"
                                                placeholder="Họ và tên" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="phone" class="sr-only">So dien thoai</label>
+                                        <label for="phone" class="sr-only">Số điện thoại</label>
                                         <input type="text" name="phone" id="phone"  class="form-control"
                                                placeholder="Số điện thoại" required>
                                     </div>

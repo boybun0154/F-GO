@@ -290,7 +290,7 @@
                 var EndDate = document.getElementById('dateEndPickerId').value;
                 var eDate = new Date(EndDate);
                 var sDate = new Date(StartDate);
-                if (StartDate !== '' && StartDate !== '' && sDate > eDate){
+                if (StartDate !== '' && EndDate !== '' && sDate > eDate){
                     alert("Ngày trả xe phải sau ngày nhận xe!");
                     document.getElementById('dateEndPickerId').value = null;
                 }

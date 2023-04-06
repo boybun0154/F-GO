@@ -27,17 +27,17 @@
                                     <img src="IMG/logo.png" alt="logo" class="logo">
                                 </div>
                                 <p class="signup-card-description">Đăng ký tài khoản F-Go</p>
-                                <form action="UserVerify" method="post">
+                                <form id="form" action="UserVerify" method="post">
                                     <p style="color: red">${mess}</p>
                                     <p style="color: red">${messS}</p>
                                     <div class="form-group">
                                         <label for="email" class="sr-only">Email</label>
                                         <input type="text" name="email" id="email"  class="form-control"
-                                               placeholder="Email" required>
+                                               placeholder="Email" required onkeyup="validationMail()">
+                                        <span id="textmail"></span>
                                     </div>
                                     <button class="btn btn-block signup-btn mb-4" type="submit">Đăng kí</button>
                                 </form>
-
                                 <p class="signup-card-footer-text">Đã có tải khoản? <a href="login.jsp" class="text-reset">Trở lại đăng nhập</a></p>
 
                                 <p>Hoặc</p>
@@ -60,6 +60,33 @@
                 </div>
             </div>
         </main>
+                                    
+                                    <script>
+                function validationMail(){
+                var form = document.getElementById("form");
+                
+                var email = document.getElementById("email").value;
+                var textmail = document.getElementById("textmail");
+                var pattern = "[^@\s]+@[^@\s]+\.[^@\s]+";
+                if(email.match(pattern)){
+                    form.classList.add("valid");
+                    form.classList.remove("invalid");
+                    textmail.innerHTML = "Đúng định dạng"
+                    textmail.style.color = "#00ff00"
+
+                } else {
+                    form.classList.remove("valid");
+                    form.classList.add("invalid");
+                    textmail.innerHTML = "Chưa đúng định dạng"
+                    textmail.style.color = "#ff0000"
+                }
+                if(email == ""){
+                    form.classList.remove("valid");
+                    form.classList.remove("invalid");
+                    email.innerHTML = ""
+                }
+            }
+                                        </script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
