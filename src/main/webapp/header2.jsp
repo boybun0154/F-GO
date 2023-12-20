@@ -11,7 +11,6 @@
                 ============================================= -->
                 <div id="logo">
                     <a style="height: 30px;border-radius: 4px;vertical-align: baseline;" href="Home" class="standard-logo" data-dark-logo="IMG/logo.png"><img src="IMG/logo.png" alt="Canvas Logo"></a>
-                    <a href="Home" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Canvas Logo"></a>
                 </div><!-- #logo end -->
 
                 <div class="header-misc">
